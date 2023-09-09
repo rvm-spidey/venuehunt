@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_121201) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_124335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_121201) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "venue_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["venue_id"], name: "index_reviews_on_venue_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -106,8 +110,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_121201) do
     t.boolean "other_services_offered"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "location_id"
+    t.bigint "users_id"
+    t.index ["location_id"], name: "index_venues_on_location_id"
+    t.index ["users_id"], name: "index_venues_on_users_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "venues"
+  add_foreign_key "venues", "locations"
+  add_foreign_key "venues", "users", column: "users_id"
 end
