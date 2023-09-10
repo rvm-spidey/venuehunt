@@ -1,2 +1,10 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%#= current_user.email if user_signed_in? %>
+
+<%= image_tag(current_user.avatar) if user_signed_in? &&  current_user.avatar.attached? %>
+
+<%# <div data-controller="company-address-autocomplete">
+  <h1>hello, world!</h1>
+</div> %>

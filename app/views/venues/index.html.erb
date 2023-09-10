@@ -1,1 +1,7 @@
 <h1>Venues index</h1>
+
+<h1>Count: <%= Venue.count %></h1>
+
+<% @venues.each do |venue| %>
+  <p><%= venue.name %> <%= venue.location %> <%= venue.address %></p>
+<% end %>
