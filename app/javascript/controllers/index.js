@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
+
+import CompanyAddressAutocompleteController from "./company_address_autocomplete_controller"
+application.register("company-address-autocomplete", CompanyAddressAutocompleteController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
