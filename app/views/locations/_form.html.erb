@@ -1,14 +1,14 @@
 
-<%= simple_form_for(@venue) do |f| %>
+<%= simple_form_for(@location) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
 
-    <%= f.association :location, label_method: :address, as: :select %>
-
     <%= f.input :name %>
-
+    <%= f.input :outline %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.input :address,
                 input_html: {data: {address_autocomplete_target: "address"},class: "d-none"},
                 wrapper_html: {data: {controller: "address-autocomplete",
