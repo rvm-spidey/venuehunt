@@ -1,0 +1,9 @@
+<div class="text-center">
+  <h1><%= @venue.name %></h1>
+  <h2>Address: <%= @venue.address %></h2>
+  <h2>Description: <%= @venue.description %></h2>
+  <h2>Space size: <%= @venue.space_size %></h2>
+  <h2>Availability: <%= @venue.availability %></h2>
+  <h2>Price: <%= @venue.price %></h2>
+  <%= link_to 'Back to all venues', venues_path %>
+</div>

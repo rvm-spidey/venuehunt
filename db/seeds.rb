@@ -9,3 +9,6 @@
 Location.delete_all
 Location.create(name: "Moka")
 Location.create(name: "Bagatelle")
+
+Venue.destroy_all
+Venue.create(name: "Les Kokottes")
