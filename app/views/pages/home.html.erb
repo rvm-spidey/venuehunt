@@ -1,6 +1,6 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>OPEN AI API</h1>
 
+<hr>
 <%#= current_user.email if user_signed_in? %>
 
 <%= image_tag(current_user.avatar) if user_signed_in? &&  current_user.avatar.attached? %>
@@ -8,3 +8,27 @@
 <%# <div data-controller="company-address-autocomplete">
   <h1>hello, world!</h1>
 </div> %>
+
+<%= form_with url: "/", method: :get, class: "d-flex" do %>
+  <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+        placeholder: "What kind of event you want to host ?"
+    %>
+  <%= submit_tag "Get Suggestions", name: "", class: "btn btn-primary" %>
+<% end %>
+
+
+<% if @content.present? %>
+  <div>
+    <p>Our suggestions:</p>
+    <p><%= @content %></p>
+  </div>
+<% end %>
+
+<h2>Tags</h2>
+<ul>
+<% @tags.each_with_index do |index, tag| %>
+  <li><%= "#{index} #{tag}" %></li>
+<% end %>
+</ul>
