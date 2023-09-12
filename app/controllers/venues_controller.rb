@@ -1,4 +1,6 @@
 class VenuesController < ApplicationController
+  before_action :set_venue, only: [:show, :edit, :update, :destroy]
+
   def index
     @venues = Venue.all
   end
@@ -21,12 +23,23 @@ class VenuesController < ApplicationController
   end
 
   def show
+  end
 
+  def edit
+  end
+
+  def update
+    @venue.update(venue_params)
+    redirect_to venue_path(@venue), notice: 'Equipment was successfully updated.'
   end
 
   private
 
+  def set_venue
+    @venue = Venue.find(params[:id])
+  end
+
   def venue_params
-    params.require(:venue).permit(:name, :location_id, :address)
+    params.require(:venue).permit(:name, :description, :price, :availability, :space_size, :location_id, :address)
   end
 end
