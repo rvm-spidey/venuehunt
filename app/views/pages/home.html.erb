@@ -9,26 +9,45 @@
   <h1>hello, world!</h1>
 </div> %>
 
-<%= form_with url: "/", method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-        placeholder: "What kind of event you want to host ?"
+<div data-controller="display-suggestions">
+
+
+  <%= form_with url: "/", method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
+    <%= f.label :query, "Type a movie title" %>
+    <%= f.text_field :query,
+              class: "form-control",
+              value: params[:query],
+              data: {display_suggestions_target: "input", action: "submit->display-suggestions#send"}
     %>
-  <%= submit_tag "Get Suggestions", name: "", class: "btn btn-primary" %>
-<% end %>
+  <% end %>
 
+  <!--
+  <%= form_with url: "/", method: :get, class: "d-flex" do %>
+    <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+          placeholder: "What kind of event you want to host ?"
+      %>
+    <%= submit_tag "Get Suggestions", name: "", class: "btn btn-primary" %>
+  <% end %>
+  -->
 
-<% if @content.present? %>
-  <div>
-    <p>Our suggestions:</p>
-    <p><%= @content %></p>
+  <div data-display-suggestions-target = "items">
+    <% if @content.present? %>
+      <div>
+        <p>Our suggestions:</p>
+        <p><%= @content %></p>
+      </div>
+    <% end %>
+
+    <h2>Tags</h2>
+    <ul>
+    <% @tags.each_with_index do |index, tag| %>
+      <li><%= "#{index} #{tag}" %></li>
+    <% end %>
+  </ul>
+
   </div>
-<% end %>
 
-<h2>Tags</h2>
-<ul>
-<% @tags.each_with_index do |index, tag| %>
-  <li><%= "#{index} #{tag}" %></li>
-<% end %>
-</ul>
+
+</div>
