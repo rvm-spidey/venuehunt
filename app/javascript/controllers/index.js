@@ -10,6 +10,9 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import CompanyAddressAutocompleteController from "./company_address_autocomplete_controller"
 application.register("company-address-autocomplete", CompanyAddressAutocompleteController)
 
+import DisplaySuggestionsController from "./display_suggestions_controller"
+application.register("display-suggestions", DisplaySuggestionsController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

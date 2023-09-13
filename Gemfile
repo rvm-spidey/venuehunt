@@ -54,6 +54,8 @@ gem "cloudinary"
 
 gem "geocoder"
 
+gem "ruby-openai"
+
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
