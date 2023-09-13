@@ -11,15 +11,17 @@
 
 <div data-controller="display-suggestions">
 
-
-  <%= form_with url: "/", method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
+  <%= form_with url: pages_path , method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
     <%= f.label :query, "Type a movie title" %>
     <%= f.text_field :query,
               class: "form-control",
               value: params[:query],
-              data: {display_suggestions_target: "input", action: "submit->display-suggestions#send"}
+              data: {display_suggestions_target: "input"}
     %>
+    <%= f.button :submit, data: {action: "click->display-suggestions#send"} %>
   <% end %>
+
+  <%= render "suggestions" %>
 
   <!--
   <%= form_with url: "/", method: :get, class: "d-flex" do %>
@@ -30,24 +32,20 @@
       %>
     <%= submit_tag "Get Suggestions", name: "", class: "btn btn-primary" %>
   <% end %>
-  -->
+  <div>
+      <% if @content.present? %>
+        <div>
+          <p>Our suggestions:</p>
+          <p><%= @content %></p>
+        </div>
+      <% end %>
 
-  <div data-display-suggestions-target = "items">
-    <% if @content.present? %>
-      <div>
-        <p>Our suggestions:</p>
-        <p><%= @content %></p>
-      </div>
-    <% end %>
-
-    <h2>Tags</h2>
-    <ul>
-    <% @tags.each_with_index do |index, tag| %>
-      <li><%= "#{index} #{tag}" %></li>
-    <% end %>
-  </ul>
-
+      <h2>Tags</h2>
+      <ul>
+      <% @tags.each_with_index do |index, tag| %>
+        <li><%= "#{index} #{tag}" %></li>
+      <% end %>
+    </ul>
   </div>
-
-
+  -->
 </div>
