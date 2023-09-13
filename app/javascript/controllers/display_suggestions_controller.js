@@ -7,16 +7,11 @@ export default class extends Controller {
 
 
   connect() {
-    console.log("displaying suggestions..");
-    console.log("list", this.listTarget);
+
   }
 
   send(){
     event.preventDefault()
-    console.log("send..");
-    console.log("input..", this.inputTarget);
-
-    console.log("input 123..", this.inputTarget.value);
 
     const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
     console.log("url" , url);
