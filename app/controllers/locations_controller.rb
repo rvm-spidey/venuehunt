@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   def index
     @locations = Location.all
-    @user = User.last
+    @user = current_user
     @company_address =
     {
       lat:@user.latitude,

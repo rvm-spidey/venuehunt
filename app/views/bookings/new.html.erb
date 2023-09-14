@@ -1,0 +1,11 @@
+<div class="container d-flex justify-content-center align-items-center" style="width: 100vw; height: 40%;">
+    <%= simple_form_for [@venue, @booking] do |f| %>
+
+      <%= f.input :event_name %>
+      <%= f.input :number_of_participants %>
+      <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
+      <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
+      <%= f.submit 'Create booking', style: 'width: 100%; background-color:green'%>
+    <% end %>
+  </div>
+</div>

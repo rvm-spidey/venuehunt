@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   geocoded_by :company_address
   after_validation :geocode, if: :will_save_change_to_company_address?
+  has_many :carts
+  has_many :bookings, through: :carts
 end

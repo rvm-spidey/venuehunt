@@ -1,0 +1,10 @@
+<div class="text-center">
+  <h1>All My Bookings</h1>
+</div>
+<div>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <%= booking.event_name %>
+    <% end %>
+  </ul>
+</div>
