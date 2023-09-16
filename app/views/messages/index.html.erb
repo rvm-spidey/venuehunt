@@ -1,0 +1,19 @@
+<h1>My messages</h1>
+
+<ul>
+  <% @chatrooms_user.each do |cr| %>
+    <li>
+      <div  data-controller="new-msg-notif"
+            data-new-msg-notif-chatroom-id-value="<%= cr.id %>">
+        <%= link_to cr.name, chatroom_path(cr) %>
+        <p><%= User.find(cr.admin_id).email %></p>
+        <p><%= cr.name %> : <%= cr.id %></p>
+        <% last_msg = Message.where(chatroom_id: cr.id).order(id: :desc).first %>
+        <div
+          data-new-msg-notif-target="messages"="<%= cr.id %>">
+          <p><%= last_msg.content %></p>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>

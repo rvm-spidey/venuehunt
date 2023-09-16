@@ -8,4 +8,15 @@ Rails.application.routes.draw do
   resources :pages, only: [:index, :update]
   resources :venues
   resources :locations
+  resources :carts
+
+  resources :messages
+
+  resources :chatrooms do
+    resources :messages, only: :create
+  end
+
+  # resources :chatrooms, only: :show do
+  #   resources :messages, only: :create
+  # end
 end

@@ -1,9 +1,27 @@
-<div class="text-center">
+<div>
   <h1><%= @venue.name %></h1>
   <h2>Address: <%= @venue.address %></h2>
   <h2>Description: <%= @venue.description %></h2>
   <h2>Space size: <%= @venue.space_size %></h2>
   <h2>Availability: <%= @venue.availability %></h2>
   <h2>Price: <%= @venue.price %></h2>
-  <%= link_to 'Back to all venues', venues_path %>
+
+  <h2>Owner: <%= @venue.user_id %></h2>
 </div>
+
+
+<%= simple_form_for(@chatroom) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
+    <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
+
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to all venues', venues_path %>
