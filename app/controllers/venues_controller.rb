@@ -34,6 +34,11 @@ class VenuesController < ApplicationController
     redirect_to venue_path(@venue), notice: 'Equipment was successfully updated.'
   end
 
+  def destroy
+    @venue.destroy!
+    redirect_to venues_path, status: :see_other
+  end
+
   private
 
   def set_venue
@@ -43,4 +48,7 @@ class VenuesController < ApplicationController
   def venue_params
     params.require(:venue).permit(:name, :description, :price, :availability, :space_size, :location_id, :address, :user_id)
   end
+
+
+
 end

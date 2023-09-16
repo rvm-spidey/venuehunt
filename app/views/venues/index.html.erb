@@ -5,5 +5,7 @@
 <% @venues.each do |venue| %>
   <h3><%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
   <p><%= venue.location %></p>
+  <p><%= venue.id %></p>
   <p><%= venue.address  %></p>
+  <%= button_to "delete", venue_path(venue), method: :delete  %>
 <% end %>
