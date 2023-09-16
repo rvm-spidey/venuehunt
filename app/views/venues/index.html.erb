@@ -2,10 +2,12 @@
 
 <h1>Count: <%= Venue.count %></h1>
 
+
 <% @venues.each do |venue| %>
   <h3><%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
-  <p><%= venue.location %></p>
-  <p><%= venue.id %></p>
+  <p><%= venue.location.name %></p>
   <p><%= venue.address  %></p>
-  <%= button_to "delete", venue_path(venue), method: :delete  %>
+  <p><%= venue.price  %></p>
+  <p>Owner <%= venue.user_id  %></p>
+  <%#= button_to "delete", venue_path(venue), method: :delete  %>
 <% end %>

@@ -18,9 +18,20 @@ Rails.application.routes.draw do
     resources :bookings, only: [:index, :new, :create]
   end
 
+  resources :carts do
+    resources :placeorders
+  end
+
+
+
   resources :carts
 
+
   resources :messages
+
+  resources :bookings
+
+
 
   resources :chatrooms do
     resources :messages, only: :create
