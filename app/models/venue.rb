@@ -1,6 +1,10 @@
 class Venue < ApplicationRecord
+
   belongs_to :location
   has_many :reviews, dependent: :destroy
+
+  has_many :bookings
+  has_many :carts, through: :bookings
   # belongs_to :booking
 
   geocoded_by :address

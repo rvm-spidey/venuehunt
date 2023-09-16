@@ -6,11 +6,23 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :venues
+  resources :pages, only: [:index, :update]
+  # resources :venues
   resources :locations
 
   resources :venues, only: [:index, :show, :new, :create] do
     resources :reviews, only: [:index, :new, :create]
   end
-  resources :reviews, only: [:show, :edit, :update, :destroy]
+
+  resources :carts
+
+  resources :messages
+
+  resources :chatrooms do
+    resources :messages, only: :create
+  end
+
+  # resources :chatrooms, only: :show do
+  #   resources :messages, only: :create
+  # end
 end

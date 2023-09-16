@@ -23,6 +23,7 @@ class VenuesController < ApplicationController
   end
 
   def show
+    @chatroom = Chatroom.new
   end
 
   def edit
@@ -45,7 +46,7 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :description, :price, :availability, :space_size, :location_id, :address)
+    params.require(:venue).permit(:name, :description, :price, :availability, :space_size, :location_id, :address, :user_id)
   end
 
 
