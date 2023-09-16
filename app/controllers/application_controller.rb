@@ -19,12 +19,16 @@ class ApplicationController < ActionController::Base
   end
 
   def initialize_cart
-    @cart || Cart.find_by(id: session[:cart_id])
     if current_user.nil?
+      session[:cart_id] = nil
       @cart = nil
-    elsif @cart.nil?
-      @cart = Cart.create(user_id: current_user.id)
-      session[:cart_id] = @cart.id
+    else
+      if session[:cart_id].nil?
+        @cart = Cart.create(user_id: current_user.id)
+        session[:cart_id] = @cart.id
+      else
+        @cart = Cart.find_by(id: session[:cart_id])
+      end
     end
   end
 end

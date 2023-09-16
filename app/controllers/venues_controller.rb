@@ -24,6 +24,7 @@ class VenuesController < ApplicationController
 
   def show
     @chatroom = Chatroom.new
+    @booking = Booking.new
   end
 
   def edit

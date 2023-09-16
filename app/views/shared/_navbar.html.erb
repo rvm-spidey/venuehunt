@@ -22,7 +22,8 @@
           </li>
           <% if !@cart.nil? %>
             <li class="nav-item">
-              <%= link_to "Cart", cart_path(@cart), class: "nav-link" %>
+              ID: <%#= @cart.id %>
+              <%#= link_to "Cart"  , cart_path(@cart), class: "nav-link" %>
             </li>
           <% end %>
 

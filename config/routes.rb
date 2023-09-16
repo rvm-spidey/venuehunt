@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:index, :new, :create]
   end
 
+  resources :venues, only: [:index, :show, :new, :create] do
+    resources :bookings, only: [:index, :new, :create]
+  end
+
   resources :carts
 
   resources :messages

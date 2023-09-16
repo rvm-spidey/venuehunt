@@ -1,1 +1,9 @@
 <h1>Cart</h1>
+
+ID <%= @cart.id %>
+
+<%= @cart.bookings.count %>
+
+<% @cart.venues.each do |venue| %>
+  <%= venue.name %>
+<% end %>
