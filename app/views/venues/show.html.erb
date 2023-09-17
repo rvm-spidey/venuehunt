@@ -16,6 +16,7 @@
 
   <div class="form-inputs">
     <%= f.input :event_name %>
+    <%= f.input :number_of_participants, as: :integer %>
     <%= f.input :cart_id, input_html: { value: @cart.id} %>
     <%= f.input :venue_id, input_html: { value: @venue.id} %>
   </div>

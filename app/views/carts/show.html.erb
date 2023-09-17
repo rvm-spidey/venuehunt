@@ -1,9 +1,27 @@
 <h1>Cart</h1>
+<h1> No of items in cart <%= @cart.venues.count %></h1>
 
-ID <%= @cart.id %>
+<h1>ID <%= @cart.id %></h1>
 
-<%= @cart.bookings.count %>
+<ul>
+  <% @cart.bookings.each do |booking| %>
+    <li>
+      <%= booking.venue.name %>  | <%= booking.event_name %> | <%= booking.total_price %> |
+      <h4><%= booking.status %></h4>
+      <%= link_to "Delete",booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+    </li>
+  <% end %>
+</ul>
 
-<% @cart.venues.each do |venue| %>
-  <%= venue.name %>
-<% end %>
+<h3>Sub total: <%= @cart.sub_total %></h3>
+
+<p>15% For Venue Hunt</p>
+<h3>Total: <%=  @cart.total %></h3>
+
+
+<p><%= link_to "Add another venue to cart", venues_path %></p>
+
+<p><%= link_to "Empty cart", cart_path(@cart),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+
+
+<p><%= link_to "Proceed to checkout", new_cart_order_path(@cart) %></p>

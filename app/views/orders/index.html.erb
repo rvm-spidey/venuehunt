@@ -1,0 +1,11 @@
+<h1>Your orders</h1>
+
+<% @orders.each do |order| %>
+  <p>
+    <%= order.id %>
+    <%= order.created_at %>
+    <% @cart = Cart.find(order.cart_id) %>
+    <%= @cart.to_json %>
+     <%= @cart.bookings.to_json %>
+  </p>
+<% end %>
