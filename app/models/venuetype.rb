@@ -1,0 +1,2 @@
+class Venuetype < ApplicationRecord
+end

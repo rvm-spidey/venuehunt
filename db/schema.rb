@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_17_050136) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_17_150023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -158,8 +158,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_050136) do
     t.datetime "updated_at", null: false
     t.bigint "location_id"
     t.bigint "user_id"
+    t.bigint "venuetype_id"
     t.index ["location_id"], name: "index_venues_on_location_id"
     t.index ["user_id"], name: "index_venues_on_user_id"
+    t.index ["venuetype_id"], name: "index_venues_on_venuetype_id"
+  end
+
+  create_table "venuetypes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -176,4 +184,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_17_050136) do
   add_foreign_key "reviews", "venues"
   add_foreign_key "venues", "locations"
   add_foreign_key "venues", "users"
+  add_foreign_key "venues", "venuetypes"
 end
