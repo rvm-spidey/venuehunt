@@ -4,10 +4,28 @@
 
 
 <% @venues.each do |venue| %>
-  <h3><%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
-  <p><%= venue.location.name %></p>
-  <p><%= venue.address  %></p>
-  <p><%= venue.price  %></p>
-  <p>Owner <%= venue.user_id  %></p>
+
+  <h3> <%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
+  <p>Location: <%= venue.location.name %></p>
+  <%if venue.photos.attached? %>
+    <% venuephoto = venue.photos.first %>
+    <%= cl_image_tag venuephoto.key, height: 300, width: 400, crop: :fill %>
+    <!--
+    <% venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    -->
+  <% end %>
+  <p>Description <%= venue.description %></p>
+  <p>Address <%= venue.address  %></p>
+  <p>Space <%= venue.space_size  %></p>
+  <p>Price/day<%= venue.price  %></p>
+
+  <p>Opening Time <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+  <p>Closing Time <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+  <p>Food and bev <%= venue.food_beverages_offered %></p>
+  <p>Other Services <%= venue.other_services_offered %></p>
+
+  <p>Owner <%= User.find(venue.user_id).email  %></p>
   <%#= button_to "delete", venue_path(venue), method: :delete  %>
 <% end %>

@@ -32,7 +32,7 @@ class VenuesController < ApplicationController
 
   def update
     @venue.update(venue_params)
-    redirect_to venue_path(@venue), notice: 'Equipment was successfully updated.'
+    redirect_to venue_path(@venue), notice: 'Venue was successfully updated.'
   end
 
   def destroy
@@ -47,9 +47,6 @@ class VenuesController < ApplicationController
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :description, :price, :availability, :space_size, :location_id, :address, :user_id)
+    params.require(:venue).permit(:name, :description, :price, :availability, :space_size, :location_id, :address, :user_id, :venuetype_id,:opening_time, :closing_time, :food_beverages_offered, :other_services_offered, photos: [])
   end
-
-
-
 end

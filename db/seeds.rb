@@ -20,6 +20,8 @@ types.each do |type|
 end
 
 
+
+
 # 3.times do
 #   User.create(
 #     email: Faker::Internet.email,
