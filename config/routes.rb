@@ -19,12 +19,18 @@ Rails.application.routes.draw do
   end
 
   resources :carts do
-    resources :placeorders
+    resources :orders
+  end
+
+  resources :orders do
+    member do
+      get :order_success
+    end
   end
 
 
 
-  resources :carts
+  # resources :carts
 
 
   resources :messages

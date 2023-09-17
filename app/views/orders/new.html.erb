@@ -1,0 +1,6 @@
+<h1>Payment</h1>
+
+<%= simple_form_for [@cart,@order] do |f| %>
+  <%= f.input :card_number %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>

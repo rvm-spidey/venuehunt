@@ -24,4 +24,4 @@
 <p><%= link_to "Empty cart", cart_path(@cart),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
 
 
-<p><%= link_to "Proceed to checkout", cart_placeorders_path(@cart) %></p>
+<p><%= link_to "Proceed to checkout", new_cart_order_path(@cart) %></p>
