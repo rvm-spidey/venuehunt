@@ -1,19 +1,60 @@
-<h1>OPEN AI API</h1>
-<hr>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= asset_path('banner2.png') %>)">
+     <!--<h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
+    <p>Change your life and learn to code at one of our campuses around the world.</p>
+   <a class="btn btn-flat" href="#">Apply now</a>-->
+  </div>
+</div>
+
+<!-- <h1>OPEN AI API</h1>
+<hr>-->
 
 <%= image_tag(current_user.avatar) if user_signed_in? &&  current_user.avatar.attached? %>
 
-<div data-controller="display-suggestions">
+<div class="form-container">
+<div data-controller="display-suggestions" >
 
-  <%= form_with url: pages_path , method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
-    <%= f.label :query, "Type a movie title" %>
+  <%= form_with url: pages_path , method: :get, html: {class: "mb-8", data: {display_suggestions_target: "form"}} do |f| %>
+
+    <%= f.label :query, "Request a suggestion" %>
     <%= f.text_field :query,
               class: "form-control",
               value: params[:query],
               data: {display_suggestions_target: "input"}
+
     %>
+
+
     <%= f.button :submit, data: {action: "click->display-suggestions#send"} %>
+
   <% end %>
+  </div>
 
   <%= render "suggestions" %>
+</div>
+
+<div>
+Our top 3 Venues
+
+<div class="container">
+  <div class="row gy-5 d-flex">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow">
+        <div class="card-img">
+          <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" width="414px" alt="Venue Img" class="card-top-img"/>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><strong>venue.name</strong></h4>
+          <h5>venue.location</h5>
+          <h5>Rs venue price
+          </h5>
+          <div class="card-button-venue text-center">
+            <a> <strong>View venue</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
+
 </div>
