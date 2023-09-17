@@ -1,1 +1,57 @@
 @import "banner";
+@import "card";
+
+.filter-header {
+  padding-top: 20px;
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  h2 {
+    font-family: Helvetica, sans-serif;
+    font-weight: 780;
+    font-size: 20px;
+    color: $dark-blue;
+  }
+
+  .hover-underline-animation {
+      display: inline-block;
+      position: relative;
+    }
+
+  .hover-underline-animation:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1.5px;
+    bottom: 0;
+    left: 0;
+    background-color: $dark-blue;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+.count-container {
+  background-color: $dark-blue;
+  width: 450px;
+  height: 40px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+
+  h2 {
+    text-align: center;
+    font-weight: 780;
+    color: $white;
+    font-family: Helvetica, sans-serif;
+  }
+}

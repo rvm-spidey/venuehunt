@@ -1,0 +1,27 @@
+.card-title {
+  font-family: Helvetica, sans-serif;
+}
+
+.card-button-venue {
+  width: 120px;
+  height: 20px;
+  background-color: $dark-blue;
+
+  a {
+    color: $white;
+    font-family: Helvetica, sans-serif;
+  }
+}
+
+.card-img {
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.image_tag {
+  transition: all 1.5s ease;
+
+  &:hover {
+    transform: scale(1.5);
+  }
+}

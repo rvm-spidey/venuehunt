@@ -25,23 +25,3 @@
   background-color: $white;
   margin-top: -10px;
 }
-
-.filter-header {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 100px;
-  padding-right: 100px;
-
-  h2 {
-    font-family: Helvetica, sans-serif;
-    font-weight: bolder;
-    font-size: 25px;
-
-    &:hover {
-      text-decoration: underline;
-      transition: transform 0.25s ease-out;
-    }
-  }
-}
