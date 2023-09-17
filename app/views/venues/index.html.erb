@@ -1,4 +1,14 @@
-<h1>Venues index</h1>
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/02/vivea.-2.jpg);">
+ <h1 class="header-banner">Venues</h1>
+ <div class="venues-index-bar"></div>
+</div>
+
+<div class="filter-header">
+ <h2>Number of participants</h2>
+ <h2>Locations</h2>
+ <h2>Occasions</h2>
+ <h2>Price</h2>
+</div>
 
 <h1>Count: <%= Venue.count %></h1>
 
@@ -8,6 +18,6 @@
   <p><%= venue.location.name %></p>
   <p><%= venue.address  %></p>
   <p><%= venue.price  %></p>
-  <p>Owner <%= venue.user_id  %></p>
+  <%# <p>Owner <%= venue.users_id </p> %>
   <%#= button_to "delete", venue_path(venue), method: :delete  %>
 <% end %>
