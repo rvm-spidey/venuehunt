@@ -11,6 +11,9 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
+          <%= link_to "Discover venues", venues_path , class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Discover locations", locations_path , class: "nav-link" %>
         </li>
         <li class="nav-item">
@@ -20,16 +23,6 @@
           <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= current_user.email %>
-          </li>
-          <% if !@cart.nil? %>
-            <li class="nav-item">
-              ID: <%= @cart.id %>
-              <%= link_to "Cart"  , cart_path(@cart), class: "nav-link" %>
-            </li>
-          <% end %>
-
 
           <li id="notif" class="nav-item">
               <%= link_to "Messages", messages_path , class: "nav-link" %>
@@ -39,7 +32,7 @@
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
+              <%= link_to "Add venue", new_venue_path , class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>

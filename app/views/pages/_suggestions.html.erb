@@ -1,15 +1,14 @@
 <div data-display-suggestions-target="list">
-  <p class="h3">
-    <h1>Params <%= params[:query] %></h1>
-  </p>
-
   <h1> <%= @content %></h1>
 
-  <h2>Tags</h2>
-  <ul>
-    <% @tags.each_with_index do |index, tag| %>
-      <li><%= "#{index} #{tag}" %></li>
-    <% end %>
-  </ul>
-
+  <% if !@content.empty? %>
+    <h2>Tags</h2>
+    <ul>
+      <% @tags.each do |tag| %>
+        <li>
+          <%= link_to "#{tag}", venues_path(query_type: tag)%>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
