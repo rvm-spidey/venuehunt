@@ -1,39 +1,27 @@
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= asset_path('banner2.png') %>)">
-     <!--<h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-   <a class="btn btn-flat" href="#">Apply now</a>-->
-  </div>
+
 </div>
-
-<!-- <h1>OPEN AI API</h1>
-<hr>-->
-
-<%= image_tag(current_user.avatar) if user_signed_in? &&  current_user.avatar.attached? %>
 
 <div class="container form-container">
-<div data-controller="display-suggestions" >
 
-  <%= form_with url: pages_path , method: :get, html: {class: "mb-3", data: {display_suggestions_target: "form"}} do |f| %>
+  <div data-controller="display-suggestions">
 
-    <%= f.label :query, "Request a suggestion" %>
-    <%= f.text_field :query,
-              class: "form-control sugg-form-control",
-              value: params[:query],
-              data: {display_suggestions_target: "input"}
-
-    %>
-<div class="row col-3 d-flex justify-content-center mx-auto">
-    <%= f.button :submit, data: {action: "click->display-suggestions#send"} %>
-</div>
-  <% end %>
+    <%= form_with url: pages_path , method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
+      <%= f.label :query, "Please describe for what event do you need a venue" %>
+      <%= f.text_field :query,
+                class: "form-control",
+                value: params[:query],
+                placeholder: "Describe your event",
+                data: {display_suggestions_target: "input"}
+      %>
+      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send" } %>
+    <% end %>
+  
+    <%= render "suggestions" %>
   </div>
-
-  <%= render "suggestions" %>
-</div>
-
 <div>
-
-
+  
 <div class="container">
 <h2>Our top 3 Venues</h2>
   <div class="row gy-5 d-flex">

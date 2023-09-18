@@ -16,6 +16,9 @@ application.register("company-address-autocomplete", CompanyAddressAutocompleteC
 import DisplaySuggestionsController from "./display_suggestions_controller"
 application.register("display-suggestions", DisplaySuggestionsController)
 
+import FlatpickrController from "./flatpickr_controller"
+application.register("flatpickr", FlatpickrController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

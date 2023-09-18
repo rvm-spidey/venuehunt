@@ -1,13 +1,96 @@
-<h1>Venues index</h1>
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/02/vivea.-2.jpg);">
+  <h1 class="header-banner">Venues</h1>
+  <div class="venues-index-bar"></div>
+</div>
 
-<h1>Count: <%= Venue.count %></h1>
+<div class="row justify-content-center">
+  <div class="">
+    <%= form_with model: @venue, url: venues_path, method: :get, html: { class: "" } do |f| %>
 
+      <div class="form-group">
+        <%= f.label :search_query, "Search event" %>
+        <%= f.text_field :search_query,
+                  class: "form-control",
+                  value: params[:search_query],
+                  placeholder: "search by name or description" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :venuetype_id, "Select Venue Types" %>
+        <%= f.collection_check_boxes :venuetype_id, Venuetype.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+          <%= b.check_box checked: @venuetypes.include?(b.value.to_s) %>
+          <%= b.label %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :location_id, "Select Locations" %>
+        <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+          <%= b.check_box checked: @location.to_i == b.value.to_i %>
+          <%= b.label %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Apply filters", name: "" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="count-container">
+  <h2>Number of Venues Listed: <%= Venue.count %></h2>
+</div>
+
+
+<div class="container">
+  <div class="row gy-5 d-flex">
+    <% @venues.each do |venue| %>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow">
+        <div class="card-img">
+          <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><strong><%= venue.name %></strong></h4>
+          <h5><%= venue.location.name %></h5>
+          <h5>Rs <%= venue.price  %></h5>
+          <div class="card-button-venue text-center">
+            <a> <strong><%= link_to "View Venue", venue_path(venue), class:"text-decoration-none" %></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
 
 <% @venues.each do |venue| %>
-  <h3><%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
-  <p><%= venue.location.name %></p>
-  <p><%= venue.address  %></p>
-  <p><%= venue.price  %></p>
-  <p>Owner <%= venue.user_id  %></p>
+
+  <h3> <%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
+  <p>Location: <%= venue.location.name %></p>
+  <%if venue.photos.attached? %>
+    <% venuephoto = venue.photos.first %>
+    <%= cl_image_tag venuephoto.key, height: 300, width: 400, crop: :fill %>
+    <!--
+    <% venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    -->
+  <% end %>
+  <p>Description <%= venue.description %></p>
+  <p>Type <%= Venuetype.find(venue.venuetype_id).name  %></p>
+  <p>Address <%= venue.address  %></p>
+  <p>Space <%= venue.space_size  %></p>
+  <p>Price/day<%= venue.price  %></p>
+
+  <p>Opening Time <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+  <p>Closing Time <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+  <p>Food and bev <%= venue.food_beverages_offered %></p>
+  <p>Other Services <%= venue.other_services_offered %></p>
+
+  <p>Owner <%= User.find(venue.user_id).email  %></p>
   <%#= button_to "delete", venue_path(venue), method: :delete  %>
 <% end %>

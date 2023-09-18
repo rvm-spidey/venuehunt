@@ -1,4 +1,7 @@
 class LocationsController < ApplicationController
+
+  before_action :set_location, only: [:edit, :update]
+
   def index
     @locations = Location.all
     @user = current_user
@@ -23,6 +26,16 @@ class LocationsController < ApplicationController
     @location = Location.new
   end
 
+  def edit
+  end
+
+  def update
+    @location = Location.find(params[:id])
+    @location.update(location_params)
+    redirect_to locations_path
+  end
+
+
   def create
     @location = Location.new(location_params)
     respond_to do |format|
@@ -39,5 +52,9 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location).permit(:name, :outline, :description, :address, photos: [])
+  end
+
+  def set_location
+    @location = Location.find(params[:id])
   end
 end

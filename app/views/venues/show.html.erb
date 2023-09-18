@@ -1,43 +1,67 @@
 <div>
-  <h1><%= @venue.name %></h1>
-  <h2>Address: <%= @venue.address %></h2>
-  <h2>Description: <%= @venue.description %></h2>
-  <h2>Space size: <%= @venue.space_size %></h2>
-  <h2>Availability: <%= @venue.availability %></h2>
-  <h2>Price: <%= @venue.price %></h2>
+  <h3> <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></h3>
+  <p>Location: <%= @venue.location.name %></p>
+  <%if @venue.photos.attached? %>
+    <% @venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
+  <p>Description <%= @venue.description %></p>
+  <p>Address <%= @venue.address  %></p>
+  <p>Space <%= @venue.space_size  %></p>
+  <p>Price/day<%= @venue.price  %></p>
 
-  <h2>Owner: <%= @venue.user_id %></h2>
+  <p>Opening Time <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+  <p>Closing Time <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+  <p>Food and bev <%= @venue.food_beverages_offered %></p>
+  <p>Other Services <%= @venue.other_services_offered %></p>
+
+  <p>Owner <%= User.find(@venue.user_id).email  %></p>
 </div>
 
 
-<%= simple_form_for [@venue, @booking] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
+  <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :event_name %>
-    <%= f.input :number_of_participants, as: :integer %>
-    <%= f.input :cart_id, input_html: { value: @cart.id} %>
-    <%= f.input :venue_id, input_html: { value: @venue.id} %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-inputs">
+      <%= f.input :event_name %>
+      <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+      <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
+      <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
 
 
-<%= simple_form_for(@chatroom) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <% if @venue.food_beverages_offered %>
+        <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
+        <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
+      <% end %>
 
-  <div class="form-inputs">
-    <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
-    <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
+      <% if @venue.other_services_offered %>
+        <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.keys %>
+      <% end %>
 
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
-  </div>
-<% end %>
+      <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
+      <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
 
-<%= link_to 'Back to all venues', venues_path %>
+
+  <%= simple_form_for(@chatroom) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
+      <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
+    </div>
+  <% end %>
+</div>
+
+<%#= link_to 'Back to all venues', venues_path %>

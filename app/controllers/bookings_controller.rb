@@ -4,6 +4,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(bookings_params)
+    # @booking.venue_id = @venue.id
+    # @booking.cart_id = @cart
     @booking.status = "on-hold"
     @booking.total = @booking.total_price
     @booking.save
@@ -22,6 +24,6 @@ class BookingsController < ApplicationController
   private
 
   def bookings_params
-    params.require(:booking).permit(:event_name, :venue_id, :cart_id, :number_of_participants)
+    params.require(:booking).permit(:event_name, :venue_id, :cart_id, :number_of_participants, :date_from, :date_to, :food, :beverage, :other_services_offered)
   end
 end
