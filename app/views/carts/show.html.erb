@@ -1,13 +1,21 @@
 <h1>Cart</h1>
 <h1> No of items in cart <%= @cart.venues.count %></h1>
 
-<h1>ID <%= @cart.id %></h1>
+<h1>Cart ID <%= @cart.id %></h1>
 
 <ul>
   <% @cart.bookings.each do |booking| %>
     <li>
-      <%= booking.venue.name %>  | <%= booking.event_name %> | <%= booking.total_price %> |
-      <h4><%= booking.status %></h4>
+      <p> venue name <%= booking.venue.name %></p>
+      <p> event name <%= booking.event_name %></p>
+      <p> total price <%= booking.total_price %></p>
+      <p> booking from <%= booking.date_from %> </p>
+      <p> booking to <%= booking.date_to %> </p>
+      <p> booking num participants <%= booking.number_of_participants %> </p>
+      <p> booking food <%= booking.food %> </p>
+      <p> booking beverage <%= booking.beverage %> </p>
+      <p> booking other services <%= booking.other_services_offered %> </p>
+
       <%= link_to "Delete",booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
     </li>
   <% end %>

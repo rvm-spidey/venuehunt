@@ -6,7 +6,7 @@ class Cart < ApplicationRecord
   def sub_total
     sum = 0
     self.bookings.each do |booking|
-      sum+= booking.total_price
+      sum += booking.total_price
     end
     return sum
   end

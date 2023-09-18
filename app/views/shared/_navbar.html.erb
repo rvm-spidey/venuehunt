@@ -13,6 +13,7 @@
         <li class="nav-item">
           <%= link_to "Discover venues", venues_path , class: "nav-link" %>
         </li>
+
         <li class="nav-item">
           <%= link_to "Discover locations", locations_path , class: "nav-link" %>
         </li>
@@ -25,6 +26,10 @@
           </li>
           <li class="nav-item">
             <%= current_user.email %>
+          </li>
+
+          <li class="Carts">
+            <%= link_to "Carts", cart_path(@cart) , class: "nav-link" %>
           </li>
 
           <li id="notif" class="nav-item">

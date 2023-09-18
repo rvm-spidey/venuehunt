@@ -21,15 +21,28 @@
 
 
 <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
-  <%= simple_form_for [@venue, @booking] do |f| %>
+  <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
     <div class="form-inputs">
       <%= f.input :event_name %>
-      <%= f.input :number_of_participants, as: :integer %>
-      <%= f.input :cart_id, input_html: { value: @cart.id} %>
-      <%= f.input :venue_id, input_html: { value: @venue.id} %>
+      <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+      <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
+      <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
+
+
+      <% if @venue.food_beverages_offered %>
+        <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
+        <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
+      <% end %>
+
+      <% if @venue.other_services_offered %>
+        <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.keys %>
+      <% end %>
+
+      <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
+      <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
     </div>
     <div class="form-actions">
       <%= f.button :submit %>
@@ -44,7 +57,6 @@
     <div class="form-inputs">
       <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
       <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
-
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
