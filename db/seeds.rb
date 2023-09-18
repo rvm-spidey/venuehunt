@@ -8,9 +8,18 @@
 
 # require 'faker'
 
-# Location.delete_all
+
+Location.delete_all
+Venue.delete_all
+
 # User.delete_all
-# Venue.delete_all
+
+Venuetype.delete_all
+types = ["Convention centers", "Conference centers", "Hotels", "Resorts", "Restaurants", "Lounges", "Community centers"]
+types.each do |type|
+  Venuetype.create(name: type)
+end
+
 
 # 3.times do
 #   User.create(
@@ -37,29 +46,3 @@
 #   )
 # end
 
-# 3.times do
-#   Venue.create(
-#     name: Faker::Company.name,
-#     description: Faker::Lorem.paragraph,
-#     space_size: Faker::Number.between(from: 100, to: 1000),
-#     opening_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning),
-#     closing_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :evening),
-#     availability: true, # You can set this to true or false as needed
-#     address: Faker::Address.full_address,
-#     latitude: Faker::Address.latitude,
-#     longitude: Faker::Address.longitude,
-#     price: Faker::Number.between(from: 100, to: 1000),
-#     food_beverages_offered: [true, false].sample,
-#     other_services_offered: [true, false].sample,
-#     location_id: Location.pluck(:id).sample,
-#     users_id: User.pluck(:id).sample
-#   )
-# end
-
-
-Location.delete_all
-Location.create(name: "Moka")
-Location.create(name: "Bagatelle")
-
-# Venue.destroy_all
-# Venue.create(name: "Les Kokottes")

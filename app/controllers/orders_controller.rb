@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:card_number, :cart)
+    params.require(:order).permit(:card_number, :cart, :cvc, :phone_number, :order_confirmation_email)
   end
 
   def set_order

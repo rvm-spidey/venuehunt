@@ -3,16 +3,46 @@
   <div class="venues-index-bar"></div>
 </div>
 
-<div class="filter-header">
-  <h2 class="hover-underline-animation">Number of participants</h2>
-  <h2 class="hover-underline-animation">Locations</h2>
-  <h2 class="hover-underline-animation">Occasions</h2>
-  <h2 class="hover-underline-animation">Price</h2>
+<div class="row justify-content-center">
+  <div class="">
+    <%= form_with model: @venue, url: venues_path, method: :get, html: { class: "" } do |f| %>
+
+      <div class="form-group">
+        <%= f.label :search_query, "Search event" %>
+        <%= f.text_field :search_query,
+                  class: "form-control",
+                  value: params[:search_query],
+                  placeholder: "search by name or description" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :venuetype_id, "Select Venue Types" %>
+        <%= f.collection_check_boxes :venuetype_id, Venuetype.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+          <%= b.check_box checked: @venuetypes.include?(b.value.to_s) %>
+          <%= b.label %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :location_id, "Select Locations" %>
+        <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+          <%= b.check_box checked: @location.to_i == b.value.to_i %>
+          <%= b.label %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Apply filters", name: "" %>
+      </div>
+    <% end %>
+  </div>
 </div>
+
 
 <div class="count-container">
   <h2>Number of Venues Listed: <%= Venue.count %></h2>
 </div>
+
 
 <div class="container">
   <div class="row gy-5 d-flex">
@@ -36,3 +66,31 @@
   </div>
 </div>
 <br>
+
+<% @venues.each do |venue| %>
+
+  <h3> <%= link_to venue.name, venue_path(venue),  class:"text-decoration-none" %></h3>
+  <p>Location: <%= venue.location.name %></p>
+  <%if venue.photos.attached? %>
+    <% venuephoto = venue.photos.first %>
+    <%= cl_image_tag venuephoto.key, height: 300, width: 400, crop: :fill %>
+    <!--
+    <% venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    -->
+  <% end %>
+  <p>Description <%= venue.description %></p>
+  <p>Type <%= Venuetype.find(venue.venuetype_id).name  %></p>
+  <p>Address <%= venue.address  %></p>
+  <p>Space <%= venue.space_size  %></p>
+  <p>Price/day<%= venue.price  %></p>
+
+  <p>Opening Time <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+  <p>Closing Time <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+  <p>Food and bev <%= venue.food_beverages_offered %></p>
+  <p>Other Services <%= venue.other_services_offered %></p>
+
+  <p>Owner <%= User.find(venue.user_id).email  %></p>
+  <%#= button_to "delete", venue_path(venue), method: :delete  %>
+<% end %>

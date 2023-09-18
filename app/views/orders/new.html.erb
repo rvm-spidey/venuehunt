@@ -2,5 +2,8 @@
 
 <%= simple_form_for [@cart,@order] do |f| %>
   <%= f.input :card_number %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
+  <%= f.input :cvc %>
+  <%= f.input :phone_number %>
+  <%= f.input :order_confirmation_email %>
+  <%= f.submit "I paid", class: "btn btn-primary" %>
 <% end %>

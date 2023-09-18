@@ -1,18 +1,19 @@
-<h1>OPEN AI API</h1>
+<h3>Let us guide you through the selection of a venue !</h3>
 <hr>
 
-<%= image_tag(current_user.avatar) if user_signed_in? &&  current_user.avatar.attached? %>
+<%#= image_tag(current_user.avatar) if user_signed_in? &&  current_user.avatar.attached? %>
 
 <div data-controller="display-suggestions">
 
   <%= form_with url: pages_path , method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
-    <%= f.label :query, "Type a movie title" %>
+    <%= f.label :query, "Please describe for what event do you need a venue" %>
     <%= f.text_field :query,
               class: "form-control",
               value: params[:query],
+              placeholder: "Describe your event",
               data: {display_suggestions_target: "input"}
     %>
-    <%= f.button :submit, data: {action: "click->display-suggestions#send"} %>
+    <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send" } %>
   <% end %>
 
   <%= render "suggestions" %>

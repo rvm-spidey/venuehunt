@@ -2,8 +2,8 @@
 
 <h1>Thank you for booking with VenueHunt</h1>
 <h2>Your order reference is : <%= @order.id %> </h2>
+<h2>Date ordered : <%= @order.created_at %> </h2>
 
-<h1> Order: <%= @order.to_json %></h1>
 <h1> Order: <%= @cart.bookings.to_json %></h1>
 
 <%= link_to  %>
