@@ -3,15 +3,15 @@ import flatpickr from "flatpickr";
 
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
-  static targets = [ "openingTime", "closingTime" ]
+  static targets = [ "dateFrom", "dateTo" ]
 
   connect() {
     console.log("flatpickr");
-    flatpickr(this.openingTimeTarget, {
-      enableTime: true
+    flatpickr(this.dateFromTarget, {
+      enableTime: false
     })
-    flatpickr(this.closingTimeTarget, {
-      enableTime: true
+    flatpickr(this.dateToTarget, {
+      enableTime: false
     })
   }
 }
