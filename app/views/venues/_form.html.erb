@@ -1,24 +1,36 @@
 
-<%= simple_form_for(@venue) do |f| %>
+<%= simple_form_for @venue do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
 
-    <%= f.association :location, label_method: :address, as: :select %>
-
     <%= f.input :name %>
+
+    <%= f.input :description %>
+
+    <%= f.input :venuetype_id, collection: Venuetype.all, label_method: :name, value_method: :id,label: "Type", include_blank: true %>
+
+    <%= f.association :location, label_method: :address, as: :select %>
 
     <%= f.input :address,
                 input_html: {data: {address_autocomplete_target: "address"},class: "d-none"},
                 wrapper_html: {data: {controller: "address-autocomplete",
                 address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
 
-
-    <%= f.input :description %>
     <%= f.input :space_size, as: :numeric %>
-    <%= f.input :availability %>
+
+    <%= f.input :opening_time, as: :time %>
+
+    <%= f.input :closing_time, as: :time %>
+
+    <%= f.input :food_beverages_offered, as: :boolean %>
+
+    <%= f.input :other_services_offered, as: :boolean %>
+
     <%= f.input :price, as: :numeric %>
+
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
    <%= f.hidden_field :user_id, value: current_user.id %>
 
