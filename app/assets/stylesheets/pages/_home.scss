@@ -27,52 +27,31 @@
   border-radius: 30px;
   background: $blue-moonstone;
   transition: background 0.3s ease;
+  margin-bottom: 15px;
 }
 
-// .mb-3 {
-//   margin-bottom: 20px;
-//   align-items:center;
-//   justify-content: center;
+label {
+  margin-top: 15px;
+  font-weight: 400;
+}
 
-// }
-
-// /* Style the label */
-// label {
-//   margin-top: 15px;
-//   font-weight: bold;
-//   /* Add other label styles as needed */
-// }
-
-// /* Style the text field */
-// .suggestion-form {
-//   width: 400px;
-//   padding: 10px;
-//   border: 1px solid #ccc;
-//   border-radius: 30px;
-//   margin-top: 20px;
-//   /* Add other input field styles as needed */
-// }
-
+.sugg-form-control {
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  margin-top: 20px;
+}
 
 button[type="submit"] {
-  background-color: $dark-blue-lazuli;
-  color: #fff;
-  padding: 10px 30px;
-  border: none;
+
+  background: $dark-blue-lazuli;
+  color: white;
+  padding: 8px 24px;
   border-radius: 30px;
-  margin-top: 5px;
+  border:none;
+  margin-top: 10px;
 }
-
-// h2 {
-//   font-weight: bold;
-// }
-
 
 
 .form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30vh;
-  margin: 0 auto;
+  border-radius: 30px;
 }
