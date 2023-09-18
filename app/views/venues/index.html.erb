@@ -1,6 +1,43 @@
 <h1>Venues index</h1>
 
-<h1>Count: <%= Venue.count %></h1>
+<h1>Count: <%= @venues.count %></h1>
+
+
+<div class="row justify-content-center">
+  <div class="">
+    <%= form_with model: @venue, url: venues_path, method: :get, html: { class: "" } do |f| %>
+
+      <div class="form-group">
+        <%= f.label :search_query, "Search event" %>
+        <%= f.text_field :search_query,
+                  class: "form-control",
+                  value: params[:search_query],
+                  placeholder: "search by name or description" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :venuetype_id, "Select Venue Types" %>
+        <%= f.collection_check_boxes :venuetype_id, Venuetype.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+          <%= b.check_box checked: @venuetypes.include?(b.value.to_s) %>
+          <%= b.label %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :location_id, "Select Locations" %>
+        <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+          <%= b.check_box checked: @location.to_i == b.value.to_i %>
+          <%= b.label %>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Apply filters", name: "" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 
 <% @venues.each do |venue| %>
@@ -17,6 +54,7 @@
     -->
   <% end %>
   <p>Description <%= venue.description %></p>
+  <p>Type <%= Venuetype.find(venue.venuetype_id).name  %></p>
   <p>Address <%= venue.address  %></p>
   <p>Space <%= venue.space_size  %></p>
   <p>Price/day<%= venue.price  %></p>

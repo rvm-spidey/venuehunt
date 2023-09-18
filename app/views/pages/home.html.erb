@@ -10,9 +10,10 @@
     <%= f.text_field :query,
               class: "form-control",
               value: params[:query],
+              placeholder: "Describe your event",
               data: {display_suggestions_target: "input"}
     %>
-    <%= f.submit "Get suggestions", data: { action: "click->display-suggestions#send" } %>
+    <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send" } %>
   <% end %>
 
   <%= render "suggestions" %>
