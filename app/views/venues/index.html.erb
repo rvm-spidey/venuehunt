@@ -1,7 +1,7 @@
-<h1>Venues index</h1>
-
-<h1>Count: <%= @venues.count %></h1>
-
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/02/vivea.-2.jpg);">
+  <h1 class="header-banner">Venues</h1>
+  <div class="venues-index-bar"></div>
+</div>
 
 <div class="row justify-content-center">
   <div class="">
@@ -39,6 +39,33 @@
 </div>
 
 
+<div class="count-container">
+  <h2>Number of Venues Listed: <%= Venue.count %></h2>
+</div>
+
+
+<div class="container">
+  <div class="row gy-5 d-flex">
+    <% @venues.each do |venue| %>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card shadow">
+        <div class="card-img">
+          <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><strong><%= venue.name %></strong></h4>
+          <h5><%= venue.location.name %></h5>
+          <h5>Rs <%= venue.price  %></h5>
+          <div class="card-button-venue text-center">
+            <a> <strong><%= link_to "View Venue", venue_path(venue), class:"text-decoration-none" %></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<br>
 
 <% @venues.each do |venue| %>
 
