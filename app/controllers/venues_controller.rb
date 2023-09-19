@@ -25,8 +25,8 @@ class VenuesController < ApplicationController
       @venues = @venues.where(venuetype_id: @venuetypes)
     end
 
-    if @location.present?
-      @venues = @locations.where(location_id: @location)
+    if @locations.present?
+      @venues = @venues.where(location_id: @locations)
     end
 
   end

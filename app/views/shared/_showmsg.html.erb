@@ -1,0 +1,10 @@
+
+    <% @latest_messages.each do |msg| %>
+        <div  data-controller="new-msg-notif"
+              data-new-msg-notif-current-user-id-value="<%= current_user.id %>"
+              data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
+              data-new-msg-notif-updatenewmsg-value="<%= false %>">
+          <% @chatroom = Chatroom.find(msg.chatroom_id) %>
+          <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>"></div>
+        </div>
+    <% end %>

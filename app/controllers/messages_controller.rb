@@ -1,4 +1,7 @@
 class MessagesController < ApplicationController
+
+  before_action :index_chatroom, except: [:index]
+
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
@@ -18,8 +21,10 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @chatroom = []
-
+    @chatrooms = []
+    if current_user.admin?
+     @chatrooms = Chatroom.where(admin_id: current_user.id)
+    end
 
     @latest_messages = Message.where(user_id: current_user.id)
                         .group(:chatroom_id)
