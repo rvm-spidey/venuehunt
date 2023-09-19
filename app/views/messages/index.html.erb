@@ -1,19 +1,32 @@
-<h1>My messages</h1>
+<div style="margin-top:100px"></div>
 
-<ul>
-  <% @chatrooms_user.each do |cr| %>
-    <li>
-      <div  data-controller="new-msg-notif"
-            data-new-msg-notif-chatroom-id-value="<%= cr.id %>">
-        <%= link_to cr.name, chatroom_path(cr) %>
-        <p><%= User.find(cr.admin_id).email %></p>
-        <p><%= cr.name %> : <%= cr.id %></p>
-        <% last_msg = Message.where(chatroom_id: cr.id).order(id: :desc).first %>
-        <div
-          data-new-msg-notif-target="messages"="<%= cr.id %>">
-          <p><%= last_msg.content %></p>
+
+<div>
+  <h1>My messages</h1>
+  <ul>
+    <% @latest_messages.each do |msg| %>
+      <li>
+        <div  data-controller="new-msg-notif"
+              data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>">
+          <% @chatroom = Chatroom.find(msg.chatroom_id) %>
+          <p><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id)  %></p>
+          <p><%= User.find(@chatroom.admin_id).email %></p>
+          <p><%= Message.find(msg.latest_message_id).content %></p>
         </div>
-      </div>
-    </li>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div >
+  <h1>My chatroom as admin</h1>
+  <% if @chatrooms.nil? %>
+    <p>No rooms</p>
+  <% else %>
+    <ul>
+    <% @chatrooms.each do |cr| %>
+      <%= cr.name %>
+    <% end %>
   <% end %>
-</ul>
+  </ul>
+</div>

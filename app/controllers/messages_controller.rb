@@ -18,17 +18,13 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @user = User.find(current_user.id)
-    @chatrooms_user = @user.chatrooms.uniq
+    @chatroom = []
 
-    @latest_messages = Message.where(user_id: 8)
+
+    @latest_messages = Message.where(user_id: current_user.id)
                         .group(:chatroom_id)
                         .select('chatroom_id, MAX(id) AS latest_message_id')
                         .order('latest_message_id DESC')
-
-                        @latest_messages.each do |message|
-                          puts "Chatroom ID: #{message.chatroom_id}, Latest Message ID: #{message.latest_message_id}"
-                        end
   end
 
   private

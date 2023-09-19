@@ -20,7 +20,7 @@
 </div>
 
 
-<div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
+<div class="<%= @venue.user_id == current_user.id ? 'd-none' : '' %>">
   <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
