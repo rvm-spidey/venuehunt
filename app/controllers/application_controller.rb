@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :set_render_cart
   before_action :initialize_cart
 
+  before_action :index_chatroom
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :avatar, :admin, :company_name, :company_address])
@@ -29,6 +31,19 @@ class ApplicationController < ActionController::Base
       else
         @cart = Cart.find_by(id: session[:cart_id])
       end
+    end
+  end
+
+  def index_chatroom
+    @chatrooms = []
+    @latest_messages = []
+
+    if !current_user.nil?
+     @chatrooms = Chatroom.where(admin_id: current_user.id)
+     @latest_messages = Message.where(user_id: current_user.id)
+                                .group(:chatroom_id)
+                                .select('chatroom_id, MAX(id) AS latest_message_id')
+                                .order('latest_message_id DESC')
     end
   end
 end
