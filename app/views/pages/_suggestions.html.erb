@@ -1,8 +1,10 @@
 <div data-display-suggestions-target="list">
-  <h1> <%= @content %></h1>
+  <div class="container sugg-content-container">
+    <p><%= @content %></p>
+  </div>
 
   <% if !@content.empty? %>
-    <h2>Tags</h2>
+    <h3>Tags</h3>
     <ul>
       <% @tags.each do |tag| %>
         <li>
@@ -12,3 +14,37 @@
     </ul>
   <% end %>
 </div>
+
+<style>
+.sugg-content-container {
+  border: 1px none #ccc;
+  border-radius: 15px;
+  opacity: .3;
+  padding: 15px 10px;
+  margin-bottom:30px;
+}
+
+
+p {
+  color: white;
+  background-color:#229EB2;
+  /* background-color: #0F597C; */
+  border-radius: 15px;
+  text-align: center;
+}
+
+li {
+list-style: none;
+display:inline;
+
+}
+
+li a {
+  text-decoration:none;
+  background-color:#229EB2;
+  padding:5px;
+  color:white;
+  border-radius:5px;
+  margin-bottom:30px;
+}
+</style>

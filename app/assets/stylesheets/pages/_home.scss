@@ -6,13 +6,13 @@
   height:700px;
 }
 
-.banner h1 {
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
-}
+// .banner h1 {
+//   margin: 0;
+//   color: white;
+//   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+//   font-size: 32px;
+//   font-weight: bold;
+// }
 
 .banner p {
   font-size: 20px;
@@ -41,7 +41,9 @@ label {
   margin-top: 20px;
 }
 
-button[type="submit"] {
+// button[type="submit"]
+
+.submit-button {
 
   background: $dark-blue-lazuli;
   color: white;
@@ -52,6 +54,18 @@ button[type="submit"] {
 }
 
 
-.form-container {
-  border-radius: 30px;
+.suggestions {
+  border-radius: 20px;
+}
+
+.explore-container {
+  margin-bottom: 50px;
+}
+
+.venue-text-clr {
+  color: white;
+}
+
+h2 {
+  font-weight:500;
 }
