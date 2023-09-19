@@ -6,7 +6,7 @@
 <div class="container">
 <h2>Kot Rishi</h2>
 <div class="venue-img-container">
-</div>
+
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner w-50">
     <div class="carousel-item active ">
@@ -69,6 +69,7 @@
 
 
 </div>
+</div>
 
 <div>
   <h3> <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></h3>
@@ -91,7 +92,7 @@
   <p>Owner <%= User.find(@venue.user_id).email  %></p>
 </div>
 
-
+<div class="container col-6 booking-container">
 <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
   <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
     <%= f.error_notification %>
@@ -116,10 +117,11 @@
       <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
       <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
     </div>
-    <div class="form-actions">
+    <div class="form-actions btn btn-flat align-content-center justify-content-center ">
       <%= f.button :submit %>
     </div>
   <% end %>
+  </div>
 
 
   <%= simple_form_for(@chatroom) do |f| %>
