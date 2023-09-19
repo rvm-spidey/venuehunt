@@ -41,7 +41,9 @@ label {
   margin-top: 20px;
 }
 
-button[type="submit"] {
+// button[type="submit"]
+
+.submit-button {
 
   background: $dark-blue-lazuli;
   color: white;
@@ -52,6 +54,14 @@ button[type="submit"] {
 }
 
 
-.form-container {
-  border-radius: 30px;
+.suggestions {
+  border-radius: 20px;
+}
+
+.explore-container {
+  margin-bottom: 50px;
+}
+
+.venue-text-clr {
+  color: white;
 }

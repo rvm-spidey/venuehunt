@@ -1,49 +1,88 @@
 
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= asset_path('banner2.png') %>)">
-
 </div>
 
 <div class="container form-container">
 
   <div data-controller="display-suggestions">
 
-    <%= form_with url: pages_path , method: :get, html: {class: "mb-4", data: {display_suggestions_target: "form"}} do |f| %>
-      <%= f.label :query, "Please describe for what event do you need a venue" %>
+    <%= form_with url: pages_path , method: :get, html: {class: "mb-3", data: {display_suggestions_target: "form"}} do |f| %>
+      <h1><%= f.label :query, "Please describe for what event do you need a venue" %></h1>
       <%= f.text_field :query,
-                class: "form-control",
+                class: "form-control sugg-form-control",
                 value: params[:query],
                 placeholder: "Describe your event",
                 data: {display_suggestions_target: "input"}
       %>
-      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send" } %>
+      <div class="row col-3 d-flex justify-content-center mx-auto ">
+      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send"}, class: "submit-button" %>
+      </div>
     <% end %>
-  
     <%= render "suggestions" %>
+
   </div>
 <div>
-  
-<div class="container">
-<h2>Our top 3 Venues</h2>
+
+<div class="container explore-container">
+  <h2>More to explore</h2>
+  <br>
   <div class="row gy-5 d-flex">
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card shadow">
-        <div class="card-img">
-          <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" width="414px" alt="Venue Img" class="card-top-img"/>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title"><strong>venue.name</strong></h4>
-          <h5>venue.location</h5>
-          <h5>Rs venue price
-          </h5>
-          <div class="card-button-venue text-center">
-            <a> <strong>View venue</strong>
+         <div class="col col-12 col-md-6 col-lg-4">
+          <div class="card shadow">
+            <div class="card-img">
+              <img class="image_tag" src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(1).jpg" width="414px" alt="Venue Img" class="card-top-img"/>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"><strong>venue.name</strong></h4>
+              <h5>venue.location</h5>
+              <h5>Rs venue price</h5>
+
+              <div class="card-button-venue text-center venue-text-clr">
+                <strong>View venue</strong>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow">
+            <div class="card-img">
+              <img class="image_tag" src="https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/b3/cc.jpg" width="414px" alt="Venue Img" class="card-top-img"/>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"><strong>venue.name</strong></h4>
+              <h5>venue.location</h5>
+              <h5>Rs venue price</h5>
+
+              <div class="card-button-venue text-center venue-text-clr">
+                <strong>View venue</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow">
+            <div class="card-img">
+              <img class="image_tag" src="https://user-assets.sharetribe.com/images/listing_images/images/5376977/big/valetta-vivea-business-park-02132023_154210.jpg?1679412328" width="414px" alt="Venue Img" class="card-top-img"/>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"><strong>venue.name</strong></h4>
+              <h5>venue.location</h5>
+              <h5>Rs venue price</h5>
+
+              <div class="card-button-venue text-center venue-text-clr">
+                <strong>View venue</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  </div>
   </div>
 </div>
-<div class="row col-3 d-flex justify-content-center mx-auto">
-<a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
-</div>
-</div>
+   </div>
+    <div class="row col-2 d-flex justify-content-center mx-auto">
+    <a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
+    </div>
+    </div>
