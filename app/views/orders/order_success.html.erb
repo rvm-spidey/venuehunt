@@ -4,6 +4,17 @@
 <h2>Your order reference is : <%= @order.id %> </h2>
 <h2>Date ordered : <%= @order.created_at %> </h2>
 
-<h1> Order: <%= @cart.bookings.to_json %></h1>
+<% @cart = Cart.find(@order.cart_id) %>
+<h1>Booking details</h1>
+<% @cart.bookings.each do |booking| %>
+  <p><%= booking.date_from %></p>
+  <p><%= booking.date_to %></p>
+  <p><%= booking.event_name %></p>
+  <p><%= booking.number_of_participants %></p>
+  <p><%= booking.food %></p>
+  <p><%= booking.beverage %></p>
+  <p><%= booking.other_services_offered %></p>
+  <p>total <%= booking.total %></p>
+<% end %>
 
-<%= link_to  %>
+<%= link_to "View my orders", orders_path %>

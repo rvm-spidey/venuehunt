@@ -26,7 +26,7 @@
       <div class="form-group">
         <%= f.label :location_id, "Select Locations" %>
         <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
-          <%= b.check_box checked: @location.to_i == b.value.to_i %>
+          <%= b.check_box checked: @locations.include?(b.value.to_s) %>
           <%= b.label %>
         <% end %>
       </div>
