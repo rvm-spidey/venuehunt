@@ -1,25 +1,29 @@
 <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/tsfsd.jpg);">
     <h1 class="header-banner">Venue detail</h1>
     <div class="venues-index-bar1"></div>
-</div>
+  </div>
 
-<div class="container">
+  <div class="container">
   <p>
-    <i class="fa-solid fa-arrow-left mt-3"></i>
-    <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %>
-  </p>
+  <i class="fa-solid fa-arrow-left mt-3"></i>
+  <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %></p>
+  <%# <h2>Kot Rishi</h2> %>
   <div class="venue-img-container mt-5">
-    <div class="row gy-5 d-flex">
-      <div class="col-8 col-md-4 col-lg-6">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner h-75">
-            <%if @venue.photos.attached? %>
-              <% @venue.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item <%= 'active' if index == 0 %>">
-                  <%= cl_image_tag photo.key, height: 400, width: 800 %>
-              </div>
-                <% end %>
-              <% end %>
+  <div class="row gy-5 d-flex">
+      <div class="col-8 col-md-6 col-lg-6">
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner h-75">
+      <div class="carousel-item active ">
+        <img src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(1).jpg" class="d-block w-65 h-75"  style="height=100px" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(2).jpg" class="d-block w-65 h-75" style="height=100px" alt="...">
+      </div>
+      <div class="carousel-item ">
+        <img src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(4).jpg" class="d-block w-65 h-75" style="height=100px" alt="...">
+      </div>
+    </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -28,41 +32,50 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-        </div>
-      </div>
-    </div>
 
-
-
+  </div>
+  </div>
 
    <div class="col-4 col-md-6 col-lg-6">
+    <div>
+      <!--<h3> <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></h3>-->
+      <%# <h3>More about this venue</h3> %>
+      <!-- <p>Location: <%= @venue.location.name %></p> -->
       <h2><%= @venue.location.name %></h2>
+      <%if @venue.photos.attached? %>
+        <% @venue.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
       <p><%= @venue.description %></p>
+
       <div class="container d-flex">
         <div class="desc-container">
-          <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
-          <p><i class="fa-regular fa-square me-2"></i><%= @venue.space_size  %> sqm</p>
-          <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
-          <p><i class="fa-solid fa-user-tie me-2"></i><%= User.find(@venue.user_id).email  %></p>
+        <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
+        <p><i class="fa-regular fa-square me-2"></i><%= @venue.space_size  %> sqm</p>
+        <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
+        <p><i class="fa-solid fa-user-tie me-2"></i><%= User.find(@venue.user_id).email  %></p>
         </div>
         <div class="desc-container ms-4">
-          <p><i class="fa-solid fa-clock me-2"></i> Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-          <p><i class="fa-regular fa-clock me-2"></i> Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-          <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <%= @venue.food_beverages_offered %></p>
-          <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <%= @venue.other_services_offered %></p>
+      <p><i class="fa-solid fa-clock me-2"></i> Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+      <p><i class="fa-regular fa-clock me-2"></i> Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+      <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <%= @venue.food_beverages_offered %></p>
+      <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <%= @venue.other_services_offered %></p>
         </div>
       </div>
-
-
-
     </div>
-    </div>
+
+
+
+
   </div>
-<br>
-<br>
+  </div>
+  </div>
 
+  <br>
+  <br>
 
-  <div class="row gy-5 d-flex mt-15">
+  <div class="row gy-5 d-flex">
       <div class="col-6 col-md-6 col-lg-6">
       <h3>Placeholder for reviews</h3>
       <p>The standard Lorem Ipsum passage, used since the 1500s
@@ -130,7 +143,7 @@
         <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
       </div>
 
-<div class="chat-btn d-inline-flex">
+<div class="chat-btn d-flex">
       <div class="form-actions">
         <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
       </div>
@@ -143,3 +156,37 @@
   </div>
   </div>
   </div>
+
+
+
+
+
+<div class="venue-img-container mt-5">
+    <div class="row gy-5 d-flex">
+      <div class="col-8 col-md-4 col-lg-6">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner h-75">
+            <%if @venue.photos.attached? %>
+              <% @venue.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= 'active' if index == 0 %>">
+                  <%= cl_image_tag photo.key, height: 400, width: 800 %>
+              </div>
+
+                <% end %>
+              <% end %>
+
+
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
