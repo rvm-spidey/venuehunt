@@ -1,5 +1,47 @@
-<h1>Reviews#new</h1>
-<%= simple_form_for [@venue, @review] do |f| %>
-  <%= f.input :content %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
+<h1>New Review</h1>
+<h1>Tell us, how was your stay ?</h1>
+
+  <%if @venue.photos.attached? %>
+    <% @venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <h1> <%= @venue.name %> </h1>
+    <p> <%= @venue.name %> </p>
+  <% end %>
+
+<div>
+
+  <%= simple_form_for([@venue, @review]) do |f| %>
+
+    <%= f.input :title, label: "Title your review" %>
+
+    <%= f.input :content, label: "Write your review"  %>
+
+    <%= f.input :rating, label: "How would you rate your experience" %>
+
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
+
+    <%= f.input :booking_purpose, label: "What was the purpose for the booking"  , collection: Booking::PURPOSES %>
+
+    <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
+    <%= f.button :submit %>
+  <% end %>
+
+  <div>
+    <% if @venue.reviews.blank? %>
+      Be the first to leave a review for <%= @venue.name %>
+    <% else %>
+    <h1>All reviews</h1>
+      <% @venue.reviews.each do |review| %>
+        <p>title: <%= review.title %></p>
+        <p>Review: <%= review.content %></p>
+        <p>rating: <%= review.rating %></p>
+        <p>purpose: <%= review.booking_purpose %></p>
+        <p>Created: <%= review.created_at %></p>
+        <p>Created by: <%= User.find(review.user_id).email %></p>
+        <hr>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

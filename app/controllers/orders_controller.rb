@@ -4,6 +4,18 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.where(user_id: current_user.id)
+
+    @carts = Cart.where(user_id: current_user.id)
+
+    @my_booked_venues = []
+
+    @carts.each do |cart|
+      cart.venues.each do |venue|
+        @my_booked_venues << venue if !@my_booked_venues.include?(venue)
+      end
+    end
+
+
   end
 
   def new
@@ -21,6 +33,8 @@ class OrdersController < ApplicationController
         booking.status = "completed"
         booking.save
       end
+
+      # remove on-hold bookings
 
       session[:cart_id] = nil
       redirect_to order_success_order_path(@order)

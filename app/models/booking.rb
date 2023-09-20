@@ -4,6 +4,8 @@ class Booking < ApplicationRecord
   BEVERAGE_OPTIONS = {"Smoothies and soft drinks" => 100, "Alcoholic" => 300, "Non-alcoholic beverages" => 500}
   OTHER_SERVICES_OPTIONS = {"Room with private view" => 100, "Guided tours" => 200, "Bottle of champagne" => 300}
 
+  PURPOSES = ["Team building", "Promotion" , "Conference", "Workshop", "Presentation", "Other"]
+
   # has_many :venues
 
   belongs_to :cart
