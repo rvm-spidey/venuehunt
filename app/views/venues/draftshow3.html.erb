@@ -6,7 +6,7 @@
   <div class="container">
   <p>
   <i class="fa-solid fa-arrow-left mt-3"></i>
-  <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %></p>
+  <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></p>
   <%# <h2>Kot Rishi</h2> %>
   <div class="venue-img-container mt-5">
   <div class="row gy-5 d-flex">
@@ -41,18 +41,25 @@
       <!--<h3> <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></h3>-->
       <%# <h3>More about this venue</h3> %>
       <!-- <p>Location: <%= @venue.location.name %></p> -->
+
+
+      
       <h2><%= @venue.location.name %></h2>
       <%if @venue.photos.attached? %>
         <% @venue.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       <% end %>
-      <p><%= @venue.description %></p>
+
+
+
+
+      <p>Description <%= @venue.description %></p>
 
       <div class="container d-flex">
         <div class="desc-container">
         <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
-        <p><i class="fa-regular fa-square me-2"></i><%= @venue.space_size  %> sqm</p>
+        <p><i class="fa-regular fa-square me-2"></i><%= @venue.space_size  %></p>
         <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
         <p><i class="fa-solid fa-user-tie me-2"></i><%= User.find(@venue.user_id).email  %></p>
         </div>
@@ -77,9 +84,9 @@
 
   <div class="row gy-5 d-flex">
       <div class="col-6 col-md-6 col-lg-6">
-      <h3>Placeholder for reviews</h3>
+      <h3>PLACEHOLDER FOR REVIEWS</h3>
       <p>The standard Lorem Ipsum passage, used since the 1500s
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
       </div>
 
       <div class="col-6 col-md-6 col-lg-6">
@@ -93,27 +100,13 @@
       <div class="form-inputs">
         <%= f.input :event_name %>
         <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+        <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
+        <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
 
-        <div class="date-container d-flex">
-        <div class="date-from col-6">
-          <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
-        </div>
-        <div class="date-to col-6 ms-1">
-          <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
-        </div>
-      </div>
 
         <% if @venue.food_beverages_offered %>
-        <div class="date-container d-flex">
-        <div class="date-from col-6">
           <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
-        </div>
-
-        <div class="date-to col-6 ms-1">
           <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
-        </div>
-        </div>
-
         <% end %>
 
         <% if @venue.other_services_offered %>
@@ -124,10 +117,8 @@
         <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
       </div>
 
-  <div class="d-flex flex-row">
-      <div class="form-actions btn btn-flat">
+      <div class="form-actions btn btn-flat align-content-center justify-content-center">
         <%= f.button :submit %>
-    </div>
     </div>
 
     <% end %>
@@ -144,7 +135,7 @@
       </div>
 
 
-      <div class="form-actions btn btn-flat">
+      <div class="form-actions">
         <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
       </div>
 
