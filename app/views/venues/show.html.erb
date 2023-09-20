@@ -41,19 +41,19 @@
       <div class="container d-flex">
         <div class="desc-container">
           <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
-          <p><i class="fa-regular fa-square me-2"></i><%= @venue.space_size  %> sqm</p>
+          <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
           <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
-          <p><i class="fa-solid fa-user-tie me-2"></i><%= User.find(@venue.user_id).email  %></p>
+          <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>
         </div>
         <div class="desc-container ms-4">
-          <p><i class="fa-solid fa-clock me-2"></i> Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-          <p><i class="fa-regular fa-clock me-2"></i> Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+          <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+          <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
           <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <%= @venue.food_beverages_offered %></p>
           <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <%= @venue.other_services_offered %></p>
         </div>
       </div>
 
-
+<%# <i class="fa-solid fa-user-tie me-2"></i>  <i class="fa-regular fa-square me-2"></i>%>
 
     </div>
     </div>
