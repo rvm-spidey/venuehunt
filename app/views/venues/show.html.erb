@@ -143,9 +143,10 @@
         <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
       </div>
 
-
-      <div class="form-actions btn btn-flat">
+  <div class="chat-btn d-inline-flex">
+      <div class="form-actions">
         <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
+      </div>
       </div>
 
     <% end %>

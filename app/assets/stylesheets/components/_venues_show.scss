@@ -7,9 +7,9 @@
   margin-top:50px;
 }
 
-h2 {
-  margin-top: 50px;
-}
+// h2 {
+//   margin-top: 50px;
+// }
 
 .venues-index-bar1 {
   text-decoration: underline;
@@ -18,6 +18,21 @@ h2 {
 
   }
 
-// .back-arrow {
-//   color:$dark-blue;
-// }
+.back-arrow {
+  color:$dark-blue-lazuli;
+  font-weight: 500;
+}
+
+.chat-btn {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 30px;
+  background: $blue-moonstone;
+  transition: background 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.chat-btn:hover {
+  background: $dark-blue-lazuli;
+  color: white;
+}
