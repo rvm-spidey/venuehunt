@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :set_render_cart
   before_action :initialize_cart
 
-  before_action :index_chatroom
+  before_action :initialize_chatroom!
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def index_chatroom
+  def initialize_chatroom!
     @chatrooms = []
     @latest_messages = []
 

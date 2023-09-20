@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  before_action :index_chatroom, except: [:index]
+  skip_before_action :initialize_chatroom!
 
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
