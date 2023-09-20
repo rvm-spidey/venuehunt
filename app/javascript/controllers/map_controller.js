@@ -31,7 +31,7 @@ export default class extends Controller {
       return a.distance - b.distance;
     });
     for (const location of sorted_locations) {
-      const data = `<h3>${location.address} || <em> ${location.distance} km ~~ ${location.duration} min approx </em> </h3>`;
+      const `<h5> ${location.address} || <em> ${location.distance} km ~~ ${location.duration} min approx </em> </h5>`;
       this.insertlocationsTarget.insertAdjacentHTML('beforeend', data);
     }
 

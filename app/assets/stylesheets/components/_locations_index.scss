@@ -1,0 +1,105 @@
+.locations-index-banner {
+
+  height: 270px;
+  background-position: 40% 50%;
+  display: flex;
+  background-repeat: no-repeat;
+
+  h1 {
+    color: $white;
+    text-align: center;
+    margin: auto;
+    font-family: Helvetica, sans-serif;
+    text-decoration: underline;
+    text-decoration-thickness: 11px;
+  }
+}
+
+.map-locations-container {
+  width: 100%;
+  position:relative;
+  background-color: $white;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.only-map-container {
+  margin: auto;
+  // border-radius: 5px;
+  // box-shadow: 5px 5px 5px 5px rgba(145, 144, 144, 0.582);
+
+}
+.only-insertlocations-container {
+  background-color: $white;
+  margin-left: 40px;
+  margin-top: 18px;
+  max-height: 400px;
+  position:absolute;
+  top: 20px;
+  border-radius: 5px;
+  color: $dark-blue;
+  width: 40%;
+  padding-left: 5px;
+  box-shadow: 0px 2px 5px 5px rgba(121, 120, 120, 0.308);
+}
+
+.sentence-insertlocations {
+  font-family: Helvetica, sans-serif;
+  font-size: 21px;
+}
+
+.locations-lower-lists-container {
+  // background-color: aqua;
+  background-color: $white;
+  padding-top: 20px;
+}
+
+.locations-filter-child-container {
+  text-align: center;
+  margin: auto 0;
+  justify-content: center;
+  display: flex;
+  gap: 0px 60px;
+
+  .header-locations-filter {
+    font-family: Helvetica, sans-serif;
+    color: $dark-blue;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 380px;
+    background-color: $white;
+    border-style: solid;
+    border-width: 6px;
+    border-color: $dark-blue;
+    font-size: 35px;
+    border-radius: 8px;
+  }
+}
+
+.specific-location-parent-container {
+  margin-bottom: 0px;
+}
+
+.specific-location-child-container {
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 20px;
+
+  h1, h4 {
+    font-family: Helvetica, sans-serif;
+    color: $dark-blue;
+  }
+}
+
+.child-locations-paragraph {
+  width: 1000px;
+  margin: auto;
+  color: $dark-blue;
+}
+
+.specific-location-venue-child-container {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  // background-color: rgb(9, 255, 0);
+}
