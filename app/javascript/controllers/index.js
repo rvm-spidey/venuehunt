@@ -30,3 +30,6 @@ application.register("navbar", NavbarController)
 
 import NewMsgNotifController from "./new_msg_notif_controller"
 application.register("new-msg-notif", NewMsgNotifController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)

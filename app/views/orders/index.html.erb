@@ -1,11 +1,35 @@
 <h1>Your orders</h1>
 
 <% @orders.each do |order| %>
-  <p>
-    <%= order.id %>
-    <%= order.created_at %>
-    <% @cart = Cart.find(order.cart_id) %>
-    <%= @cart.to_json %>
-     <%= @cart.bookings.to_json %>
-  </p>
+  <p> Order Ref <%= order.id %> </p>
+  <p> Order Created <%= order.created_at %> </p>
+
+  <% @cart = Cart.find(order.cart_id) %>
+  <h1>Booking details</h1>
+  <% @cart.bookings.each do |booking| %>
+    <p><%= booking.date_from %></p>
+    <p><%= booking.date_to %></p>
+    <p> <%= booking.event_name %></p>
+    <p><%= booking.number_of_participants %></p>
+    <p><%= booking.food %></p>
+    <p><%= booking.beverage %></p>
+    <p><%= booking.other_services_offered %></p>
+    <p>Venue : <%= booking.venue.name %></p>
+    <p>total <%= booking.total %></p>
+  <% end %>
+  <hr>
+<% end %>
+
+<h1>Write a review, make someone's trip</h1>
+
+<h1><%#= @my_booked_venues %></h1>
+
+<% @my_booked_venues.each do |venue| %>
+  <h1><%= venue.name %></h1>
+  <%= link_to venue.name, new_venue_review_path(venue) %>
+  <%if venue.photos.attached? %>
+    <% venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
 <% end %>

@@ -4,7 +4,7 @@ import { createConsumer } from "@rails/actioncable"
 // Connects to data-controller="new-msg-notif"
 export default class extends Controller {
 
-  static values = { chatroomId: Number, currentuser: Number, msguser: Number, currentUserId: Number }
+  static values = { chatroomId: Number,currentUserId: Number, updatenewmsg: Boolean }
   static targets = ["messages"]
 
   connect() {
@@ -14,14 +14,12 @@ export default class extends Controller {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data =>  {
-        console.log("data global", data);
-        console.log( "sender",  data.sender_id);
-        console.log( "sender",  data.message);
-        console.log( "sender",  data.msgcontent);
         this.messagesTarget.innerHTML = `<strong> ${data.msgcontent} </strong>`
+        console.log("updatenewmsg", this.updatenewmsgValue);
 
-
-        notif.classList.add("notification");
+        if (data.sender_id != this.currentUserIdValue) {
+            notif.classList.add("notification");
+        }
         }
       }
     )

@@ -25,7 +25,7 @@
       <div class="form-group select-locations">
         <h4 class="header-search-venues"><%= f.label :location_id, "Select Locations" %></h4>
         <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
-          <%= b.check_box checked: @location.to_i == b.value.to_i %>
+          <%= b.check_box checked: @locations.include?(b.value.to_s) %>
           <%= b.label %>
         <% end %>
       </div>
@@ -39,7 +39,7 @@
 
 
 <div class="count-container">
-  <h2>Number of Venues Listed: <%= Venue.count %></h2>
+  <h2>Number of Venues Listed: <%= @venues.count %></h2>
 </div>
 
 
