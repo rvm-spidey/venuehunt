@@ -9,12 +9,27 @@
   <% @cart.bookings.each do |booking| %>
     <p><%= booking.date_from %></p>
     <p><%= booking.date_to %></p>
-    <p><%= booking.event_name %></p>
+    <p> <%= booking.event_name %></p>
     <p><%= booking.number_of_participants %></p>
     <p><%= booking.food %></p>
     <p><%= booking.beverage %></p>
     <p><%= booking.other_services_offered %></p>
+    <p>Venue : <%= booking.venue.name %></p>
     <p>total <%= booking.total %></p>
   <% end %>
   <hr>
+<% end %>
+
+<h1>Write a review, make someone's trip</h1>
+
+<h1><%#= @my_booked_venues %></h1>
+
+<% @my_booked_venues.each do |venue| %>
+  <h1><%= venue.name %></h1>
+  <%= link_to venue.name, new_venue_review_path(venue) %>
+  <%if venue.photos.attached? %>
+    <% venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+  <% end %>
 <% end %>

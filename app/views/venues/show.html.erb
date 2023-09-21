@@ -20,107 +20,107 @@
               </div>
                 <% end %>
               <% end %>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-        </div>
-      </div>
-    </div>
-
-
-
-
-   <div class="col-4 col-md-6 col-lg-6">
-      <h2><%= @venue.location.name %></h2>
-      <p><%= @venue.description %></p>
-      <div class="container d-flex">
-        <div class="desc-container">
-          <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
-          <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
-          <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
-          <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>
-        </div>
-        <div class="desc-container ms-4">
-          <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-          <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-          <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <%= @venue.food_beverages_offered %></p>
-          <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <%= @venue.other_services_offered %></p>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+          </div>
         </div>
       </div>
 
-<%# <i class="fa-solid fa-user-tie me-2"></i>  <i class="fa-regular fa-square me-2"></i>%>
-
-    </div>
+      <div class="col-4 col-md-6 col-lg-6">
+          <h2><%= @venue.location.name %></h2>
+          <p><%= @venue.description %></p>
+          <div class="container d-flex">
+            <div class="desc-container">
+              <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
+              <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
+              <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
+              <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>
+            </div>
+            <div class="desc-container ms-4">
+              <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+              <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+              <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <%= @venue.food_beverages_offered %></p>
+              <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <%= @venue.other_services_offered %></p>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
-<br>
-<br>
-
+  <br>
+  <br>
 
   <div class="row gy-5 d-flex mt-15">
-      <div class="col-6 col-md-6 col-lg-6">
-      <h3>Placeholder for reviews</h3>
-      <p>The standard Lorem Ipsum passage, used since the 1500s
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
-      </div>
+    <div class="col-6 col-md-6 col-lg-6">
 
-      <div class="col-6 col-md-6 col-lg-6">
-  <div class="container booking-container">
-  <h3>Booking</h3>
-  <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
-    <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
-      <%= f.error_notification %>
-      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <h3> REVIEWS GOES HERE</h3>
 
-      <div class="form-inputs">
-        <%= f.input :event_name %>
-        <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
-
-        <div class="date-container d-flex">
-        <div class="date-from col-6">
-          <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
-        </div>
-        <div class="date-to col-6 ms-1">
-          <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
-        </div>
-      </div>
-
-        <% if @venue.food_beverages_offered %>
-        <div class="date-container d-flex">
-        <div class="date-from col-6">
-          <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
-        </div>
-
-        <div class="date-to col-6 ms-1">
-          <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
-        </div>
-        </div>
-
-        <% end %>
-
-        <% if @venue.other_services_offered %>
-          <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.keys %>
-        <% end %>
-
-        <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
-        <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
-      </div>
-
-  <div class="d-flex flex-row">
-      <div class="form-actions btn btn-flat">
-        <%= f.button :submit %>
-    </div>
+      <% @venue.reviews.each do |review| %>
+        <p>title: <%= review.title %></p>
+        <p>Review: <%= review.content %></p>
+        <p>rating: <%= review.rating %></p>
+        <p>purpose: <%= review.booking_purpose %></p>
+        <p>Created: <%= review.created_at %></p>
+        <p>Created by: <%= User.find(review.user_id).email %></p>
+        <hr>
+      <% end %>
+      <%# <p>The standard Lorem Ipsum passage, used since the 1500s
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p> %>
     </div>
 
-    <% end %>
+    <div class="col-6 col-md-6 col-lg-6">
+      <div class="container booking-container">
+      <h3>Booking</h3>
+      <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
+        <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+          <div class="form-inputs">
+            <%= f.input :event_name %>
+            <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+
+            <div class="date-container d-flex">
+              <div class="date-from col-6">
+                <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
+              </div>
+              <div class="date-to col-6 ms-1">
+                <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
+              </div>
+            </div>
+
+            <% if @venue.food_beverages_offered %>
+              <div class="date-container d-flex">
+              <div class="date-from col-6">
+                <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
+              </div>
+              <div class="date-to col-6 ms-1">
+                <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
+              </div>
+              </div>
+            <% end %>
+
+            <% if @venue.other_services_offered %>
+              <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.keys %>
+            <% end %>
+
+            <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
+            <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
+          </div>
+
+          <div class="d-flex flex-row">
+            <div class="form-actions btn btn-flat">
+              <%= f.button :submit %>
+            </div>
+          </div>
+
+      <% end %>
     </div>
-
-
     <%= simple_form_for(@chatroom) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -130,11 +130,10 @@
         <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
       </div>
 
-<div class="chat-btn d-inline-flex">
-      <div class="form-actions">
-        <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
-      </div>
-
+      <div class="chat-btn d-inline-flex">
+        <div class="form-actions">
+          <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
+        </div>
     <% end %>
   </div>
 

@@ -9,6 +9,7 @@ class User < ApplicationRecord
   geocoded_by :company_address
   after_validation :geocode, if: :will_save_change_to_company_address?
 
+  has_many :reviews
   has_many :messages
   has_many :chatrooms, through: :messages
 end
