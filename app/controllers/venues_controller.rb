@@ -51,6 +51,19 @@ class VenuesController < ApplicationController
   def show
     @chatroom = Chatroom.new
     @booking = Booking.new
+    @user = current_user
+    @company_address =
+    {
+      lat:@user.latitude,
+      lng:@user.longitude,
+      marker_html: render_to_string(partial: "currentlocation",locals: {user: @user})
+    }
+    @venue_address =
+    {
+      lat:@venue.latitude,
+      lng:@venue.longitude,
+      marker_html: render_to_string(partial: "marker",locals: {user: @user})
+    }
   end
 
   def edit
