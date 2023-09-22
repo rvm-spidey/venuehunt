@@ -39,14 +39,14 @@
             <div class="desc-container">
               <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
               <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
-              <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs <%= @venue.price  %></p>
+              <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs    <span id="venue-price"><%= @venue.price %></span></p>
               <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>
             </div>
             <div class="desc-container ms-4">
               <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
               <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-              <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <%= @venue.food_beverages_offered %></p>
-              <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <%= @venue.other_services_offered %></p>
+              <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <span id="food-bev-offered">  <%= @venue.food_beverages_offered %></span> </p>
+              <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <span id="services-offered"> <%= @venue.other_services_offered %> </span> </p>
             </div>
           </div>
       </div>
@@ -101,30 +101,46 @@
 
           <div class="form-inputs">
             <%= f.input :event_name %>
-            <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+            <%#= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+
+            <%= f.input :number_of_participants,
+                label: "No of participants"  ,
+                collection: Booking::PARTICIPANTS,
+                input_html: {
+                  data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "participants" }
+            }%>
 
             <div class="date-container d-flex">
               <div class="date-from col-6">
-                <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
+                <%= f.input :date_from, as: :string, input_html: { data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "dateFrom" } } %>
               </div>
               <div class="date-to col-6 ms-1">
-                <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
+                <%= f.input :date_to, as: :string, input_html: { data: {  action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "dateTo" } } %>
               </div>
             </div>
 
             <% if @venue.food_beverages_offered %>
               <div class="date-container d-flex">
               <div class="date-from col-6">
-                <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
+                <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.map { |food, price| ["#{food} - Rs #{price}", food] },
+                    input_html: {
+                      data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "food" }
+                }%>
               </div>
               <div class="date-to col-6 ms-1">
-                <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
+                <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.map { |bev, price| ["#{bev} - Rs #{price}", bev] },
+                    input_html: {
+                      data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "beverage" }
+                }%>
               </div>
               </div>
             <% end %>
 
             <% if @venue.other_services_offered %>
-              <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.keys %>
+              <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.map { |service, price| ["#{service} - Rs #{price}", service] },
+                 input_html: {
+                      data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "otherservices" }
+              }%>
             <% end %>
 
             <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
@@ -134,6 +150,11 @@
           <div class="d-flex flex-row">
             <div class="form-actions btn btn-flat">
               <%= f.button :submit %>
+            </div>
+
+            <div id="subtotal">
+              <h3>Subtotal:</h3>
+               <span id="subtotal-value"></span>
             </div>
           </div>
 

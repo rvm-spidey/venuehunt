@@ -138,7 +138,7 @@ export default class extends Controller {
 
     bounds.extend([companyLocation.lng, companyLocation.lat]);
     bounds.extend([venueLocation.lng, venueLocation.lat]);
-    this.map.fitBounds(bounds, { padding: 50, maxZoom: 10, duration: 2000 })
+    this.map.fitBounds(bounds, { padding: 50, maxZoom: 10, duration: 0 })
   }
 
 }
