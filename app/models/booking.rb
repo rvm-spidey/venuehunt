@@ -15,28 +15,6 @@ class Booking < ApplicationRecord
   validate :check_bookings_dates
   validates :event_name, :number_of_participants, :date_from, :date_to, presence: true
 
-
-  # def total_price
-  #   total = 0
-  #   date_booked = (self.date_to - self.date_from).to_i
-  #   venue_price = self.venue.price * date_booked
-  #   total += venue_price
-
-  #   if self.food.present? && FOOD_OPTIONS.key?(self.food)
-  #     total += FOOD_OPTIONS[self.food]
-  #   end
-
-  #   if self.beverage.present? && BEVERAGE_OPTIONS.key?(self.beverage)
-  #     total += BEVERAGE_OPTIONS[self.beverage]
-  #   end
-
-  #   if self.other_services_offered.present? && OTHER_SERVICES_OPTIONS.key?(self.other_services_offered)
-  #     total += OTHER_SERVICES_OPTIONS[self.other_services_offered]
-  #   end
-  #   return total
-  # end
-
-
   def total_price
     total = 0
     if self.event_name.present? && self.number_of_participants.present? && self.date_from.present? && self.date_to.present?
@@ -58,6 +36,27 @@ class Booking < ApplicationRecord
     end
     return total
   end
+
+    # def total_price
+  #   total = 0
+  #   date_booked = (self.date_to - self.date_from).to_i
+  #   venue_price = self.venue.price * date_booked
+  #   total += venue_price
+
+  #   if self.food.present? && FOOD_OPTIONS.key?(self.food)
+  #     total += FOOD_OPTIONS[self.food]
+  #   end
+
+  #   if self.beverage.present? && BEVERAGE_OPTIONS.key?(self.beverage)
+  #     total += BEVERAGE_OPTIONS[self.beverage]
+  #   end
+
+  #   if self.other_services_offered.present? && OTHER_SERVICES_OPTIONS.key?(self.other_services_offered)
+  #     total += OTHER_SERVICES_OPTIONS[self.other_services_offered]
+  #   end
+  #   return total
+  # end
+
 
   def check_bookings_dates
     existing_booking = Booking.where('(date_from <= ? AND date_to >= ?)',self.date_from, self.date_to)

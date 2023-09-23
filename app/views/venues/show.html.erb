@@ -181,3 +181,14 @@
   </div>
   </div>
   </div>
+
+
+<%=week_calendar(events: @all_bookings, attribute: :date_from, end_attribute: :date_to) do |date, bookings| %>
+  <%= date %>
+
+  <% bookings.each do |booking| %>
+    <div class="meeting">
+      <p><%= booking.event_name %></p>
+    </div>
+  <% end %>
+<% end %>
