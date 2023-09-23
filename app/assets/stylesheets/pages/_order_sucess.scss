@@ -5,11 +5,13 @@
   padding-bottom: 100px;
   padding-top: 100px;
   background-repeat: no-repeat;
+  background-size: cover;
+  max-height: 4000px;
 }
 
 .child-container-page-order-sucess {
   margin: auto;
-  max-height: 1000px;
+  max-height: 4000px;
   width: 600px;
   background-color: $dark-blue;
   padding: 40px;
@@ -57,10 +59,18 @@
   color: $white;
   line-height: 15px;
   margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .booking-details-container {
-  h2, h3 {
+  h2 {
+    font-weight: 780;
+    color: rgb(3, 111, 253);
+    font-family: Helvetica, sans-serif;
+    padding-bottom: 15px;
+  }
+
+  h1 {
     font-weight: 780;
     color: $light-blue;
     font-family: Helvetica, sans-serif;
@@ -71,10 +81,32 @@
     color: $white;
     font-family: Helvetica, sans-serif;
   }
+
+  h4 {
+    font-weight: 780;
+    color: $light-blue;
+    font-family: Helvetica, sans-serif;
+    // text-decoration: double;
+    // text-decoration-thickness: 2px;
+  }
 }
 
+// .booking-card {
+//   h2, h3 {
+//     font-weight: 780;
+//     color: $light-blue;
+//     font-family: Helvetica, sans-serif;
+//   }
+
+//   p {
+//     font-weight: 780;
+//     color: $white;
+//     font-family: Helvetica, sans-serif;
+//   }
+// }
 .booking-details-header {
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: -6px;
 }
 
 .view-orders-button {
