@@ -12,6 +12,9 @@
   align-items: center;
 }
 
+.navbar-nav {
+  align-items: center;
+}
 .navbar-lewagon-white {
   background-color: $dark-blue;
 }
@@ -26,5 +29,6 @@
 
 .nav-link {
   color: white;
- 
+  margin:0;
+
 }
