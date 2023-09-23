@@ -39,7 +39,10 @@ export default class extends Controller {
       )
       total = daysDiff * venuePrice;
 
-      const isFoodOffered = document.getElementById("food-bev-offered").textContent == "true"; {
+      const foodOffered = document.getElementById("food-bev-offered");
+      const isFoodOffered = foodOffered.textContent.trim()  == "true";
+      console.log("isFoodOffered", isFoodOffered);
+      if (isFoodOffered){
         if (this.beverageTarget.value != null &&   BEVERAGE_OPTIONS.hasOwnProperty(this.beverageTarget.value)) {
           total += BEVERAGE_OPTIONS[this.beverageTarget.value];
         }
@@ -49,13 +52,14 @@ export default class extends Controller {
         }
       }
 
-
-      const isServicesOffered = document.getElementById("services-offered").textContent == "true";
+      const servicesOffered = document.getElementById("services-offered");
+      const isServicesOffered = servicesOffered.textContent.trim()  == "true";
+      console.log("isServicesOffered", isServicesOffered);
       if (isServicesOffered) {
         if (this.otherservicesTarget && this.otherservicesTarget.value != null &&   BEVERAGE_OPTIONS.hasOwnProperty(this.otherservicesTarget.value)) {
           total += OTHER_SERVICES_OPTIONS[this.otherservicesTarget.value];
         }
-        this.otherservicesTarget.value
+
       }
 
 
