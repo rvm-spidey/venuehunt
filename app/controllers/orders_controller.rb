@@ -33,9 +33,6 @@ class OrdersController < ApplicationController
         booking.status = "completed"
         booking.save
       end
-
-      # remove on-hold bookings
-
       session[:cart_id] = nil
       redirect_to order_success_order_path(@order)
     else
