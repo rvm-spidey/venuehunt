@@ -1,14 +1,20 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
-  <div class="container-fluid">
+<div class="container-fluid">
+
+  <div class="container-logo">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag("5-removebg-preview.png", style: "height: 100px; width:200px;") %>
       <!--"https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png"-->
     <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!--nav-links -->
+
+<div class="container-nav-links">
   <div class="navbar-container">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -37,6 +43,11 @@
           <li id="notif" class="nav-item">
               <%= link_to "Messages", messages_path , class: "nav-link" %>
           </li>
+          </div>
+           </div>
+    </div>
+
+        <div class="container-avatar">
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
@@ -53,6 +64,7 @@
           </li>
         <% end %>
       </ul>
+
   </div>
 
     </div>
