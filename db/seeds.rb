@@ -9,8 +9,8 @@
 # require 'faker'
 
 
-Location.delete_all
-Venue.delete_all
+# Location.delete_all
+# Venue.delete_all
 
 # User.delete_all
 
@@ -45,4 +45,3 @@ end
 #     longitude: Faker::Address.longitude
 #   )
 # end
-

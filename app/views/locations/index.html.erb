@@ -1,38 +1,70 @@
-<p>Locations</p>
+<div class="locations-index-banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.oficea.com/wp-content/uploads/2023/01/gardens3.jpg);">
+  <h1><strong>Locations</strong></h1>
+</div>
 
-<div style="width: 100%; height: 60vh;"
+<div class="map-locations-container" style="width: 100%; font-family: Helvetica, sans-serif;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-currentlocation-value="<%= @company_address.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
-    <div data-map-target="insertlocations" style="width: 100%; height: 20vh">
-      <h3>Nearest locations from Company name: <%= @user.company_name %> which is situated at <%= @user.company_address %></h3>
-    </div>
+    <div class="only-map-container" data-map-target="content" style="width: 98%; height: 70vh;"></div>
 
-    <div data-map-target="content" style="width: 100%; height: 40vh;"></div>
+    <div class="only-insertlocations-container" data-map-target="insertlocations">
+      <h4 class="sentence-insertlocations"><strong>The following locations are nearest to <%= @user.company_name %>:</strong></h4>
+    </div>
 </div>
 
-<ul>
-  <% @locations.each do |location| %>
-
-    <li><%= link_to location.name, edit_location_path(location) %></li>
-    <li>
-      <h1><%= location.name %></h1>
-      <h3><%= location.outline %></h3>
-      <p><%= location.description %></p>
-      <%if location.photos.attached? %>
-          <% location.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
-      <% end %>
-    </li>
-
-    <% @venues = Venue.where(location_id: location) %>
-    <% @venues.each do |venue| %>
-      <%= venue.name %>
-      <%= venue.address %>
+<div class="locations-lower-lists-container">
+  <div class="locations-filter-child-container">
+    <% @locations.each do |location| %>
+      <!--<a href="#section-2">--><h1 class="header-locations-filter"><strong><%= location.name %></strong></h1><!--</a>-->
     <% end %>
+  </div>
 
-  <% end %>
-</ul>
+  <div class="specific-location-parent-container">
+    <div class="specific-location-child-container">
+      <% @locations.each do |location| %>
+        <%# <li><%= link_to location.name, edit_location_path(location)</li> %>
+          <!-- <section id="section-2"> --><h1><strong><%= location.name %></strong></h1><!--</section>-->
+        <h4><strong><%= location.outline %></strong></h4>
+        <div class="child-locations-paragraph">
+          <p><%= location.description %></p>
+        </div>
+        <%if location.photos.attached? %>
+          <% location.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, height: 300, width: 1200, crop: :fill %>
+          <% end %>
+        <% end %>
+      <div class="specific-location-venue-child-container">
+        <strong><h3 style="padding-bottom: 5px;padding-top: 10px; color: $dark-blue; font-family: Helvetica, sans-serif;">Venues in <%= location.name %> :</strong></h3>
+        <!--v<% @venues = Venue.where(location_id: location) %>
+        <% @venues.each do |venue| %>
+          <%= venue.name %>
+          <%= venue.address %>
+        <% end %>v-->
+        <div class="container" style="padding-bottom: 25px;">
+          <div class="row gy-5 d-flex">
+            <% @venues.each do |venue| %>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="card shadow">
+                <div class="card-img">
+                  <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title"><strong><%= venue.name %></strong></h4>
+                  <h5><%= venue.location.name %></h5>
+                  <h5>Rs <%= venue.price  %></h5>
+                  <div class="card-button-venue text-center">
+                    <a> <strong><%= link_to "View Venue", venue_path(venue), class:"text-decoration-none" %></strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

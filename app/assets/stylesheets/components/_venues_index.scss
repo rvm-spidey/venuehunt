@@ -46,7 +46,7 @@
   width: 450px;
   height: 40px;
   margin-bottom: 50px;
-  margin-left: 15px;
+  margin-left: 50px;
 
   h2 {
     text-align: center;
@@ -54,4 +54,34 @@
     color: $white;
     font-family: Helvetica, sans-serif;
   }
+}
+
+.search-venues-container {
+  width: 800px;
+  margin-left: 40px;
+  margin-top: 25px;
+}
+
+.header-search-venues {
+  margin-left: 12px;
+  color: $dark-blue;
+}
+
+.search-venues-bar {
+  background-color: $white;
+  border-radius: 25px;
+}
+
+.select-venue-types-container {
+  margin-left: 45px;
+}
+
+.select-locations {
+  margin-left: 45px;
+  margin-bottom: 20px;
+}
+
+.btn-filter {
+  margin-left: 55px;
+  margin-bottom: 30px;
 }

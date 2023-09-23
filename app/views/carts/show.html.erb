@@ -1,35 +1,60 @@
-<h1>Cart</h1>
-<h1> No of items in cart <%= @cart.venues.count %></h1>
+<div class="carts-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(https://blog.smile.io/content/images/2020/09/E-Commerce-Customer-Experience-Top-Trends-to-Watch-Out-For.png);">
+  <div class="carts-parent">
+    <div class="carts-header-banner">
+      <h1><strong>Your Cart</strong></h1>
+    </div>
+    <div class="number-carts-banner-count">
+      <h2><strong> Number of Venues in Cart: <%= @cart.venues.count %></strong></h2>
+    </div>
+  </div>
+</div>
 
-<h1>Cart ID <%= @cart.id %></h1>
+<!-- <h1>Cart ID --> <% @cart.id %><!-- </h1> -->
+<div class="part-after-banner">
+  <div class="items-header-cart">
+    <h2>The <%= @cart.venues.count %> Venues in Cart: </h2><!-- <%= @cart.venues.count %></h2>-->
+  </div>
 
-<ul>
-  <% @cart.bookings.each do |booking| %>
-    <li>
-      <p> venue name <%= booking.venue.name %></p>
-      <p> event name <%= booking.event_name %></p>
-      <p> total price <%= booking.total_price %></p>
-      <p> booking from <%= booking.date_from %> </p>
-      <p> booking to <%= booking.date_to %> </p>
-      <p> booking num participants <%= booking.number_of_participants %> </p>
-      <p> booking food <%= booking.food %> </p>
-      <p> booking beverage <%= booking.beverage %> </p>
-      <p> booking other services <%= booking.other_services_offered %> </p>
+  <div class="container">
+    <div class="row gy-5 d-flex cart-list-parent">
+      <div class="col-12 col-lg-8 cart-list-child">
+        <% @cart.bookings.each do |booking| %>
+          <div class="cart-item-card">
+            <h3><strong><%= booking.venue.name %></strong></h3>
+            <p><strong> Event Name: </strong><%= booking.event_name %></p>
+            <p><strong>Total Price: </strong><%= booking.total_price %></p>
+            <p><strong> Booking Start Date: </strong><%= booking.date_from %> </p>
+            <p><strong> Booking End Date: </strong><%= booking.date_to %> </p>
+            <p><strong> Number of Participants: </strong><%= booking.number_of_participants %> </p>
+            <p><strong> Selected Food: </strong><%= booking.food %> </p>
+            <p><strong> Selected Beverage: </strong><%= booking.beverage %> </p>
+            <p><strong> Other Services Booked: </strong><%= booking.other_services_offered %> </p>
+            <div class="delete-button-cart">
+              <a> <strong><%= link_to "Delete Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-12 col-lg-4 cart-checkout">
+        <h3>Cart Summary</h3>
+        <hr>
+        <h3>Subtotal: Rs <%= @cart.sub_total %></h3>
 
-      <%= link_to "Delete",booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-    </li>
-  <% end %>
-</ul>
-
-<h3>Sub total: <%= @cart.sub_total %></h3>
-
-<p>15% For Venue Hunt</p>
-<h3>Total: <%=  @cart.total %></h3>
-
-
-<p><%= link_to "Add another venue to cart", venues_path %></p>
-
-<p><%= link_to "Empty cart", cart_path(@cart),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
-
-
-<p><%= link_to "Proceed to checkout", new_cart_order_path(@cart) %></p>
+        <p>15% For Venue Hunt</p>
+        <h3>Total: Rs <%=  @cart.total %></h3>
+        <div class="cart-checkout-buttons">
+          <div class="cart-checkout-button1">
+            <a> <strong><%= link_to "Add another venue to cart", venues_path%></strong>
+          </div>
+          <div class="cart-checkout-button2">
+            <a> <strong><%= link_to "Empty cart", cart_path(@cart),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></strong>
+          </div>
+          <div class="cart-checkout-button3">
+            <a> <strong><%= link_to "Proceed to checkout", new_cart_order_path(@cart) %></strong>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
