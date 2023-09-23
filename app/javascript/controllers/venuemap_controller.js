@@ -13,7 +13,7 @@ export default class extends Controller {
   static targets = ["content"]
 
   connect() {
-    console.log("venuemap");
+    console.log("venuemap controller triggered");
     mapboxgl.accessToken = this.apiKeyValue
     const contentElement = this.contentTarget;
 
@@ -52,6 +52,9 @@ export default class extends Controller {
     const startingPoint = [companyLocation.lng, companyLocation.lat];
     const venueLocation = this.venuelocationValue;
     const endingPoint = [venueLocation.lng, venueLocation.lat];
+
+    console.log("startingPoint", startingPoint);
+    console.log("venueLocation", venueLocation);
 
     const url1 = `https://api.mapbox.com/directions/v5/mapbox/driving/${startingPoint.join(',')};${endingPoint.join(',')}?alternatives=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${this.apiKeyValue}`;
 
@@ -135,6 +138,9 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds()
     const companyLocation = this.currentlocationValue;
     const venueLocation = this.venuelocationValue;
+
+    console.log("companyLocation", companyLocation);
+    console.log("venueLocation", venueLocation);
 
     bounds.extend([companyLocation.lng, companyLocation.lat]);
     bounds.extend([venueLocation.lng, venueLocation.lat]);

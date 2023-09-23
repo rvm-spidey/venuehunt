@@ -68,7 +68,7 @@ class VenuesController < ApplicationController
     start_date = Date.today
     # @all_bookings = Booking.where(date_from:start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week )
 
-    @all_bookings = Booking.all
+    @all_bookings = Booking.where(venue_id: @venue.id)
     # Booking.where(date_from:start_date.beginning_of_week..start_date.end_of_week)
   end
 
