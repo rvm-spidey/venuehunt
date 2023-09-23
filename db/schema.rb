@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_09_20_181944) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_09_20_170659) do
+>>>>>>> master
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -109,7 +113,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_181944) do
     t.bigint "cart_id"
     t.string "phone_number"
     t.string "order_confirmation_email"
+<<<<<<< HEAD
     t.string "qr_code"
+=======
+>>>>>>> master
     t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

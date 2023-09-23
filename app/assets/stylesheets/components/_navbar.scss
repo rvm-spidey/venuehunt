@@ -1,11 +1,20 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   height: 75px;
   transition: 0.5s background-color ease;
   color: white;
 }
 
+.container-fluid {
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav {
+  align-items: center;
+}
 .navbar-lewagon-white {
   background-color: $dark-blue;
 }
@@ -20,4 +29,6 @@
 
 .nav-link {
   color: white;
+  margin:0;
+
 }
