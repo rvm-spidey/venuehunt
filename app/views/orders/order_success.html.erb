@@ -4,24 +4,28 @@
     <hr class="break-line">
     <div class="tick-order"></div>
     <div class="after-tick-order-text">
-      <h1>Thank you for booking with VenueHunt</h1>
-      <h3>Order Reference: <%= @order.id %> </h3>
-      <h3>Ordered on: <%= @order.created_at %> </h3>
+      <h2>Thank you for booking with VenueHunt</h2>
+      <h4>Order Reference: <%= @order.id %> </h4>
+      <h4>Ordered on: <%= @order.created_at %> </h4>
     </div>
-    <hr class="break-line">
-    <% @cart = Cart.find(@order.cart_id) %>
-      <h1>Booking details</h1>
-    <% @cart.bookings.each do |booking| %>
-      <p><%= booking.date_from %></p>
-      <p><%= booking.date_to %></p>
-      <p><%= booking.event_name %></p>
-      <p><%= booking.number_of_participants %></p>
-      <p><%= booking.food %></p>
-      <p><%= booking.beverage %></p>
-      <p><%= booking.other_services_offered %></p>
-      <p>total <%= booking.total %></p>
-    <% end %>
-
-    <%= link_to "View my orders", orders_path %>
+    <hr class="break-line-booking">
+    <div class="booking-details-container">
+      <% @cart = Cart.find(@order.cart_id) %>
+        <h2 class="booking-details-header">Booking details</h2>
+      <% @cart.bookings.each do |booking| %>
+        <p>Booking Start Date: <%= booking.date_from %></p>
+        <p>Booking End Date: <%= booking.date_to %></p>
+        <p>Event Name: <%= booking.event_name %></p>
+        <p>Number of Participants: <%= booking.number_of_participants %></p>
+        <p>Food Booked: <%= booking.food %></p>
+        <p>Beverages Booked: <%= booking.beverage %></p>
+        <p>Other Services Booked: <%= booking.other_services_offered %></p>
+        <hr class="break-line-booking">
+        <h3><strong>Total: <%= booking.total %></strong></h3>
+      <% end %>
+      <div class="view-orders-button">
+        <a><strong><%= link_to "View my orders", orders_path %></strong>
+      </div>
+    </div>
   </div>
 </div>

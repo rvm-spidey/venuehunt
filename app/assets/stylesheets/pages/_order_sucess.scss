@@ -4,12 +4,13 @@
   text-align:center;
   padding-bottom: 100px;
   padding-top: 100px;
+  background-repeat: no-repeat;
 }
 
 .child-container-page-order-sucess {
   margin: auto;
-  height: 800px;
-  width: 650px;
+  max-height: 1000px;
+  width: 600px;
   background-color: $dark-blue;
   padding: 40px;
 }
@@ -17,7 +18,7 @@
 .break-line {
   color: $white;
   line-height: 15px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .header-order-success {
@@ -43,9 +44,52 @@
 .after-tick-order-text {
   margin: 20px;
 
-  h1,h3 {
+  h2,h4 {
     font-weight: 780;
     color: $white;
     font-family: Helvetica, sans-serif;
+  }
+}
+
+.break-line-booking {
+  color: $white;
+  line-height: 15px;
+  margin-bottom: 10px;
+}
+
+.booking-details-container {
+  h2, h3 {
+    font-weight: 780;
+    color: $light-blue;
+    font-family: Helvetica, sans-serif;
+  }
+
+  p {
+    font-weight: 780;
+    color: $white;
+    font-family: Helvetica, sans-serif;
+  }
+}
+
+.booking-details-header {
+  padding-bottom: 20px;
+}
+
+.view-orders-button {
+  margin: auto;
+  width: 300px;
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-bottom: 5px;
+  margin-top: 25px;
+  background-color: $light-blue;
+  text-decoration: none;
+  border-radius: 8px;
+
+  a {
+    color: $dark-blue;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
   }
 }
