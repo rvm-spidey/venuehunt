@@ -6,7 +6,7 @@ export default class extends Controller {
   connect() {
     new StarRating(this.element, {
       showText: false,
-      tooltip: 'QQQQ Select a Rating',
+      tooltip: 'Select a Rating',
     })
   }
 }
