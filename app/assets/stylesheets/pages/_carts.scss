@@ -67,10 +67,10 @@
 }
 
 @keyframes itemsheadercart {
-  0%   {background-color:$blue-moonstone; width: 600px; left:0px; top:0px;}
-  50%  {background-color: $blue-moonstone; width: 600px; left:50%; left:0px;}
-  75%  {background-color: $dark-blue; width: 600px; left:50%; right:50%;}
-  100% {background-color:$dark-blue; width: 600px; left:0px; top:0px;}
+  0%   {background-color:$dark-blue; width: 600px; left:0px; top:0px;}
+  50%  {background-color: $dark-blue; width: 600px; left:50%; left:0px;}
+  75%  {background-color: rgb(44, 201, 244); width: 600px; left:50%; right:50%;}
+  100% {background-color:rgb(44, 201, 244); width: 600px; left:0px; top:0px;}
 }
 
 .cart-list-child {
