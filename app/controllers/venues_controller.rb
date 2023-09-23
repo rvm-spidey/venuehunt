@@ -64,6 +64,12 @@ class VenuesController < ApplicationController
       lng:@venue.longitude,
       marker_html: render_to_string(partial: "marker",locals: {user: @user})
     }
+
+    start_date = Date.today
+    # @all_bookings = Booking.where(date_from:start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week )
+
+    @all_bookings = Booking.all
+    # Booking.where(date_from:start_date.beginning_of_week..start_date.end_of_week)
   end
 
   def edit
