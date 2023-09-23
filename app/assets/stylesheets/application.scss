@@ -9,6 +9,7 @@
 @import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 @import "flatpickr/dist/flatpickr.css";
 @import "star-rating.js/dist/star-rating.css";
+@import "simple_calendar";
 
 // Your CSS partials
 @import "components/index";
@@ -17,3 +18,4 @@
 @import "components/venues_index";
 @import "components/locations_index";
 @import "pages/carts";
+@import "components/venues_show";

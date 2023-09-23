@@ -8,11 +8,19 @@ class BookingsController < ApplicationController
     # @booking.cart_id = @cart
     @booking.status = "on-hold"
     @booking.total = @booking.total_price
-    @booking.save
-    redirect_to cart_path(@cart)
+
+    respond_to do |format|
+      if @booking.save
+        format.html { redirect_to cart_path(@cart), notice: "Venue was successfully created." }
+      else
+        format.html { redirect_to venue_path(params[:venue_id]), notice: @booking.errors }
+        format.json { render json: @booking.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show
+
   end
 
   def destroy

@@ -1,0 +1,164 @@
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/tsfsd.jpg);">
+    <h1 class="header-banner">Venue detail</h1>
+    <div class="venues-index-bar"></div>
+  </div>
+
+  <div class="container">
+  <p>
+  <i class="fa-solid fa-arrow-left"></i>
+  <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></p>
+  <h2>Kot Rishi</h2>
+  <div class="venue-img-container">
+  <div class="row gy-5 d-flex">
+      <div class="col-8 col-md-6 col-lg-6">
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner h-75">
+      <div class="carousel-item active ">
+        <img src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(1).jpg" class="d-block w-65 h-75"  style="height=100px" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(2).jpg" class="d-block w-65 h-75" style="height=100px" alt="...">
+      </div>
+      <div class="carousel-item ">
+        <img src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(4).jpg" class="d-block w-65 h-75" style="height=100px" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+  </div>
+   <div class="col-4 col-md-4 col-lg-4">
+  <div>
+    <!--<h3> <%= link_to "Back to venues", venues_path,  class:"text-decoration-none" %></h3>-->
+    <h3>More about this venue</h3>
+    <p>Location: <%= @venue.location.name %></p>
+    <%if @venue.photos.attached? %>
+      <% @venue.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    <% end %>
+    <p>Description <%= @venue.description %></p>
+    <p>Address <%= @venue.address  %></p>
+    <p>Space <%= @venue.space_size  %></p>
+    <p>Price/day<%= @venue.price  %></p>
+
+    <p>Opening Time <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+    <p>Closing Time <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+    <p>Food and bev <%= @venue.food_beverages_offered %></p>
+    <p>Other Services <%= @venue.other_services_offered %></p>
+
+    <p>Owner <%= User.find(@venue.user_id).email  %></p>
+  </div>
+  </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row gy-5 d-flex">
+      <div class="col-6 col-md-6 col-lg-6">
+      <h3>PLACEHOLDER FOR REVIEWS</h3>
+      <p>The standard Lorem Ipsum passage, used since the 1500s
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      </div>
+
+      <div class="col-6 col-md-6 col-lg-6">
+  <div class="container col-6 booking-container">
+  <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
+    <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :event_name %>
+        <%= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
+        <%= f.input :date_from, as: :string, input_html: { data: { flatpickr_target: "dateFrom" } } %>
+        <%= f.input :date_to, as: :string, input_html: { data: { flatpickr_target: "dateTo" } } %>
+
+
+        <% if @venue.food_beverages_offered %>
+          <%= f.input :food, as: :select, collection: Booking::FOOD_OPTIONS.keys %>
+          <%= f.input :beverage, as: :select, collection: Booking::BEVERAGE_OPTIONS.keys %>
+        <% end %>
+
+        <% if @venue.other_services_offered %>
+          <%= f.input :other_services_offered, as: :select, collection: Booking::OTHER_SERVICES_OPTIONS.keys %>
+        <% end %>
+
+        <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
+        <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
+      </div>
+      <div class="form-actions btn btn-flat align-content-center justify-content-center ">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+    </div>
+
+
+    <%= simple_form_for(@chatroom) do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+        <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
+        <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
+      </div>
+    <% end %>
+  </div>
+
+  <%#= link_to 'Back to all venues', venues_path %>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+
+   <div class="container d-flex">
+      <div class="desc-container">
+    <p>Address <%= @venue.address  %></p>
+    <p>Space <%= @venue.space_size  %></p>
+    <p>Price/day<%= @venue.price  %></p>
+     <p>Owner <%= User.find(@venue.user_id).email  %></p>
+      </div>
+      <div class="desc-container ms-4">
+    <p>Opening Time <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+    <p>Closing Time <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+    <p>Food and bev <%= @venue.food_beverages_offered %></p>
+    <p>Other Services <%= @venue.other_services_offered %></p>
+
+      </div>
+  </div>
+
+
+
+
+
+   <div class="container d-flex">
+      <div class="desc-container">
+    <p>Address <%= @venue.address  %></p>
+    <p>Space <%= @venue.space_size  %></p>
+    <p>Price/day<%= @venue.price  %></p>
+     <p>Owner <%= User.find(@venue.user_id).email  %></p>
+      </div>
+      <div class="desc-container ms-4">
+    <p>Opening Time <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+    <p>Closing Time <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+    <p>Food and bev <%= @venue.food_beverages_offered %></p>
+    <p>Other Services <%= @venue.other_services_offered %></p>
+
+      </div>
+
+
+
