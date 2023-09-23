@@ -9,6 +9,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+  <div class="navbar-container">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
@@ -25,9 +26,9 @@
           <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <%= current_user.email %>
-          </li>
+          </li> -->
 
           <li class="Carts">
             <%= link_to "Carts", cart_path(@cart) , class: "nav-link" %>
@@ -52,6 +53,8 @@
           </li>
         <% end %>
       </ul>
+  </div>
+
     </div>
   </div>
 </div>
