@@ -3,7 +3,7 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  height:700px;
+  height:600px;
 }
 
 // .banner h1 {
@@ -24,7 +24,7 @@
 .btn-flat {
   color: white;
   padding: 8px 24px;
-  border-radius: 30px;
+  border-radius: 2px;
   background: $blue-moonstone;
   transition: background 0.3s ease;
   margin-bottom: 15px;
@@ -37,12 +37,13 @@
 
 label {
   margin-top: 15px;
-  font-weight: 400;
+  font-weight: 500;
+  color: $dark-blue;
 }
 
 .sugg-form-control {
   border: 1px solid #ccc;
-  border-radius: 30px;
+  border-radius: 2px;
   margin-top: 20px;
 }
 
@@ -52,10 +53,13 @@ label {
 
   background: $dark-blue-lazuli;
   color: white;
-  padding: 8px 24px;
-  border-radius: 30px;
+  padding: 6px;
+  border-radius: 2px;
   border:none;
   margin-top: 10px;
+  // display: flex;
+  // align-items: flex-start;
+  // justify-content: flex-start;
 }
 
 
