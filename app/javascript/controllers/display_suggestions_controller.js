@@ -13,6 +13,9 @@ export default class extends Controller {
   send(){
     event.preventDefault()
 
+    const loader = document.getElementById('loader');
+    loader.style.display = 'block';
+
     const url = `${this.formTarget.action}?query=${this.inputTarget.value}`
     console.log("url" , url);
     fetch(url, {
@@ -20,7 +23,12 @@ export default class extends Controller {
     })
     .then(response => response.text())
     .then((data) => {
+      loader.style.display = 'none';
       this.listTarget.outerHTML = data
+    })
+    .catch((error) => {
+      loader.style.display = 'none';
+      console.error(error);
     })
   }
 
