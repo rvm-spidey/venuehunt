@@ -11,20 +11,20 @@
 <%# <div class="suggestions d-flex"> %>
   <div class="d-flex">
       <%= f.text_field :query,
-                class: "form-control sugg-form-control",
+                class: "form-control mx-2",
                 value: params[:query],
                 placeholder: "Describe your event",
                 data: {display_suggestions_target: "input"}
 
       %>
-      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send"}, class: "submit-button" %>
+      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send"}, class: "btn btn-primary" %>
     <% end %>
     </div>
 
-    <%= render "suggestions" %>
+    <%= render "suggestions"%>
   </div>
 <div>
-<div class="container explore-container">
+<div class="container explore-container p-0">
  <div class="explore-container d-flex justify-content-between mb-2 mt-5">
     <h2>More to explore</h2>
     <a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
