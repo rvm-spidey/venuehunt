@@ -1,24 +1,35 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= asset_path('geo_banner2.png') %>)">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url(<%= asset_path('geo_banner3.png') %>)">
+<div class="title-slogan-container">
+<h1>VenueHunt</h1>
+<h2>Finding the perfect venue in a snap!</h2>
+</div>
 </div>
 <div class="container form-container">
   <div data-controller="display-suggestions">
     <%= form_with url: pages_path , method: :get, html: {class: "mb-3", data: {display_suggestions_target: "form"}} do |f| %>
       <h1><%= f.label :query, "Please describe for what event do you need a venue" %></h1>
+<%# <div class="suggestions d-flex"> %>
+  <div class="d-flex">
       <%= f.text_field :query,
-                class: "form-control sugg-form-control",
+                class: "form-control mx-2",
                 value: params[:query],
                 placeholder: "Describe your event",
                 data: {display_suggestions_target: "input"}
+
       %>
-      <div class="row col-3 d-flex justify-content-center mx-auto ">
-      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send"}, class: "submit-button" %>
-      </div>
+      <%= f.submit "Get intelligent suggestions", data: { action: "click->display-suggestions#send"}, class: "btn btn-primary" %>
     <% end %>
-    <%= render "suggestions" %>
+    </div>
+
+    <%= render "suggestions"%>
   </div>
 <div>
-<div class="container explore-container">
-  <h2>More to explore</h2>
+<div class="container explore-container p-0">
+ <div class="explore-container d-flex justify-content-between mb-2 mt-5">
+    <h2>More to explore</h2>
+    <a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
+    </div>
+
   <br>
   <div class="row gy-5 d-flex">
          <div class="col col-12 col-md-6 col-lg-4">
@@ -61,7 +72,7 @@
               <h5>venue.location</h5>
               <h5>Rs venue price</h5>
               <div class="card-button-venue text-center venue-text-clr">
-                <strong>View venue</strong>
+                 <strong>View venue</strong>
               </div>
             </div>
           </div>
@@ -70,7 +81,7 @@
   </div>
 </div>
    </div>
-    <div class="row col-2 d-flex justify-content-center mx-auto">
+    <%# <div class="row col-2 d-flex justify-content-center mx-auto">
     <a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
-    </div>
+    </div> %>
     </div>

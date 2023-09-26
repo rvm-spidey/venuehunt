@@ -1,23 +1,24 @@
 .footer {
-  background: $light-blue;
+  background: $dark-blue;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height:80px;
   padding: 0px 30px;
-  color: rgba(0,0,0,0.3);
+  color: white;
 }
 .footer-links {
   display: flex;
   align-items: center;
 }
 .footer-links a {
-  color: $dark-blue;
-  opacity: 0.7;
+  color: white;
+  opacity: 0.8;
   text-decoration: none;
   font-size: 26px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 1;
 }
@@ -25,6 +26,6 @@
 
 .footer-copyright {
   font-size: 20px;
-  color:$dark-blue;
+  color:white;
   font-weight: 500;
 }
