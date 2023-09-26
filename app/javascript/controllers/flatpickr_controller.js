@@ -37,7 +37,7 @@ export default class extends Controller {
       const daysDiff = Math.round(
         diff /  (1000 * 60 * 60 * 24)
       )
-      total = daysDiff * venuePrice;
+      total = (daysDiff+1) * venuePrice;
 
       const foodOffered = document.getElementById("food-bev-offered");
       const isFoodOffered = foodOffered.textContent.trim()  == "true";

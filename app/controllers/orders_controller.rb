@@ -33,15 +33,25 @@ class OrdersController < ApplicationController
         booking.status = "completed"
         booking.save
       end
-
-      # remove on-hold bookings
-
-      session[:cart_id] = nil
+      flash[:notice] = "This article was saved successfully"
       redirect_to order_success_order_path(@order)
     else
-      flash[:error] = "Order creation failed."
-      redirect_to some_error_path
+      render :new, status: :unprocessable_entity
     end
+
+    # respond_to do |format|
+    #   if @order.save
+    #     @cart.bookings.each do |booking|
+    #       booking.status = "completed"
+    #       booking.save
+    #     end
+    #     format.html { redirect_to order_success_order_path(@order), notice: "Order was successfully created." }
+    #   else
+    #     flash[:error] = "Order creation failed."
+    #     render :new, status: :unprocessable_entity
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def order_success
