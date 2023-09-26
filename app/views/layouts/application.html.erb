@@ -19,7 +19,7 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
-    <%#= render "shared/showmsg", locals:{latest_messages: @latest_messages, chatroom: @chatroom }%>
+    <%= render "shared/showmsg", locals:{latest_messages: @latest_messages, chatroom: @chatroom }%>
   </body>
   <footer>
     <%= render "shared/footer" %>
