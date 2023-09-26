@@ -1,0 +1,22 @@
+.container-payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin: 0;
+  gap: 20px;
+}
+
+.container-payment-details,
+.container-payment-form {
+  width: 45%;
+  height: 50%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.container-payment-details h1,
+.container-payment-form h1 {
+  text-align: center;
+}

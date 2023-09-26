@@ -1,7 +1,16 @@
 
-<div class="container-new-order">
+<div class="container-payment">
 
-  <div class="container">
+  <div class="container-payment-details">
+    <h1>Order summary</h1>
+    <h3>Billed today (Rs):</h3>
+    <h2> <%= @cart.total %> </h2>
+
+
+
+  </div>
+
+  <div class="container-payment-form">
     <h1>Pay with card</h1>
     <%= simple_form_for [@cart,@order] do |f| %>
       <%= f.error_notification %>
@@ -12,7 +21,6 @@
         <%= f.input :card_number %>
         <%= f.input :cvc %>
         <%= f.input :phone_number %>
-
       </div>
 
       <div class="form-actions">
@@ -20,6 +28,7 @@
       </div>
     <% end %>
   </div>
+
 
 
 </div>

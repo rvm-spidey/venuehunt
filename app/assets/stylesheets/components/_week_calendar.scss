@@ -1,0 +1,21 @@
+.btn-outline-primary {
+  color: $dark-blue;
+  border-color: $dark-blue;
+}
+
+
+.btn-outline-primary:hover {
+  background-color: $dark-blue-lazuli;
+  color:white;
+  border-color:$dark-blue-lazuli;
+}
+
+
+.btn-primary {
+  background-color: $dark-blue-lazuli;
+  border-color:$dark-blue-lazuli;
+}
+
+.btn-primary:hover {
+  background-color: $dark-blue-lazuli;
+}
