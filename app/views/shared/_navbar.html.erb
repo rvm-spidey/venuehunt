@@ -1,21 +1,23 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
+
   <div class="container-fluid">
+
+  <div class="logo-container d-flex justify-content-start">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag("5-removebg-preview.png", style: "height: 100px; width:200px;") %>
       <!--"https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png"-->
     <% end %>
 
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    </div> <!-- logo container closing tag-->
 
+
+<div class="navlink-container d-flex justify-content-center">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-
-          <li class="nav-item">
-            <%= link_to "Home", "#", class: "nav-link" %>
-          </li>
-
 
         <li class="nav-item">
           <%= link_to "Discover venues", venues_path , class: "nav-link" %>
@@ -28,14 +30,13 @@
         <li class="nav-item">
           <%= link_to "My orders", orders_path , class: "nav-link" %>
         </li>
-       <!-- <% if user_signed_in? %>
+       <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", "#", class: "nav-link" %>
-          </li> -->
+          </li>
 
-          <!-- <li class="nav-item">
-            <%= current_user.email %>
-          </li> -->
+         <!-- > <li class="nav-item">
+            <%= current_user.email %> -->
 
           <li class="Carts">
             <%= link_to "Carts", cart_path(@cart) , class: "nav-link" %>
@@ -44,6 +45,10 @@
           <li id="notif" class="nav-item">
               <%= link_to "Messages", messages_path , class: "nav-link" %>
           </li>
+      </div> <!-- navlink container closing tag -->
+
+
+        <div class="avatar-container">
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
@@ -60,6 +65,7 @@
           </li>
         <% end %>
       </ul>
+  </div> <!-- avatar container closing tag-->
     </div>
   </div>
 </div>
