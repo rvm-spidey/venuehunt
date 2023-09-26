@@ -4,19 +4,20 @@
 
   <div class="logo-container d-flex justify-content-start">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag("5-removebg-preview.png", style: "height: 100px; width:200px;") %>
+      <%= image_tag("5-removebg-preview2.png", style: "height: 60px; width:75px;") %>
       <!--"https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png"-->
     <% end %>
-
+  </div> <!-- logo container closing tag-->
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    </div> <!-- logo container closing tag-->
 
 
-<div class="navlink-container d-flex justify-content-center">
+
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navlink-container d-flex justify-content-center">
       <ul class="navbar-nav me-auto">
 
         <li class="nav-item">
@@ -48,7 +49,7 @@
       </div> <!-- navlink container closing tag -->
 
 
-        <div class="avatar-container">
+        <div class="avatar-container d-flex justify-content-end">
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
