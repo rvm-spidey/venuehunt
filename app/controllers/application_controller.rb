@@ -34,16 +34,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def initialize_chatroom!
-  #   @chatrooms = []
-  #   @latest_messages = []
+  def initialize_chatroom!
+    @chatrooms = []
+    @latest_messages = []
 
-  #   if !current_user.nil?
-  #    @chatrooms = Chatroom.where(admin_id: current_user.id)
-  #    @latest_messages = Message.where(user_id: current_user.id)
-  #                               .group(:chatroom_id)
-  #                               .select('chatroom_id, MAX(id) AS latest_message_id')
-  #                               .order('latest_message_id DESC')
-  #   end
-  # end
+    if !current_user.nil?
+     @chatrooms = Chatroom.where(admin_id: current_user.id)
+     @latest_messages = Message.where(user_id: current_user.id)
+                                .group(:chatroom_id)
+                                .select('chatroom_id, MAX(id) AS latest_message_id')
+                                .order('latest_message_id DESC')
+    end
+  end
 end
