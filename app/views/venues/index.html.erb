@@ -1,4 +1,4 @@
-<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/02/vivea.-2.jpg);">
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/1827-1.jpg);">
   <h1 class="header-banner">Venues</h1>
 </div>
 
@@ -49,14 +49,34 @@
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card shadow">
         <div class="card-img">
-          <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/>
+            <%if venue.photos.attached? %>
+              <% venue.photos.each_with_index do |photo| %>
+                  <div class= "image_tag"><%= cl_image_tag photo.key, height: 270, width: 450 %></div>
+              <% end %>
+            <% end %>
+          <%# <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/> %>
         </div>
         <div class="card-body">
-          <h4 class="card-title"><strong><%= venue.name %></strong></h4>
-          <h5><%= venue.location.name %></h5>
-          <h5>Rs <%= venue.price  %></h5>
+          <strong><h4 class="card-title"><strong><%= venue.name %></strong></h4></strong>
+          <div class="card-text-container">
+            <div class="card-text-container1 d-flex justify-content-md-between">
+              <p><strong><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
+              <p><strong><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
+            </div>
+            <div class="card-text-container1 d-flex justify-content-md-between">
+              <div class="price-container">
+                <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i> Price per day: Rs <%= venue.price %></strong></p>
+              </div>
+              <div class="space-container">
+                <p><strong><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> sqm</strong></p>
+              </div>
+            </div>
+            <div class="card-text-container1 d-flex justify-content-md-between">
+              <p><strong><i class="fa-solid fa-map-location me-2"></i><%= venue.address %></strong></p>
+            </div>
+          </div>
           <div class="card-button-venue text-center">
-            <a> <strong><%= link_to "View Venue", venue_path(venue), class:"text-decoration-none" %></strong>
+            <a> <strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
           </div>
         </div>
       </div>
