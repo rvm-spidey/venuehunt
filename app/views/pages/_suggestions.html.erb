@@ -1,7 +1,7 @@
 <div data-display-suggestions-target="list">
   <div id="loader" class="loader" style="display: none;"></div>
-  <div class="container sugg-content-container overlay">
-    <p class="m-2"><%= @content %></p>
+  <div class="container sugg-content-container">
+    <p class="m-2 content-overlay"><%= @content %></p>
   </div>
 
   <% if !@content.empty? %>
@@ -9,7 +9,7 @@
     <ul>
       <% @tags.each do |tag| %>
         <li>
-          <%= link_to "#{tag}", venues_path(venuetype_id: [Venuetype.find_by(name: tag).id] )%>
+          <%= link_to "#{tag}", venues_path(venuetype_id: [Venuetype.find_by(name: tag).id]), class: "tag-api" %>
         </li>
       <% end %>
     </ul>

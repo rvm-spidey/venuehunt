@@ -1,11 +1,33 @@
 .sugg-content-container {
   // border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 2px;
 }
 
 
-// p {
-//   color: white;
-//   // // opacity: .5;
-//   // background-color: rgba(0,0,0,0.3);
+// .sugg-content-container {
+//   border: 1px none #ccc;
+//   border-radius: 15px;
+//   opacity: .3;
+//   padding: 15px 10px;
+//   margin-bottom:30px;
 // }
+
+.content-overlay {
+  color: white;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+
+li {
+  list-style: none;
+  display:inline;
+}
+
+.tag-api {
+  text-decoration:none;
+  background-color:#229EB2;
+  padding:5px;
+  color:white;
+  border-radius:2px;
+  margin-bottom:30px;
+}
