@@ -1,5 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
   <div class="container-fluid">
+
     <div class="logo-container d-flex justify-content-start">
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag("5-removebg-preview2.png", style: "height: 60px; width:75px;") %>
@@ -11,8 +12,9 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="navlink-container">
+<div class="navlink-container d-flex justify-content-center">
+    <%# <div class="collapse navbar-collapse" id="navbarSupportedContent"> %>
+
         <ul class="navbar-nav me-auto">
 
         <li class="nav-item">
@@ -64,6 +66,6 @@
         <% end %>
         </ul>
       </div> <!-- avatar container closing tag-->
-    </div> <!-- navbar collapse closing tag-->
+    <%# </div> <!-- navbar collapse closing tag--> %>
   </div> <!-- container-fluid closing tag-->
 </div> <!--navbar closing tag -->

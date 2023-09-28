@@ -1,9 +1,11 @@
 .simple-calendar {
   table {
     min-height: 10vh;
+    border-radius: 2px;
+    background-color: white;
   }
   .today {
-    background-color: #FAF3DD;
+    background-color: white;
   }
 }
 
@@ -15,7 +17,7 @@
   transition: background 0.3s ease;
 }
 
-.meeting:hover {
-  background:$dark-blue-lazuli;
-  color: white;
-}
+// .meeting:hover {
+//   background:$dark-blue-lazuli;
+//   color: white;
+// }
