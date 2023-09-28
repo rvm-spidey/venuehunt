@@ -12,34 +12,50 @@
 <!-- <h1>Cart ID --> <% @cart.id %><!-- </h1> -->
 <div class="part-after-banner">
   <div class="items-header-cart">
-    <h2>The <%= @cart.venues.count %> Venues in Cart: </h2><!-- <%= @cart.venues.count %></h2>-->
+    <h2>Booked Venues in Cart: </h2><!-- <%= @cart.venues.count %></h2>-->
   </div>
-
   <div class="container">
     <div class="row gy-5 d-flex cart-list-parent">
       <div class="col-12 col-lg-8 cart-list-child">
-        <% @cart.bookings.each do |booking| %>
-          <div class="cart-item-card">
-            <h3><strong><%= booking.venue.name %></strong></h3>
-            <p><strong> Event Name: </strong><%= booking.event_name %></p>
-            <p><strong>Total Price: </strong><%= booking.total_price %></p>
-            <p><strong> Booking Start Date: </strong><%= booking.date_from %> </p>
-            <p><strong> Booking End Date: </strong><%= booking.date_to %> </p>
-            <p><strong> Number of Participants: </strong><%= booking.number_of_participants %> </p>
-            <p><strong> Selected Food: </strong><%= booking.food %> </p>
-            <p><strong> Selected Beverage: </strong><%= booking.beverage %> </p>
-            <p><strong> Other Services Booked: </strong><%= booking.other_services_offered %> </p>
-            <div class="delete-button-cart">
-              <a> <strong><%= link_to "Delete Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
-            </div>
-          </div>
-        <% end %>
+        <div class="cart-container-new-version">
+          <table>
+            <tr>
+              <th></th>
+              <th class="text-center">Venue Booked</th>
+              <th>Date From</th>
+              <th>Date To</th>
+              <th>Total Price</th>
+              <th></th>
+            </tr>
+            <% @cart.bookings.each do |booking| %>
+            <tr>
+              <td>
+                <div class="event-info">
+                  <div class="photo-container">
+                    <%if booking.venue.photos.attached? %>
+                      <% booking.venue.photos.each_with_index do |photo| %>
+                        <div class= "image_tag_cart"><%= cl_image_tag photo.key, height: 200, width: 150 %></div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </td>
+              <td><%= booking.venue.name %></td>
+              <td>13.11.2023</td>
+              <td>12.11.2023</td>
+              <td>Rs 10,000</td>
+              <td>
+                  <strong><%= link_to "Delete Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
+              </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
       </div>
       <div class="col-12 col-lg-4 cart-checkout">
         <h3>Cart Summary</h3>
         <hr>
         <h3>Subtotal: Rs <%= @cart.sub_total %></h3>
-
         <p>15% For Venue Hunt</p>
         <h3>Total: Rs <%=  @cart.total %></h3>
         <div class="cart-checkout-buttons">
@@ -52,7 +68,6 @@
           <div class="cart-checkout-button3">
             <a> <strong><%= link_to "Proceed to checkout", new_cart_order_path(@cart) %></strong>
           </div>
-        </div>
         </div>
       </div>
     </div>
