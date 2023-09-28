@@ -7,8 +7,28 @@
     <h2> <%= @cart.total %> </h2>
 
 
+    <h1>Booking details</h1>
 
+      <% @cart.bookings.each do |booking| %>
+        <% venue = booking.venue %>
+
+        <div class="card-trip">
+          <div class = "trip-image">
+            <%if venue.photos.attached? %>
+              <%= cl_image_tag venue.photos.first.key, height: 75, width: 75, crop: :fill%>
+            <% end %>
+          </div>
+          <div class="trip-desc">
+            <div>
+              <h2><%= venue.name %></h2>
+              <p><%= venue.description %></p>
+            </div>
+            <h2 class="trip-price"> Rs <%= booking.total %> </h2>
+          </div>
+        </div>
+      <% end %>
   </div>
+
 
   <div class="container-payment-form">
     <h1>Pay with card</h1>
@@ -17,9 +37,22 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
-        <%= f.input :order_confirmation_email %>
+
+      <%= f.input :card_type, as: :radio_buttons, collection: Order::CART_TYPE, item_wrapper_class: 'category-item' do |card_type| %>
+        <%= card_type.to_json %>
+      <% end %>
+
+
+      <%= f.input :card_type, as: :radio_buttons, collection: Order::CART_TYPE, item_wrapper_class: 'category-item' %>
+
+
+
+
+  <%#= image_tag category[:photo], alt: category[:name], height: 30, width: 30 %>
+
         <%= f.input :card_number %>
         <%= f.input :cvc %>
+        <%= f.input :order_confirmation_email %>
         <%= f.input :phone_number %>
       </div>
 
