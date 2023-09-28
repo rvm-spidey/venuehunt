@@ -1,13 +1,49 @@
-<h1>Your orders</h1>
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://cf.bstatic.com/xdata/images/hotel/max1024x768/417726206.jpg?k=420cd5b76f40e573e9212f20e525ee0d8568084be0935adf30bab97eb91a144b&o=&hp=1);">
+  <h1 class="header-banner">Order detail</h1>
+</div>
+
 
 <% @orders.each do |order| %>
-  <p> Order Ref <%= order.id %> </p>
-  <p> Order Created <%= order.created_at %> </p>
+
+<div class="card booking-card">
+<h6 class="card-header"><span>Booking ID <%= order.id %> Created <%= order.created_at %></h6>
+<div class="card-body">
+
+  <!-- <p> Order Ref <%= order.id %> </p>
+  <p> Order Created <%= order.created_at %> </p>-->
 
   <% @cart = Cart.find(order.cart_id) %>
   <h1>Booking details</h1>
+<table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date from</th>
+          <th scope="col">Date to</th>
+          <th scope="col">Event</th>
+          <th scope="col">Participants</th>
+          <th scope="col">Food</th>
+          <th scope="col">Beverage</th>
+          <th scope="col">Other services</th>
+          <th scope="col">Venue name</th>
+          <th scope="col">Total amount</th>
+        </tr>
+      </thead>
+
   <% @cart.bookings.each do |booking| %>
-    <p><%= booking.date_from %></p>
+       <tbody>
+        <tr>
+          <td scope="row"><%= booking.date_from %></p></td>
+          <td><p><%= booking.date_to %></p></td>
+          <td><p> <%= booking.event_name %></p></td>
+          <td><p><%= booking.number_of_participants %></p></td>
+          <td><p><%= booking.food %></p></td>
+          <td><p><%= booking.beverage %></p></td>
+          <td><p><%= booking.other_services_offered %></p></td>
+          <td><p><%= booking.venue.name %></p></td>
+          <td><p class="btn btn-primary">Rs <%= booking.total %></p></td>
+
+
+    <!-- <p><%= booking.date_from %></p>
     <p><%= booking.date_to %></p>
     <p> <%= booking.event_name %></p>
     <p><%= booking.number_of_participants %></p>
@@ -15,10 +51,18 @@
     <p><%= booking.beverage %></p>
     <p><%= booking.other_services_offered %></p>
     <p>Venue : <%= booking.venue.name %></p>
-    <p>total <%= booking.total %></p>
-  <% end %>
-  <hr>
+    <p>total <%= booking.total %></p> -->
+
 <% end %>
+</tr>
+</tbody>
+ </table>
+</div>
+</div>
+<% end %>
+
+
+
 
 <h1>Write a review, make someone's trip</h1>
 

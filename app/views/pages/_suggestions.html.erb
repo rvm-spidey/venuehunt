@@ -1,7 +1,7 @@
 <div data-display-suggestions-target="list">
   <div id="loader" class="loader" style="display: none;"></div>
   <div class="container sugg-content-container">
-    <p><%= @content %></p>
+    <p class="m-2 content-overlay"><%= @content %></p>
   </div>
 
   <% if !@content.empty? %>
@@ -9,43 +9,9 @@
     <ul>
       <% @tags.each do |tag| %>
         <li>
-          <%= link_to "#{tag}", venues_path(venuetype_id: [Venuetype.find_by(name: tag).id] )%>
+          <%= link_to "#{tag}", venues_path(venuetype_id: [Venuetype.find_by(name: tag).id]), class: "tag-api" %>
         </li>
       <% end %>
     </ul>
   <% end %>
 </div>
-
-<style>
-.sugg-content-container {
-  border: 1px none #ccc;
-  border-radius: 15px;
-  opacity: .3;
-  padding: 15px 10px;
-  margin-bottom:30px;
-}
-
-
-p {
-  color: white;
-  background-color:#229EB2;
-  /* background-color: #0F597C; */
-  border-radius: 15px;
-  text-align: center;
-}
-
-li {
-list-style: none;
-display:inline;
-
-}
-
-li a {
-  text-decoration:none;
-  background-color:#229EB2;
-  padding:5px;
-  color:white;
-  border-radius:5px;
-  margin-bottom:30px;
-}
-</style>

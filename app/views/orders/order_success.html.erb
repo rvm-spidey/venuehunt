@@ -8,20 +8,24 @@
       <h4>Order Reference: <%= @order.id %> </h4>
       <h4>Ordered on: <%= @order.created_at %> </h4>
     </div>
-    <hr class="break-line-booking">
+    <%# <hr class="break-line-booking"> %>
     <div class="booking-details-container">
       <% @cart = Cart.find(@order.cart_id) %>
-        <h2 class="booking-details-header">Booking details</h2>
-      <% @cart.bookings.each do |booking| %>
-        <p>Booking Start Date: <%= booking.date_from %></p>
-        <p>Booking End Date: <%= booking.date_to %></p>
-        <p>Event Name: <%= booking.event_name %></p>
-        <p>Number of Participants: <%= booking.number_of_participants %></p>
-        <p>Food Booked: <%= booking.food %></p>
-        <p>Beverages Booked: <%= booking.beverage %></p>
-        <p>Other Services Booked: <%= booking.other_services_offered %></p>
+        <h1 class="booking-details-header">Booking details</h1>
         <hr class="break-line-booking">
-        <h3><strong>Total: <%= booking.total %></strong></h3>
+        <%# <div class="booking-card"> %>
+        <% @cart.bookings.each do |booking| %>
+          <h2><%= booking.event_name %></h2>
+          <p>Booking Start Date: <%= booking.date_from %></p>
+          <p>Booking End Date: <%= booking.date_to %></p>
+          <p>Number of Participants: <%= booking.number_of_participants %></p>
+          <p>Food Booked: <%= booking.food %></p>
+          <p>Beverages Booked: <%= booking.beverage %></p>
+          <p>Other Services Booked: <%= booking.other_services_offered %></p>
+          <%# <hr class="break-line-booking"> %>
+          <h4><strong>Total: <%= booking.total %></strong></h4>
+        <%# </div> %>
+        <hr class="break-line-booking">
       <% end %>
       <div class="view-orders-button">
         <a><strong><%= link_to "View my orders", orders_path %></strong>

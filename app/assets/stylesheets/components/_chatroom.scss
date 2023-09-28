@@ -1,11 +1,14 @@
 .chatroom {
-  background: white;
-  margin-top: 9px;
+  // background: gray;
+  // opacity:0.3;
+  margin-top: 30px;
   height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-grow: 1;
+  border-radius: 2px;
+  margin-bottom: 30px;
 
   h1 {
     border-bottom: 1px solid $gray-200;
@@ -13,9 +16,14 @@
     padding: 1rem;
   }
 
+  input {
+    border-radius:2px;
+  }
+
   .messages {
     height: 100%;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     padding: 1rem;
   }
 
@@ -27,4 +35,48 @@
       margin-bottom: 0;
     }
   }
+
+
+}
+
+.overlay {
+  background: white;
+
+}
+
+.btn-cht {
+  border-radius: 2px;
+  background-color: $light-blue;
+  border: none;
+}
+
+.chatroom-field {
+  border-radius:30px;
+}
+
+
+
+.chat-messages-container {
+  background-color:rgba(149, 151, 153, 0.233);
+  border-radius: 2px;
+  margin-top:60px;
+  margin-bottom:20px;
+}
+// rgba(149, 151, 153, 0.233)
+
+.msg-notif-bubble {
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px;
+  margin-bottom: 7px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+li {
+  list-style-type: none;
+}
+
+.msg-title {
+  padding-left: 20px;
+  font-weight: 500;
 }
