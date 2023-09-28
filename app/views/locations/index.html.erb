@@ -57,17 +57,17 @@
                   <%# <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/> %>
                 </div>
                 <div class="card-body">
-                  <strong><h4 class="card-title"><strong><%= venue.name %></strong></h4></strong>
+                  <strong><h4 class="card-title text-start"><strong><%= venue.name %></strong></h4></strong>
                   <div class="card-text-container">
                     <div class="card-text-container1 d-flex justify-content-md-between">
                       <p><strong><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
                       <p><strong><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
                     </div>
                     <div class="card-text-container1 d-flex justify-content-md-between">
-                      <div class="price-container">
-                        <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i> Price per day: Rs <%= venue.price %></strong></p>
+                      <div class="price-container text-start">
+                        <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price per day: Rs <%= venue.price %></strong></p>
                       </div>
-                      <div class="space-container">
+                      <div class="space-container text-start">
                         <p><strong><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> sqm</strong></p>
                       </div>
                     </div>
