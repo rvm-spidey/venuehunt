@@ -1,22 +1,40 @@
 .card-title {
   font-family: Helvetica, sans-serif;
+  color:$dark-blue;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-body {
+  padding: 15px;
 }
 
 .card-button-venue {
-  width: 120px;
-  padding:4px;
-  // height: 20px;
+  width: 220px;
+  padding: 4px;
   background-color: $dark-blue;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3px;
 
   a {
     color: $white;
     font-family: Helvetica, sans-serif;
   }
+
+  &:hover {
+    background-color: $blue-moonstone;
+  }
 }
 
 .card-img {
   overflow: hidden;
-  max-height: 200px;
+  height: 230px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .image_tag {
@@ -24,5 +42,23 @@
 
   &:hover {
     transform: scale(1.5);
+  }
+}
+
+.card-text-container1 {
+  height: 20px;
+  margin-bottom: 8px;
+  color: $dark-blue;
+
+  p {
+    font-size: 16px;
+  }
+
+  .space-container {
+    width: 134px;
+  }
+
+  .price-container {
+    width: 250px;
   }
 }

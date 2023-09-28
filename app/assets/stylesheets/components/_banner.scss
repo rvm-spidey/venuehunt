@@ -1,19 +1,19 @@
 .venues-index-banner {
-  // background-size: cover;
-  background-position: center;
-  height: 400px;
-  align-items: center;
-  // flex-direction: column;
+  background-position: 0% 40%;
+  height: 270px;
+  display:flex;
+  margin-bottom: 20px;
 }
 
 .header-banner {
-  text-align: center;
+  margin: auto;
   color: $white;
   font-weight: bolder;
   font-size: 60px;
   font-family: Helvetica, sans-serif;
   letter-spacing: -0.045em;
-  // text-decoration: underline;
-  padding-top: 160px;
+  text-decoration: underline;
+   text-align:center;
+  // padding-top: 160px;
   // text-decoration-thickness: 12px;
 }
