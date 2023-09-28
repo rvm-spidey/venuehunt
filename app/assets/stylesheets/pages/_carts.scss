@@ -1,9 +1,9 @@
 .carts-index-banner {
-  height: 80vh;
+  height: 270px;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
-  background-position: 10% 80%;
+  background-position: 40% 70%;
 }
 
 .carts-parent {
@@ -21,11 +21,11 @@
 
   h1 {
     font-weight: 780;
-    color: $dark-blue;
+    color: $white;
     font-family: Helvetica, sans-serif;
-    text-decoration: underline;
-    text-decoration-thickness: 11px;
-    font-size: 38px;
+    // text-decoration: underline;
+    // text-decoration-thickness: 11px;
+    // font-size: 38px;
   }
 }
 
@@ -34,7 +34,7 @@
 
   h2 {
   font-weight: 780;
-  color: $dark-blue;
+  color: $white;
   font-family: Helvetica, sans-serif;
   font-size: 34px;
   }
