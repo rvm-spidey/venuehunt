@@ -3,13 +3,37 @@
 
 
 // }
-.venue-img-container {
-  margin-top:50px;
-}
+// .venue-img-container {
+//   margin-top:50px;
+// }
 
 // h2 {
 //   margin-top: 50px;
 // }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // background-color: #2196F3;
+  // padding: 10px;
+  column-gap:15px;
+  row-gap:15px;
+}
+.grid-item {
+  // background-color: rgba(255, 255, 255, 0.8);
+  // border: 1px solid rgba(0, 0, 0, 0.8);
+  // padding: 20px;
+  // font-size: 30px;
+  // text-align: center;
+  // border: 1px solid rgba(0, 0, 0, 0.8);
+  margin:0 20px 0 20px;
+}
+
+.item-1 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
 
 .back-arrow {
   color:$dark-blue-lazuli;
@@ -32,7 +56,7 @@
 }
 .fa-solid {
   color: $dark-blue-lazuli;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .chat-btn {
@@ -45,5 +69,5 @@
 }
 
 .desc-container2 {
-  margin-left:60px;
+  margin-left:70px;
 }

@@ -1,3 +1,4 @@
+
 <!--Commented html -->
 
 
@@ -6,99 +7,108 @@
 </div>
 
 
+<%# <div class="container"> %>
 
 <!-- back arrow -->
-<div class="container">
-  <p>
+ <p>
     <i class="fa-solid fa-arrow-left mt-3"></i>
     <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %>
   </p>
 
+<div class="grid-container">
+  <div class="grid-item item-1">
+    <%=week_calendar(events: @all_bookings, attribute: :date_from, end_attribute: :date_to) do |date, bookings| %>
+    <%= date %>
+
+    <% bookings.each do |booking| %>
+      <div class="meeting">
+        <p><%= booking.event_name %></p>
+      </div>
+      <% end %>
+    <% end %>
+  </div> <!-- grid-item closing tag -->
+
   <!-- carousel -->
 
-    <div class="row gy-5 d-flex">
-      <div class="col-6 col-md-4 col-lg-6">
-      <div class="venue-img-container mt-5">
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner h-75">
-            <%if @venue.photos.attached? %>
-              <% @venue.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item <%= 'active' if index == 0 %>">
-                  <%= cl_image_tag photo.key, height: 400, width: 800 %>
-              </div>
-                <% end %>
-              <% end %>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div> <!-- carousel-inner h-75 closing tag -->
-          </div> <!-- carousel slide closing tag -->
-        </div> <!-- col-6 closing tag -->
-      </div> <!-- venue-img-container closing tag -->
+  <div class="grid-item">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner h-75">
+        <%if @venue.photos.attached? %>
+          <% @venue.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+                <%= cl_image_tag photo.key, height: 400, width: 800 %>
+            </div>
+          <% end %>
+        <% end %>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> <!-- carousel-inner h-75 closing tag -->
+    </div> <!-- carousel slide closing tag -->
+  </div> <!-- grid-item closing tag -->
+
+
+<!--Venue description-->
+  <div class="grid-item">
+    <h2><%= @venue.location.name %></h2>
+    <p><%= @venue.description %></p>
+    <div class="container d-flex">
+      <div class="desc-container1">
+        <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
+        <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
+        <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs    <span id="venue-price"><%= @venue.price %></span></p>
+        <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>
+      </div>
+      <div class="desc-container2">
+        <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+        <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
+        <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <span id="food-bev-offered">  <%= @venue.food_beverages_offered %></span> </p>
+        <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <span id="services-offered"> <%= @venue.other_services_offered %> </span> </p>
+      </div>
+    </div> <!-- container desc-container closing tag -->
+  </div> <!-- grid-item closing tag -->
+
 
   <!-- map -->
-      <div class="col-6 col-md-4 col-lg-6 mt-5">
-        <div class="direction">
-          Proposed Direction
-          <div  style="width: 100%; height: 50vh;"
-              data-controller="venuemap"
-              data-venuemap-venuelocation-value="<%= @venue_address.to_json %>"
-              data-venuemap-currentlocation-value="<%= @company_address.to_json %>"
-              data-venuemap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-            <div
-              data-venuemap-target="content" style="width: 100%; height: 50vh;">
-            </div>
-          </div> <!-- style closing tag -->
-        </div> <!-- direction closing tag -->
-      </div> <!-- col-6 closing tag -->
-    </div> <!-- row gy closing tag -->
-
-
-    <div class="row gy-5 d-flex mt-15">
-      <div class="col-6 col-md-4 col-lg-6">
-       <h2><%= @venue.location.name %></h2>
-        <p><%= @venue.description %></p>
-          <div class="container d-flex">
-            <div class="desc-container1">
-              <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
-              <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
-              <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs    <span id="venue-price"><%= @venue.price %></span></p>
-              <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>
-            </div>
-            <div class="desc-container2">
-              <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-              <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-              <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <span id="food-bev-offered">  <%= @venue.food_beverages_offered %></span> </p>
-              <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <span id="services-offered"> <%= @venue.other_services_offered %> </span> </p>
-            </div>
-          </div> <!-- container desc-container closing tag -->
-      </div> <!-- col-6 closing tag -->
+  <div class="grid-item">
+    <div class="direction">
+      Proposed Direction
+      <div  style="width: 100%; height: 80vh;"
+        data-controller="venuemap"
+        data-venuemap-venuelocation-value="<%= @venue_address.to_json %>"
+        data-venuemap-currentlocation-value="<%= @company_address.to_json %>"
+        data-venuemap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div
+          data-venuemap-target="content" style="width: 100%; height: 80vh;">
+        </div>
+      </div> <!-- style closing tag -->
+    </div> <!-- direction closing tag -->
+  </div> <!-- grid-item closing tag -->
 
      <!-- booking -->
-      <div class="col-6 col-md-6 col-lg-6">
+  <div class="grid-item">
+    <div class="container booking-container">
+      <h3>Booking</h3>
+        <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
+          <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class="container booking-container">
-          <h3>Booking</h3>
-          <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
-            <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
-            <%= f.error_notification %>
-            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-            <div class="form-inputs">
+          <div class="form-inputs">
             <%= f.input :event_name %>
             <%#= f.input :number_of_participants, as: :integer, input_html: {max: @venue.space_size } %>
 
-              <%= f.input :number_of_participants,
-                  label: "No of participants"  ,
-                  collection: Booking::PARTICIPANTS,
-                  input_html: {
-                    data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "participants" }
-              }%>
+            <%= f.input :number_of_participants,
+                label: "No of participants"  ,
+                collection: Booking::PARTICIPANTS,
+                input_html: {
+                  data: { action: "change->flatpickr#calculateTotalPrice", flatpickr_target: "participants" }
+            }%>
 
             <div class="date-container d-flex">
               <div class="date-from col-6">
@@ -135,7 +145,7 @@
 
             <%= f.input :cart_id, as: :hidden, input_html: { value: @cart.id } %>
             <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
-          </div> <!-- venue id closing tag -->
+          </div> <!-- form inputs closing tag -->
 
 
           <div class="subtotal-container d-flex align-items-center mt-2 mb-2">
@@ -150,65 +160,44 @@
               <%= f.button :submit %>
             </div>
 
-        <%= simple_form_for(@chatroom) do |f| %>
-          <%= f.error_notification %>
-          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <%= simple_form_for(@chatroom) do |f| %>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class="form-inputs">
-          <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
-          <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
-        </div><!-- form-inputs closing tag -->
+          <div class="form-inputs">
+            <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
+            <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
+          </div><!-- form-inputs closing tag -->
 
-        <div class="chat-btn d-inline-flex">
-          <div class="form-actions">
-            <%= f.button :submit, "Chat with admin #{User.find(@venue.user_id).email}" %>
-          </div><!-- form action closing tag -->
-        <% end %>
-        </div><!-- chat btn closing tag -->
+          <div class="chat-btn d-inline-flex">
+            <div class="form-actions">
+              <%= f.button :submit, "Chat with admin #{User.find(@venue.user_id).email}" %>
+            </div><!-- form action closing tag -->
+          <% end %>
+          </div><!-- chat btn closing tag -->
+          <% end %>
+        </div><!-- venue id closing tag -->
+    </div> <!-- booking-container closing tag -->
+  </div> <!-- grid item closing tag -->
 
-
-          </div> <!-- flex-row closing tag -->
-        <% end %>
-        </div><!-- form input closing tag -->
-
-
-
-        </div> <!-- booking-container closing tag -->
-      </div> <!-- col-6 closing tag -->
-    </div> <!-- row gy closing tag -->
-
-
-<!-- review -->
-    <div class="row gy-5 d-flex">
-      <div class="col-6 col-md-4 col-lg-6">
-       <h3> REVIEWS GOES HERE</h3>
-
-        <% @venue.reviews.each do |review| %>
-          <p>title: <%= review.title %></p>
-          <p>Review: <%= review.content %></p>
-          <p>rating: <%= review.rating %></p>
-          <p>purpose: <%= review.booking_purpose %></p>
-          <p>Created: <%= review.created_at %></p>
-          <p>Created by: <%= User.find(review.user_id).email %></p>
-          <hr>
-        <% end %>
-      </div> <!-- col-6 closing tag -->
-
-<!-- calendar -->
-      <div class="col-6 col-md-4 col-lg-6">
-        <%=week_calendar(events: @all_bookings, attribute: :date_from, end_attribute: :date_to) do |date, bookings| %>
-        <%= date %>
-
-        <% bookings.each do |booking| %>
-          <div class="meeting">
-            <p><%= booking.event_name %></p>
-          </div>
-        <% end %>
-      <% end %>
-
-      </div> <!-- col-6 closing tag -->
-    </div> <!-- row gy closing tag -->
-
-</div> <!-- container closing tag -->
-
+</div> <!-- grid-container closing tag -->
 </div>
+<%# </div> <!-- container closing tag--> %>
+
+  <!-- review
+      <div class="row gy-5 d-flex">
+        <div class="col-6 col-md-4 col-lg-6">
+        <h3> REVIEWS GOES HERE</h3>
+
+          <% @venue.reviews.each do |review| %>
+            <p>title: <%= review.title %></p>
+            <p>Review: <%= review.content %></p>
+            <p>rating: <%= review.rating %></p>
+            <p>purpose: <%= review.booking_purpose %></p>
+            <p>Created: <%= review.created_at %></p>
+            <p>Created by: <%= User.find(review.user_id).email %></p>
+            <hr>
+          <% end %>
+        </div>  col-6 closing tag -->
+
+  <!-- calendar -->
