@@ -23,3 +23,8 @@
 @import "pages/order_sucess";
 @import "components/venues_show";
 @import "components/week_calendar";
+
+
+body::-webkit-scrollbar {
+  display: none;
+}
