@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_26_144539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_carts_on_user_id"
+    t.index ["user_id"], name: "inde  x_carts_on_user_id"
   end
 
   create_table "chatrooms", force: :cascade do |t|
