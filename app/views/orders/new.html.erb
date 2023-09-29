@@ -1,4 +1,3 @@
-
 <div class="locations-index-banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.oficea.com/wp-content/uploads/2023/01/gardens3.jpg);">
   <h1><strong>Payment</strong></h1>
 </div>
@@ -26,7 +25,7 @@
               <h2><%= venue.name %></h2>
               <p><%= venue.description %></p>
             </div>
-            <h2 class="trip-price"> Rs <%= booking.total %> </h2>
+            <h4 class="trip-price"> Rs <%= booking.total %> </h4>
           </div>
         </div>
       <% end %>
@@ -40,28 +39,38 @@
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
-
         <%= f.input :card_type,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector'},
-            collection: Order::CART_TYPE %>2
+            collection: Order::CART_TYPE %>
 
         <%= f.input :card_number, placeholder: 'XXXX XXXX XXXX XXXX' %>
-        <%= f.input :cvc %>
-        <%= f.input :exp_date, as: :string, input_html: { data: { payment_target: "expiryDate" , date_format: "m/y"} }%>
-        <%= f.input :order_confirmation_email %>
-        <%= f.input :phone_number %>
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :cvc, placeholder: '3 digit in the back of your card' %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :exp_date, as: :string, input_html: { data: { payment_target: "expiryDate" , date_format: "m/y" } }%>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.input :order_confirmation_email %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :phone_number %>
+          </div>
+        </div>
       </div>
 
-      <div class="form-actions">
-          <%= f.submit "Confirm payment", class: "btn btn-primary" %>
+      <div class="d-flex justify-content-center">
+        <%= f.submit "Confirm payment", class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
-
-
-
 </div>
