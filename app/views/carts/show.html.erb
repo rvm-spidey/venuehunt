@@ -4,7 +4,7 @@
       <h1><strong>Your Cart</strong></h1>
     </div>
     <div class="number-carts-banner-count">
-      <h2><strong> Number of Venues in Cart: <%= @cart.venues.count %></strong></h2>
+      <!-- <h2><strong> Number of Venues in Cart: <%= @cart.venues.count %></strong></h2> -->
     </div>
   </div>
 </div>
@@ -12,7 +12,7 @@
 <!-- <h1>Cart ID --> <% @cart.id %><!-- </h1> -->
 <div class="part-after-banner">
   <div class="items-header-cart">
-    <h2>Booked Venues in Cart: </h2><!-- <%= @cart.venues.count %></h2>-->
+    <h2><%= @cart.venues.count %> Venues in Cart</strong></h2><!-- <%= @cart.venues.count %></h2>-->
   </div>
   <div class="container">
     <div class="row gy-5 d-flex cart-list-parent">
@@ -20,12 +20,12 @@
         <div class="cart-container-new-version">
           <table>
             <tr>
-              <th></th>
+              <th class="table-header-first text-center"></th>
               <th class="text-center">Venue Booked</th>
-              <th>Date From</th>
-              <th>Date To</th>
-              <th>Total Price</th>
-              <th></th>
+              <th class="text-center">Date From</th>
+              <th class="text-center">Date To</th>
+              <th class="text-center">Subtotal Price</th>
+              <th class="table-header-last text-center"></th>
             </tr>
             <% @cart.bookings.each do |booking| %>
             <tr>
@@ -34,18 +34,18 @@
                   <div class="photo-container">
                     <%if booking.venue.photos.attached? %>
                       <% booking.venue.photos.each_with_index do |photo| %>
-                        <div class= "image_tag_cart"><%= cl_image_tag photo.key, height: 200, width: 150 %></div>
+                        <div class= "image_tag_cart"><%= cl_image_tag photo.key, height: 200, width: 200 %></div>
                       <% end %>
                     <% end %>
                   </div>
                 </div>
               </td>
-              <td><%= booking.venue.name %></td>
-              <td>13.11.2023</td>
-              <td>12.11.2023</td>
-              <td>Rs 10,000</td>
-              <td>
-                  <strong><%= link_to "Delete Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
+              <td class="text-center"><strong><%= booking.venue.name %></strong></td>
+              <td class="text-center"><strong><%= booking.date_from %></strong></td>
+              <td class="text-center"><strong><%= booking.date_to %></strong></td>
+              <td class="text-center"><strong>Rs <%= booking.total_price %></strong></td>
+              <td class="delete-button text-center">
+                <a><strong><%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
               </td>
             </tr>
             <% end %>
