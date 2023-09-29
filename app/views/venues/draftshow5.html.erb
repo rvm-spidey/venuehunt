@@ -1,3 +1,95 @@
+2909
+
+ <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
+  <h1 class="header-banner">Chatroom</h1>
+</div>
+
+
+     <div class="container chat-messages-container">
+     <div class="row gy-5 d-flex">
+          <div class="col-4 col-md-4 col-lg-5">
+
+      <div class="messages-container">
+        <p class="d-none"> current_user <%= current_user.id %></p>
+        <h2 class="msg-title">My messages</h2>
+        <ul>
+          <% @latest_messages.each do |msg| %>
+            <li>
+              <div  data-controller="new-msg-notif" class="msg-notif-bubble"
+                    data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
+                    data-new-msg-notif-updatenewmsg-value="<%= true %>">
+                <% @chatroom = Chatroom.find(msg.chatroom_id) %>
+                <p><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id)  %></p>
+                <p><%= User.find(@chatroom.admin_id).email %></p>
+                <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>">
+                  <p><%= Message.where(chatroom_id: @chatroom.id).last.content %></p>
+                  <p><%#= Message.find(msg.latest_message_id).content %></p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div >
+        <% if current_user.admin? %>
+            <h1>My chatroom as admin</h1>
+          <% if @chatrooms.any? %>
+          <ul>
+            <% @chatrooms.each do |cr| %>
+            <li>
+              <%= link_to cr.name, chatroom_path(cr.id)  %>
+            </li>
+            <% end %>
+          </ul>
+          <% else %>
+            <p>No rooms</p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-8 col-md-6 col-lg-7">
+      <div class="container chatroom container-chatroom overlay"
+        data-controller="chatroom-subscription"
+        data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+        data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
+      >
+        <h1>#<%= @chatroom.name %></h1>
+
+        <div class="messages" data-chatroom-subscription-target="messages">
+          <% @chatroom.messages.each do |message| %>
+            <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+              <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                <%= render "messages/message", message: message %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+
+          <%= simple_form_for [@chatroom, @message],
+            html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex " } do |f|
+          %>
+            <%= f.input :content,
+              class: "chatroom-field",
+              label: false,
+              placeholder: "Message ##{@chatroom.name}",
+              wrapper_html: {class: "flex-grow-1"}
+            %>
+            <%= f.submit "Send", class: "btn btn-primary btn-cht mb-3 ms-2" %>
+          <% end %>
+
+      </div>
+    </div>
+      </div>
+    </div>
+
+
+------
 <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/tsfsd.jpg);">
     <h1 class="header-banner">Venue detail</h1>
     <div class="venues-index-bar1"></div>
