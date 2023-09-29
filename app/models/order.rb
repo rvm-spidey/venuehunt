@@ -1,14 +1,12 @@
 class Order < ApplicationRecord
 
-  CART_TYPE = [
-    { name: "Visa", photo: "office.png" },
-    { name: "Debit", photo: "office.png" },
-    { name: "Credit", photo: "office.png" }
-  ]
+  CART_TYPE = ["Visa","Paypal","Mastercard","Maestro"]
 
-
-  validates :card_number, presence: true
-  validates :cvc, presence: true, length: { maximum: 3 }
+  validates :card_type, presence: true
+  validates :card_number, presence: true, numericality: { only_integer: true }, length: { is: 16 }
+  validates :cvc, presence: true, numericality: { only_integer: true }, length: { is: 3 }
   validates :order_confirmation_email, presence: true, format: { with: /\A.*@.*\.com\z/ }
-  validates :phone_number, presence: true, length: { maximum: 8 }
+  validates :phone_number, presence: true, numericality: { only_integer: true }, length: { is: 8 }
+  validates :exp_date, presence: true
+
 end

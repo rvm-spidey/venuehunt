@@ -10,7 +10,7 @@
 .container-payment-details,
 .container-payment-form {
   width: 40%;
-  height: 50%;
+  height: 65%;
   padding: 20px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
@@ -54,7 +54,7 @@
 
 .category-wrapper {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -75,41 +75,93 @@
   font-size: 12px;
   text-align: left;
   padding: 10px;
-  border: 1px solid #EAEAEA;
+  // border: 1px solid #3d3d3d;
   border-radius: 4px;
-  background-color: white;
+  // background-color: white;
 }
 
-.category-selector:checked + label {
-  color: rgb(230, 255, 4) !important;
-}
-
-
-#order_card_type_ruby + label {
-  color: #FD1015;
-}
-
-#order_card_type_ruby:checked + label {
-  background-color: #FD1015;
-  border-color: #FD1015;
+.category-selector:checked {
+  color: rgb(251, 251, 247) !important;
 }
 
 
-#order_card_type_javascript + label {
-  color: #FFC65A;
+#order_card_type_visa + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('visa_icon.png');
+  background-size: contain;
+  height: 80px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
 
-#order_card_type_javascript:checked + label {
-  background-color: #FFC65A;
-  border-color: #FFC65A;
+
+#order_card_type_visa:checked + label {
+  opacity: 1;
+}
+
+#order_card_type_maestro + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('maestro_icon.png');
+  background-size: contain;
+  height: 80px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 0;
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
 
 
-#order_card_type_css + label {
-  color: #62DDF5;
+#order_card_type_maestro:checked + label {
+  opacity: 1;
 }
 
-#order_card_type_css:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
+#order_card_type_mastercard + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('mastercard_icon.png');
+  background-size: contain;
+  height: 80px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+
+#order_card_type_mastercard:checked + label {
+  opacity: 1;
+}
+
+
+#order_card_type_paypal + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('paypal_icon.png');
+  background-size: contain;
+  height: 80px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-size: 0;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+
+#order_card_type_paypal:checked + label {
+  opacity: 1;
 }

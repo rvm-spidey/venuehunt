@@ -32,32 +32,29 @@
 
   <div class="container-payment-form">
     <h1>Pay with card</h1>
-    <%= simple_form_for [@cart,@order] do |f| %>
+    <%= simple_form_for [@cart,@order] , data: { controller: 'payment'} do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
       <div class="form-inputs">
 
-      <%= f.input :card_type, as: :radio_buttons, collection: Order::CART_TYPE, item_wrapper_class: 'category-item' do |card_type| %>
-        <%= card_type.to_json %>
-      <% end %>
+        <%= f.input :card_type,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Order::CART_TYPE %>2
 
-
-      <%= f.input :card_type, as: :radio_buttons, collection: Order::CART_TYPE, item_wrapper_class: 'category-item' %>
-
-
-
-
-  <%#= image_tag category[:photo], alt: category[:name], height: 30, width: 30 %>
-
-        <%= f.input :card_number %>
+        <%= f.input :card_number, placeholder: 'XXXX XXXX XXXX XXXX' %>
         <%= f.input :cvc %>
+        <%= f.input :exp_date, as: :string, input_html: { data: { payment_target: "expiryDate" , date_format: "m/y"} }%>
         <%= f.input :order_confirmation_email %>
         <%= f.input :phone_number %>
       </div>
 
       <div class="form-actions">
-          <%= f.submit "I paid", class: "btn btn-primary" %>
+          <%= f.submit "Confirm payment", class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>
