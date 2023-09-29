@@ -12,19 +12,20 @@
 <!-- <h1>Cart ID --> <% @cart.id %><!-- </h1> -->
 <div class="part-after-banner">
   <div class="items-header-cart">
-    <h2><%= @cart.venues.count %> Venues in Cart</strong></h2><!-- <%= @cart.venues.count %></h2>-->
+    <h2><%= @cart.venues.count %> Venues in Cart <i class="fa-solid fa-cart-shopping fa-2xl(100% increase)" style="font-size: 30px; color: #13293D;"></i></strong></h2><!-- <%= @cart.venues.count %></h2>-->
   </div>
   <div class="container">
-    <div class="row gy-5 d-flex cart-list-parent">
-      <div class="col-12 col-lg-8 cart-list-child">
+    <div class="row d-flex cart-list-parent">
+      <div class="col-12 col-md-9 cart-list-child">
         <div class="cart-container-new-version">
           <table>
             <tr>
               <th class="table-header-first text-center"></th>
-              <th class="text-center">Venue Booked</th>
+              <th class="text-center">Venue</th>
+              <th class="text-center">Event</th>
               <th class="text-center">Date From</th>
               <th class="text-center">Date To</th>
-              <th class="text-center">Subtotal Price</th>
+              <th class="text-center">Price</th>
               <th class="table-header-last text-center"></th>
             </tr>
             <% @cart.bookings.each do |booking| %>
@@ -34,12 +35,13 @@
                   <div class="photo-container">
                     <%if booking.venue.photos.attached? %>
                       <% booking.venue.photos.each_with_index do |photo| %>
-                        <div class= "image_tag_cart"><%= cl_image_tag photo.key, height: 200, width: 200 %></div>
+                        <div class= "cl_image_tag"><%= cl_image_tag photo.key, height: 180, width: 200 %></div>
                       <% end %>
                     <% end %>
                   </div>
                 </div>
               </td>
+              <td class="text-center"><strong><%= booking.event_name %></strong></td>
               <td class="text-center"><strong><%= booking.venue.name %></strong></td>
               <td class="text-center"><strong><%= booking.date_from %></strong></td>
               <td class="text-center"><strong><%= booking.date_to %></strong></td>
@@ -52,12 +54,12 @@
           </table>
         </div>
       </div>
-      <div class="col-12 col-lg-4 cart-checkout">
+      <div class="col-12 col-md-3 cart-checkout">
         <h3>Cart Summary</h3>
         <hr>
-        <h3>Subtotal: Rs <%= @cart.sub_total %></h3>
+        <h4>Subtotal: Rs <%= @cart.sub_total %></h4>
         <p>15% For Venue Hunt</p>
-        <h3>Total: Rs <%=  @cart.total %></h3>
+        <h4>Total: Rs <%=  @cart.total %></h4>
         <div class="cart-checkout-buttons">
           <div class="cart-checkout-button1">
             <a> <strong><%= link_to "Add another venue to cart", venues_path%></strong>
