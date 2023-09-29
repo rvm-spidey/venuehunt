@@ -6,8 +6,8 @@
 // To style the message itself
 .sender-style, .receiver-style {
   width:55%;
-  max-width: 400px;
-  border-radius: 2px;
+  max-width: 350px;
+  border-radius: 12px;
   padding: 8px;
   min-height: 80px;
 }
@@ -22,6 +22,9 @@
 
 
 .chatroom-field {
-  border-radius:10px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 5px;
+  margin-bottom: 7px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
-

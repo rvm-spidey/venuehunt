@@ -1,40 +1,26 @@
-<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
+ <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
   <h1 class="header-banner">Chatroom</h1>
 </div>
 
-<section style="background-color: #eee;">
-  <div class="container py-5">
+<%# <section style="background-color: #eee;">
+  <div class="container py-5"> %>
 
-    <div class="row">
-
+     <div class="container chat-messages-container">
+     <div class="row gy-5 d-flex">
       <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
-        <h4 class="font-weight-bold mb-3 text-center text-lg-start">Member</h4>
-
-        <div class="card">
-          <div class="card-body">
-
+      <div class="messages-container">
         <p class="d-none"> current_user <%= current_user.id %></p>
-        <%# <h2 class="msg-title">My messages</h2> %>
-
+        <h2 class="font-weight-bold mb-3 text-center text-lg-start">My messages</h2>
+        <ul class="list-unstyled mb-0">
           <% @latest_messages.each do |msg| %>
-
-          <ul class="list-unstyled mb-0">
             <li class="p-2 border-bottom" style="background-color: #eee;">
-
               <div  data-controller="new-msg-notif" class="msg-notif-bubble"
                     data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
                     data-new-msg-notif-updatenewmsg-value="<%= true %>">
-
-              <a href="#!" class="d-flex justify-content-between">
-                  <div class="d-flex flex-row">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
-                      class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                    <div class="pt-1">
-
                 <% @chatroom = Chatroom.find(msg.chatroom_id) %>
                 <p class="fw-bold mb-0"><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id)  %></p>
-                <p class="small text-muted"><%= User.find(@chatroom.admin_id).email %></p>
+                <p><%= User.find(@chatroom.admin_id).email %></p>
                 <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>">
                   <p class="small text-muted"><%= Message.where(chatroom_id: @chatroom.id).last.content %></p>
                   <p><%#= Message.find(msg.latest_message_id).content %></p>
@@ -43,16 +29,16 @@
             </li>
           <% end %>
         </ul>
+      </div>
 
-
-
+      <div >
         <% if current_user.admin? %>
-            <h1>My chatroom as admin</h1>
+            <h2>My chatroom as admin</h2>
           <% if @chatrooms.any? %>
-          <ul>
+          <ul class="list-unstyled mb-0">
             <% @chatrooms.each do |cr| %>
-            <li>
-              <%= link_to cr.name, chatroom_path(cr.id)  %>
+            <li class="p-2 border-bottom" style="background-color: #eee;">
+              <p class="fw-bold mb-0"><%= link_to cr.name, chatroom_path(cr.id)  %></p>
             </li>
             <% end %>
           </ul>
@@ -60,12 +46,13 @@
             <p>No rooms</p>
           <% end %>
         <% end %>
+      </div>
+    </div>
 
 
 
 
-
-
+    <div class="col-8 col-md-6 col-lg-7">
       <div class="container chatroom container-chatroom overlay"
         data-controller="chatroom-subscription"
         data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
@@ -95,3 +82,10 @@
             %>
             <%= f.submit "Send", class: "btn btn-primary btn-cht mb-3 ms-2" %>
           <% end %>
+
+      </div>
+    </div>
+      </div>
+    <%# </div> %>
+     </div>
+</section>
