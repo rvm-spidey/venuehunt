@@ -1,22 +1,64 @@
-<h1>Payment</h1>
 
-<%= simple_form_for [@cart,@order] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="locations-index-banner text-center" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://www.oficea.com/wp-content/uploads/2023/01/gardens3.jpg);">
+  <h1><strong>Payment</strong></h1>
+</div>
 
+<div class="container-payment">
 
-  <div class="form-inputs">
-    <%= f.input :card_number %>
-    <%= f.input :cvc %>
-    <%= f.input :phone_number %>
-    <%= f.input :order_confirmation_email %>
+  <div class="container-payment-details">
+    <h1>Order summary</h1>
+    <h3>Billed today (Rs):</h3>
+    <h2> <%= @cart.total %> </h2>
+
+    <h1>Booking details</h1>
+
+      <% @cart.bookings.each do |booking| %>
+        <% venue = booking.venue %>
+
+        <div class="card-trip">
+          <div class = "trip-image">
+            <%if venue.photos.attached? %>
+              <%= cl_image_tag venue.photos.first.key, height: 75, width: 75, crop: :fill%>
+            <% end %>
+          </div>
+          <div class="trip-desc">
+            <div>
+              <h2><%= venue.name %></h2>
+              <p><%= venue.description %></p>
+            </div>
+            <h2 class="trip-price"> Rs <%= booking.total %> </h2>
+          </div>
+        </div>
+      <% end %>
   </div>
 
-  <div class="form-actions">
-      <%= f.submit "I paid", class: "btn btn-primary" %>
+
+  <div class="container-payment-form">
+    <h1>Pay with card</h1>
+    <%= simple_form_for [@cart,@order] , data: { controller: 'payment'} do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+      <div class="form-inputs">
+
+        <%= f.input :card_type,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: Order::CART_TYPE %>2
+
+        <%= f.input :card_number, placeholder: 'XXXX XXXX XXXX XXXX' %>
+        <%= f.input :cvc %>
+        <%= f.input :exp_date, as: :string, input_html: { data: { payment_target: "expiryDate" , date_format: "m/y"} }%>
+        <%= f.input :order_confirmation_email %>
+        <%= f.input :phone_number %>
+      </div>
+
+      <div class="form-actions">
+          <%= f.submit "Confirm payment", class: "btn btn-primary" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
-
-
-
-
+</div>

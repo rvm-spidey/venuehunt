@@ -44,14 +44,14 @@
 .count-container {
   background-color: $dark-blue;
   width: 450px;
-  height: 50px;
+  height: 40px;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
   padding: 5px;
 
-  h2 {
+  h3 {
     text-align: center;
     font-weight: 780;
     color: $white;
@@ -79,7 +79,7 @@
 
 .header-search-venues {
   // margin-left: 12px;
-  color: $white;
+  color: $dark-blue;
   font-family: Helvetica, sans-serif;
   font-weight: 780;
 }
@@ -92,7 +92,7 @@
 }
 
 .select-venue-types-container {
-  color:$white;
+  color:$dark-blue;
   font-size: 18px;
 }
 
@@ -107,9 +107,9 @@
 
 .button-apply-filters {
   margin-left: 5px;
-  background-color: $light-blue;
+  background-color: $dark-blue;
   border-radius: 5px;
-  color: $dark-blue;
+  color: $white;
   font-family: Helvetica, sans-serif;
   font-weight: 780;
   padding: 8px;
@@ -122,21 +122,21 @@
 }
 
 .filter-child-container {
-  background-color: $dark-blue;
+  background-color: $light-blue;
   width: 95%;
   // max-height: 350px;
   border-radius: 8px;
   // margin:auto;
   padding: 20px;
-//   box-shadow: 4px 4px 25px 4px rgba(185, 185, 185, 0.384);
+  box-shadow: 4px 4px 25px 4px rgba(185, 185, 185, 0.384);
 //
 }
 
 .venues-locations-checkbox-container {
   // background-color: aqua;
   width: auto;
-  color: $white;
-  font-size: 21px;
+  color: $dark-blue;
+  font-size: 18px;
 }
 
 .checkboxes-only {
