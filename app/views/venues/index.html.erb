@@ -58,6 +58,7 @@
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card shadow">
         <div class="card-img">
+
             <%if venue.photos.attached? %>
               <% venue.photos.each_with_index do |photo| %>
                   <div class= "image_tag"><%= cl_image_tag photo.key, height: 270, width: 450 %></div>

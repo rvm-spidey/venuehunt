@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   def home
     @content = ""
     @tags = []
+    @venues = Venue.where(show_on_homepage: true)
   end
 
   def index
