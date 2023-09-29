@@ -5,15 +5,15 @@
 <div class="container-payment">
 
   <div class="container-payment-details">
-    <h1>Order summary</h1>
-    <h3>Billed today (Rs):</h3>
-    <h2> <%= @cart.total %> </h2>
 
-    <h1>Booking details</h1>
+    <p class="page-header">Order summary</h1>
+    <p class="page-subheader">Billed today (Rs): <span> <strong> <%= @cart.total %> </strong> </span> </h1>
 
+    <hr>
+
+     <p class="page-header" style="margin-top:40px">Booking details</h1>
       <% @cart.bookings.each do |booking| %>
         <% venue = booking.venue %>
-
         <div class="card-trip">
           <div class = "trip-image">
             <%if venue.photos.attached? %>
@@ -22,8 +22,8 @@
           </div>
           <div class="trip-desc">
             <div>
-              <h2><%= venue.name %></h2>
-              <p><%= venue.description %></p>
+              <p class= "card-info-title"><%= venue.name %></h2>
+              <p class= ".card-info-paragraph"><%= venue.description %></p>
             </div>
             <h4 class="trip-price"> Rs <%= booking.total %> </h4>
           </div>
@@ -33,8 +33,8 @@
 
 
   <div class="container-payment-form">
-    <h1>Pay with card</h1>
-    <%= simple_form_for [@cart,@order] , data: { controller: 'payment'} do |f| %>
+    <p class="page-header">Pay with card</h1>
+    <%= simple_form_for [@cart,@order] do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -54,7 +54,7 @@
             <%= f.input :cvc, placeholder: '3 digit in the back of your card' %>
           </div>
           <div class="col-md-6">
-            <%= f.input :exp_date, as: :string, input_html: { data: { payment_target: "expiryDate" , date_format: "m/y" } }%>
+            <%= f.input :exp_date, as: :date, discard_day: true %>
           </div>
         </div>
 
