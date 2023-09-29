@@ -16,8 +16,8 @@
           <th scope="col">Participants</th>
           <th scope="col">Food</th>
           <th scope="col">Beverage</th>
-          <th scope="col">Date from</th>
-          <th scope="col">Date to</th>
+          <th scope="col">Date</th>
+          <%# <th scope="col">Date to</th> %>
           <%# <th scope="col">Other services</th> %>
           <th scope="col">Total amount</th>
           <th scope="col">Write a review for</th>
@@ -44,8 +44,9 @@
           <td><p><%= booking.number_of_participants %></p></td>
           <td><p><%= booking.food %></p></td>
           <td><p><%= booking.beverage %></p></td>
-          <td scope="row"><%= booking.date_from %></p></td>
-          <td><p><%= booking.date_to %></p></td>
+          <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
+          <!--<td scope="row"><%= booking.date_from %></p></td>
+          <td><p><%= booking.date_to %></p></td>-->
          <!-- <td><p><%= booking.other_services_offered %></p></td>-->
           <td><p class="btn btn-primary" style="width: 140px; height: 40px;">Rs <%= booking.total %></p></td>
           <td><p class="btn btn-flat review-link"><%= link_to venue.name, new_venue_review_path(venue) %></p></td>
