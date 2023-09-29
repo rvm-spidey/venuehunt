@@ -2,3 +2,29 @@
   margin-top:15px;
   margin-bottom: 10px;
 }
+
+#booking-title {
+  font-family:Arial, Helvetica, sans-serif;
+  color:$dark-blue;
+  font-weight:500;
+}
+
+// .booking-header {
+//   background-color:#F1EFEF;
+// }
+
+.review-link a {
+  text-decoration: none;
+  // background-color: $blue-moonstone;
+  color:white;
+
+}
+
+.btn-primary-review {
+  background-color: $blue-moonstone;
+}
+
+.booking-card {
+  margin-bottom: 30px;
+}
+
