@@ -9,6 +9,9 @@
 
     <%= f.input :description %>
 
+    <%= f.input :show_on_homepage, as: :boolean %>
+
+
     <%= f.input :venuetype_id, collection: Venuetype.all, label_method: :name, value_method: :id,label: "Type", include_blank: true %>
 
     <%= f.association :location, label_method: :address, as: :select %>

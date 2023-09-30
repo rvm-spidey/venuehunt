@@ -5,15 +5,19 @@
     background-color: white;
   }
   .today {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
   }
 }
 
 .meeting {
-  color: white;
-  padding: 8px 8px;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  color: light-gray-alice-blue;
+  padding: 3px 3px;
   border-radius: 4px;
-  background: $blue-moonstone;
+  $light-gray: #F4F4F4;
+  // background: $light-gray-alice-blue;
   transition: background 0.3s ease;
 }
 
