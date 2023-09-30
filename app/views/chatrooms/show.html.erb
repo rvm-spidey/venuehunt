@@ -1,10 +1,16 @@
- <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
+ <%# <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
   <h1 class="header-banner">Chatroom</h1>
-</div>
+</div> %>
 
 <%# <section style="background-color: #eee;">
   <div class="container py-5"> %>
-
+<div
+  class="bg-image"
+  style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://wallpaperaccess.com/full/1092563.jpg);
+    height: 100vh;
+    width: 100vw;
+  "
+>
      <div class="container chat-messages-container">
      <div class="row gy-5 d-flex">
       <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
@@ -14,12 +20,12 @@
         <h2 class="font-weight-bold mb-3 text-center text-lg-start">My messages</h2>
         <ul class="list-unstyled mb-0">
           <% @latest_messages.each do |msg| %>
-            <li class="p-2 border-bottom" style="background-color: #eee;">
+            <li class="border-bottom" style="background-color: #eee;">
               <div  data-controller="new-msg-notif" class="msg-notif-bubble"
                     data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
                     data-new-msg-notif-updatenewmsg-value="<%= true %>">
                 <% @chatroom = Chatroom.find(msg.chatroom_id) %>
-                <p class="fw-bold mb-0"><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id)  %></p>
+                <p class="fw-bold mb-0"><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id), class: "chatroom-name";  %></p>
                 <p><%= User.find(@chatroom.admin_id).email %></p>
                 <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>">
                   <p class="small text-muted"><%= Message.where(chatroom_id: @chatroom.id).last.content %></p>
@@ -37,7 +43,7 @@
           <% if @chatrooms.any? %>
           <ul class="list-unstyled mb-0">
             <% @chatrooms.each do |cr| %>
-            <li class="p-2 border-bottom" style="background-color: #eee;">
+            <li class="border-bottom" style="background-color: #eee;">
               <p class="fw-bold mb-0"><%= link_to cr.name, chatroom_path(cr.id)  %></p>
             </li>
             <% end %>
@@ -88,4 +94,5 @@
       </div>
     <%# </div> %>
      </div>
-</section>
+     </div>
+<%# </section> %>

@@ -71,3 +71,26 @@
 .desc-container2 {
   margin-left:70px;
 }
+
+.booking-container {
+  // border:1px solid #eee;
+  border-radius:15px;
+  background-color:rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  min-height: 675px;
+}
+
+.booking-container h3 {
+  padding-bottom: 10px;
+  /* border: 1px solid red; */
+  background-color: #229EB2;
+  width: 104%;
+  padding-top: 10px;
+  margin-left: -11px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  padding-left: 6px;
+  color:white;
+  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.1);
+}
