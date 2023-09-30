@@ -42,21 +42,33 @@
 }
 
 .count-container {
-  background-color: $dark-blue;
+  // background-color: $blue-moonstone;
   width: 450px;
-  height: 40px;
+  height: 45px;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 5px;
+  border-radius: 3px;
+  border-style: solid;
+  border-color: $dark-blue;
+  border-width: 2px;
 
   h3 {
     text-align: center;
+    padding-top: auto;
+    padding-bottom: auto;
     font-weight: 780;
-    color: $white;
+    color: $dark-blue;
     font-family: Helvetica, sans-serif;
   }
+}
+
+.background-venues-index {
+  background-color: $white;
+  padding-top:30px;
+  padding-bottom:40px;
 }
 
 .search-venues-container {

@@ -18,6 +18,7 @@
     border-radius: 3px;
     border-style: solid;
     border-color: $dark-blue;
+    border-width: 2px;
   }
 }
 
@@ -26,7 +27,7 @@
   padding-bottom:20px;
 }
 
-#booking-title {
+#booking-title-order-success {
 
   font-family: Helvetica, sans-serif;
   color: $white;
