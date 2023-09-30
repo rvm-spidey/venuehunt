@@ -6,7 +6,7 @@
   <div class="container py-5"> %>
 <div
   class="bg-image"
-  style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://wallpaperaccess.com/full/1092563.jpg);
+  style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://wallpaperaccess.com/full/3637345.jpg);
     height: 100vh;
     width: 100vw;
   "
@@ -26,9 +26,9 @@
                     data-new-msg-notif-updatenewmsg-value="<%= true %>">
                 <% @chatroom = Chatroom.find(msg.chatroom_id) %>
                 <p class="fw-bold mb-0"><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id), class: "chatroom-name";  %></p>
-                <p><%= User.find(@chatroom.admin_id).email %></p>
+                <p class="email-p"><%= User.find(@chatroom.admin_id).email %></p>
                 <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>">
-                  <p class="small text-muted"><%= Message.where(chatroom_id: @chatroom.id).last.content %></p>
+                  <p class="text-muted"><%= Message.where(chatroom_id: @chatroom.id).last.content %></p>
                   <p><%#= Message.find(msg.latest_message_id).content %></p>
                 </div>
               </div>
