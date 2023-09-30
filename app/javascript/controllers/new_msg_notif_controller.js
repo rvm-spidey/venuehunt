@@ -16,8 +16,10 @@ export default class extends Controller {
       { received: data =>  {
         this.messagesTarget.innerHTML = `<strong> ${data.msgcontent} </strong>`
         console.log("updatenewmsg", this.updatenewmsgValue);
+        console.log("data.sender_id ", data.sender_id, " currentUserIdValue",this.currentUserIdValue );
+        console.log("data.sender_id != this.currentUserIdValue ", data.sender_id != this.currentUserIdValue );
 
-        if (data.sender_id != this.currentUserIdValue) {
+        if (data.sender_id !== this.currentUserIdValue) {
             notif.classList.add("notification");
         }
         }

@@ -1,98 +1,89 @@
- <%# <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
-  <h1 class="header-banner">Chatroom</h1>
-</div> %>
-
+<%# <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
+   <h1 class="header-banner">Chatroom</h1>
+   </div> %>
 <%# <section style="background-color: #eee;">
-  <div class="container py-5"> %>
+   <div class="container py-5"> %>
 <div
-  class="bg-image"
-  style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://wallpaperaccess.com/full/3637345.jpg);
-    height: 100vh;
-    width: 100vw;
-  "
->
-     <div class="container chat-messages-container">
-     <div class="row gy-5 d-flex">
-      <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
+   class="bg-image"
+   style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://wallpaperaccess.com/full/3637345.jpg);
+   height: 100vh;
+   width: 100vw;
+   "
+   >
+   <div class="container chat-messages-container">
+      <div class="row gy-5 d-flex">
+         <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
-      <div class="messages-container">
-        <p class="d-none"> current_user <%= current_user.id %></p>
-        <h2 class="font-weight-bold mb-3 text-center text-lg-start">My messages</h2>
-        <ul class="list-unstyled mb-0">
-          <% @latest_messages.each do |msg| %>
-            <li class="border-bottom" style="background-color: #eee;">
-              <div  data-controller="new-msg-notif" class="msg-notif-bubble"
-                    data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
-                    data-new-msg-notif-updatenewmsg-value="<%= true %>">
-                <% @chatroom = Chatroom.find(msg.chatroom_id) %>
-                <p class="fw-bold mb-0"><%= link_to @chatroom.name, chatroom_path(msg.chatroom_id), class: "chatroom-name";  %></p>
-                <p class="email-p"><%= User.find(@chatroom.admin_id).email %></p>
-                <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>">
-                  <p class="text-muted"><%= Message.where(chatroom_id: @chatroom.id).last.content %></p>
-                  <p><%#= Message.find(msg.latest_message_id).content %></p>
+              <div class="messages-container">
+                <p class="d-none"> current_user <%= current_user.id %></p>
+                <h2 class="font-weight-bold mb-3 text-center text-lg-start">My messages</h2>
+                <ul class="list-unstyled mb-0 messages-list">
+                    <% @latest_messages.each do |msg| %>
+                    <li class="border-bottom" style="background-color: #eee;">
+                      <div  data-controller="new-msg-notif" class="msg-notif-bubble"
+                          data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
+                          data-new-msg-notif-current-user-id-value="<%= current_user.id %>"
+                          data-new-msg-notif-updatenewmsg-value="<%= true %>">
+
+                          <% @chatroom_new = Chatroom.find(msg.chatroom_id) %>
+                          <p class="fw-bold mb-0"><%= link_to @chatroom_new.name, chatroom_path(msg.chatroom_id), class: "chatroom-name";  %></p>
+                          <p class="email-p"><%= User.find(@chatroom_new.admin_id).email %></p>
+                          <div  data-new-msg-notif-target="messages"="<%= @chatroom_new.id %>">
+                            <p class="text-muted"><%= Message.where(chatroom_id: @chatroom_new.id).last.content %></p>
+                          </div>
+                      </div>
+                    </li>
+                    <% end %>
+                  </ul>
                 </div>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-
-      <div >
-        <% if current_user.admin? %>
-            <h2>My chatroom as admin</h2>
-          <% if @chatrooms.any? %>
-          <ul class="list-unstyled mb-0">
-            <% @chatrooms.each do |cr| %>
-            <li class="border-bottom" style="background-color: #eee;">
-              <p class="fw-bold mb-0"><%= link_to cr.name, chatroom_path(cr.id)  %></p>
-            </li>
-            <% end %>
-          </ul>
-          <% else %>
-            <p>No rooms</p>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
-
-
-
-    <div class="col-8 col-md-6 col-lg-7">
-      <div class="container chatroom container-chatroom overlay"
-        data-controller="chatroom-subscription"
-        data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-        data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
-      >
-        <h1>#<%= @chatroom.name %></h1>
-
-        <div class="messages" data-chatroom-subscription-target="messages">
-          <% @chatroom.messages.each do |message| %>
-            <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
-              <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
-                <%= render "messages/message", message: message %>
-              </div>
+              <div >
+               <% if current_user.admin? %>
+               <h2>My chatroom as admin</h2>
+               <% if @chatrooms.any? %>
+               <ul class="list-unstyled mb-0">
+                  <% @chatrooms.each do |cr| %>
+                  <li class="border-bottom" style="background-color: #eee;">
+                     <p class="fw-bold mb-0"><%= link_to cr.name, chatroom_path(cr.id)  %></p>
+                  </li>
+                  <% end %>
+               </ul>
+               <% else %>
+               <p>No rooms</p>
+               <% end %>
+               <% end %>
             </div>
-          <% end %>
-        </div>
-
-
-          <%= simple_form_for [@chatroom, @message],
-            html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex " } do |f|
-          %>
-            <%= f.input :content,
-              class: "chatroom-field",
-              label: false,
-              placeholder: "Message ##{@chatroom.name}",
-              wrapper_html: {class: "flex-grow-1"}
-            %>
-            <%= f.submit "Send", class: "btn btn-primary btn-cht mb-3 ms-2" %>
-          <% end %>
-
+         </div>
+         <div class="col-8 col-md-6 col-lg-7">
+            <div class="container chatroom container-chatroom overlay"
+               data-controller="chatroom-subscription"
+               data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+               data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
+               >
+               <h1>#<%= @chatroom.name %></h1>
+               <div class="messages" data-chatroom-subscription-target="messages">
+                  <% @chatroom.messages.each do |message| %>
+                  <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+                     <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+                        <%= render "messages/message", message: message %>
+                     </div>
+                  </div>
+                  <% end %>
+               </div>
+               <%= simple_form_for [@chatroom, @message],
+                  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex " } do |f|
+                  %>
+               <%= f.input :content,
+                  class: "chatroom-field",
+                  label: false,
+                  placeholder: "Message ##{@chatroom.name}",
+                  wrapper_html: {class: "flex-grow-1"}
+                  %>
+               <%= f.submit "Send", class: "btn btn-primary btn-cht mb-3 ms-2" %>
+               <% end %>
+            </div>
+         </div>
       </div>
-    </div>
-      </div>
-    <%# </div> %>
-     </div>
-     </div>
+      <%# </div> %>
+   </div>
+</div>
 <%# </section> %>
