@@ -1,35 +1,55 @@
-<div class="background-parent-container-order">
-  <div class="child-container-page-order-sucess">
-    <h1 class="header-order-success"> Number of Orders: <%= @order.id %></h1>
-    <hr class="break-line">
-    <div class="tick-order"></div>
-    <div class="after-tick-order-text">
-      <h2>Thank you for booking with VenueHunt</h2>
-      <h4>Order Reference: <%= @order.id %> </h4>
-      <h4>Ordered on: <%= @order.created_at %> </h4>
+<div class="order-success-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/the-factory-1.jpg);">
+  <div class="order-success-parent">
+    <div class="order-success-header-banner" >
+      <h1><strong>Thank You For Booking With VenueHunt!</strong></h1>
     </div>
-    <%# <hr class="break-line-booking"> %>
-    <div class="booking-details-container">
-      <% @cart = Cart.find(@order.cart_id) %>
-        <h1 class="booking-details-header">Booking details</h1>
-        <hr class="break-line-booking">
-        <%# <div class="booking-card"> %>
-        <% @cart.bookings.each do |booking| %>
-          <h2><%= booking.event_name %></h2>
-          <p>Booking Start Date: <%= booking.date_from %></p>
-          <p>Booking End Date: <%= booking.date_to %></p>
-          <p>Number of Participants: <%= booking.number_of_participants %></p>
-          <p>Food Booked: <%= booking.food %></p>
-          <p>Beverages Booked: <%= booking.beverage %></p>
-          <p>Other Services Booked: <%= booking.other_services_offered %></p>
-          <%# <hr class="break-line-booking"> %>
-          <h4><strong>Total: <%= booking.total %></strong></h4>
-        <%# </div> %>
-        <hr class="break-line-booking">
-      <% end %>
-      <div class="view-orders-button">
-        <a><strong><%= link_to "View my orders", orders_path %></strong>
-      </div>
+    <div class="number-carts-banner-count">
+      <!-- <h2><strong> Number of Venues in Cart: <%= @cart.venues.count %></strong></h2> -->
+    </div>
+  </div>
+</div>
+<div class="background-after-banner">
+  <div class="number-of-orders">
+    <h2>Number of Orders: <%= @cart.venues.count %></strong></h2><!-- <%= @cart.venues.count %></h2>-->
+  </div>
+
+  <div class="card mx-5 booking-card" id="order-sucess-card">
+    <div class="card-header booking-header" id="order-sucess-header-card">
+      <h1 id="booking-title">Booking Details</h1>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col text-center" id="header-table-order">Order Date</th>
+            <th scope="col text-center" id="header-table-order">Order Reference</th>
+            <th scope="col text-center" id="header-table-order">Venue</th>
+            <th scope="col text-center" id="header-table-order">Event</th>
+            <th scope="col text-center" id="header-table-order">Date</th>
+            <%# <th scope="col">Date to</th> %>
+            <%# <th scope="col">Other services</th> %>
+            <th scope="col text-center" id="header-table-order">Total Price</th>
+          </tr>
+        </thead>
+
+          <% @cart.bookings.each do |booking| %>
+
+        <h1 class="booked-venue-name d-none"><%= booking.venue.name %></h1>
+        <tbody>
+          <tr>
+            <td id="value-table-order"><p><%= @order.created_at %></p></td>
+            <td id="value-table-order"><p><%= @order.id  %></p></td>
+            <td id="value-table-order"><p><%= booking.venue.name %></p></td>
+            <td id="value-table-order"><p> <%= booking.event_name %></p></td>
+            <td id="value-table-order"><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
+            <!--<td scope="row"><%= booking.date_from %></p></td>
+            <td><p><%= booking.date_to %></p></td>-->
+            <!-- <td><p><%= booking.other_services_offered %></p></td>-->
+            <td id="value-table-order"><p>Rs <%= booking.total %></p></td>
+          <% end %>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
