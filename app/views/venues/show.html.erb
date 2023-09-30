@@ -25,13 +25,15 @@
 
     <% if bookings.empty? %>
       <div class="meeting">
-        <%= image_tag "available_1", height: 30, width: 30, alt: "Available" %>
+        <%=  image_tag("available_1.png", style: "width: 30px; height: 30px") %>
+        <%#= image_tag "available_1", height: 30, width: 30, alt: "Available" %>
       </div>
     <% end %>
 
       <% bookings.each do |booking| %>
         <div class="meeting">
-          <%= image_tag "not_available", height: 30, width: 30, alt: "Logo" %>
+          <%=  image_tag("not_available.png", style: "width: 30px; height: 30px") %>
+          <%#= image_tag "not_available", height: 30, width: 30, alt: "Logo" %>
         </div>
       <% end %>
     <% end %>
