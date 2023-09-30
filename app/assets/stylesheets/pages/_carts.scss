@@ -109,7 +109,7 @@
 .delete-button {
   // margin-left: 20px;
   // margin-bottom: 15px;
-  background-color: $white;
+  // background-color: $white;
   // margin: auto;
   padding-right: 10px;
   a {
@@ -248,4 +248,16 @@ td {
 
 .cl_image_tag {
   margin-right: 15px;
+}
+
+.cart-table {
+  font-family: Helvetica, sans-serif;
+
+  .even {
+    background-color: aqua;
+  }
+
+  .odd {
+    background-color: rgb(187, 255, 0);
+  }
 }

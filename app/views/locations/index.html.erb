@@ -18,14 +18,16 @@
 <div class="locations-lower-lists-container">
   <div class="locations-filter-child-container">
     <% @locations.each do |location| %>
-      <!--<a href="#section-2">--><h1 class="header-locations-filter"><strong><%= location.name %></strong></h1><!--</a>-->
+      <%= link_to "#location-#{location.id}" do %>
+        <h1 class="header-locations-filter"><strong><%= location.name %></strong></h1>
+      <% end %>
     <% end %>
   </div>
   <div class="specific-location-parent-container">
     <div class="specific-location-child-container">
       <% @locations.each do |location| %>
         <%# <li><%= link_to location.name, edit_location_path(location)</li> %>
-          <!-- <section id="section-2"> --><h1><strong><%= location.name %></strong></h1><!--</section>-->
+          <!-- <section id="section-2"> --><h1 id="location-<%= location.id %>"><strong><%= location.name %></strong></h1><!--</section>-->
         <h4><strong><%= location.outline %></strong></h4>
         <div class="child-locations-paragraph">
           <p><%= location.description %></p>

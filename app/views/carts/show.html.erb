@@ -18,7 +18,7 @@
     <div class="row d-flex cart-list-parent">
       <div class="col-12 col-md-9 cart-list-child">
         <div class="cart-container-new-version">
-          <table>
+          <table class="cart-table">
             <tr>
               <th class="table-header-first text-center"></th>
               <th class="text-center">Event</th>
@@ -27,8 +27,8 @@
               <th class="text-center">Price</th>
               <th class="table-header-last text-center"></th>
             </tr>
-            <% @cart.bookings.each do |booking| %>
-            <tr>
+            <% @cart.bookings.each_with_index do |booking, index| %>
+            <tr class="<%= index.even? ? "even" : "odd" %>">
               <td>
                 <div class="event-info">
                   <div class="photo-container">
