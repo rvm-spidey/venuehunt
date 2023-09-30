@@ -7,13 +7,32 @@
 </div>
 
 
+
+
 <%# <div class="container"> %>
 
 <!-- back arrow -->
+
+
  <p>
     <i class="fa-solid fa-arrow-left mt-3"></i>
     <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %>
   </p>
+
+  <%= simple_form_for(@chatroom) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name,  input_html: { value: "Chatroom #{@venue.name}" } %>
+    <%= f.input :admin_id, input_html: { value: @venue.user_id } %>
+
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Ask a question #{User.find(@venue.user_id).email}" %>
+  </div>
+<% end %>
+
 
 <div class="grid-container">
   <div class="grid-item item-1">
@@ -171,14 +190,18 @@
               <%= f.button :submit, "Confirm booking" %>
             </div>
 
+        <% end %>
+
           <%= simple_form_for(@chatroom) do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-          <div class="form-inputs">
-            <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
-            <%= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
-          </div><!-- form-inputs closing tag -->
+            <div class="form-inputs">
+              <%#= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
+              <%#= f.input :admin_id, as: :hidden, input_html: { value: @venue.user_id } %>
+              <%= f.input :name, input_html: { value: "Chatroom #{@venue.name}" } %>
+              <%= f.input :admin_id, input_html: { value: @venue.user_id } %>
+            </div><!-- form-inputs closing tag -->
 
           <div class="chat-btn d-inline-flex">
             <div class="form-actions">
@@ -186,7 +209,7 @@
             </div><!-- form action closing tag -->
           <% end %>
           </div><!-- chat btn closing tag -->
-          <% end %>
+
         </div><!-- venue id closing tag -->
     </div> <!-- booking-container closing tag -->
   </div> <!-- grid item closing tag -->

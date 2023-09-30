@@ -2,10 +2,10 @@ class CartsController < ApplicationController
   def show
   end
 
-  def destroy
-    @cart.destroy!
-    redirect_to venues_path
-  end
+  # def destroy
+  #   @cart.destroy!
+  #   redirect_to venues_path
+  # end
 
   def destroy
     @cart.destroy
