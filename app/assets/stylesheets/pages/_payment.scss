@@ -9,12 +9,12 @@
 
 .container-payment-details,
 .container-payment-form {
-  width: 40%;
-  height: 70%;
+  width: 45%;
   padding: 20px;
-  top: 0px;
+  // top: 0px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
+  min-height: 70vh;
 }
 
 .container-payment-details h1,
@@ -26,10 +26,13 @@
   width: 100%;
   height: 75px;
   margin: 10px auto;
-  border: 1px solid white;
+  // border: 1px solid white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   display: flex;
   align-items: center;
+  border: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 
@@ -45,17 +48,20 @@
   position: relative;
   padding: 20px;
   flex: 1;
+
 }
 
 .trip-price{
   display: flex;
-  align-items: flex-end;
+  padding-top: 5px;
+  align-items: flex-start;
+  font-size: 14px;
 }
 
 
 .category-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -75,7 +81,7 @@
   width: 100%;
   font-size: 12px;
   text-align: left;
-  padding: 10px;
+  // padding: 10px;
   // border: 1px solid #3d3d3d;
   border-radius: 4px;
   // background-color: white;
@@ -92,8 +98,8 @@
   justify-content: center;
   background-image: url('visa_icon.png');
   background-size: contain;
-  height: 80px;
-  width: 100px;
+  height: 50px;
+  width: 70px;
   background-repeat: no-repeat;
   background-position: center center;
   font-size: 0;
@@ -112,8 +118,8 @@
   justify-content: center;
   background-image: url('maestro_icon.png');
   background-size: contain;
-  height: 80px;
-  width: 100px;
+  height: 50px;
+  width: 70px;
   background-repeat: no-repeat;
   background-position: center center;
   font-size: 0;
@@ -132,8 +138,8 @@
   justify-content: center;
   background-image: url('mastercard_icon.png');
   background-size: contain;
-  height: 80px;
-  width: 100px;
+  height: 50px;
+  width: 70px;
   background-repeat: no-repeat;
   background-position: center center;
   font-size: 0;
@@ -153,8 +159,8 @@
   justify-content: center;
   background-image: url('paypal_icon.png');
   background-size: contain;
-  height: 80px;
-  width: 100px;
+  height: 50px;
+  width: 70px;
   background-repeat: no-repeat;
   background-position: center center;
   font-size: 0;

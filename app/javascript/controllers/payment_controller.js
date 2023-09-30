@@ -10,7 +10,8 @@ export default class extends Controller {
     console.log("payment controller");
 
     flatpickr(this.expiryDateTarget, {
-      enableTime: false
+      enableTime: false,
+      dateFormat: "Y/m",
     })
   }
 }
