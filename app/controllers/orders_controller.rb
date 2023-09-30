@@ -28,6 +28,9 @@ class OrdersController < ApplicationController
     @order.user_id = @current_user.id
     @order.save
 
+    # @cart.destroy
+    session[:cart_id] = nil
+
     if @order.save
       @cart.bookings.each do |booking|
         booking.status = "completed"
