@@ -18,12 +18,21 @@
 <div class="grid-container">
   <div class="grid-item item-1">
     <%=week_calendar(events: @all_bookings, attribute: :date_from, end_attribute: :date_to) do |date, bookings| %>
-    <%= date %>
+    <%= date.strftime('%d-%b') %>
 
-    <% bookings.each do |booking| %>
+      <%# log bookings %>
+      <%#= bookings.empty %>
+
+    <% if bookings.empty? %>
       <div class="meeting">
-        <p><%= booking.event_name %></p>
+        <%= image_tag "available_1", height: 30, width: 30, alt: "Available" %>
       </div>
+    <% end %>
+
+      <% bookings.each do |booking| %>
+        <div class="meeting">
+          <%= image_tag "not_available", height: 30, width: 30, alt: "Logo" %>
+        </div>
       <% end %>
     <% end %>
   </div> <!-- grid-item closing tag -->
@@ -157,7 +166,7 @@
 
           <div class="d-flex flex-row">
             <div class="form-actions btn btn-flat">
-              <%= f.button :submit %>
+              <%= f.button :submit, "Confirm booking" %>
             </div>
 
           <%= simple_form_for(@chatroom) do |f| %>
