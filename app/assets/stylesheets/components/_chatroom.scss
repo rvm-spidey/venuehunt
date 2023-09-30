@@ -68,7 +68,11 @@
   margin-bottom:20px;
   height: 100vh;
   width:100vw;
+}
 
+.messages-list {
+  max-height: 380px;
+  overflow-y: scroll;
 }
 // rgba(149, 151, 153, 0.233)
 
@@ -79,6 +83,7 @@
 
 .msg-notif-bubble {
   background-color: rgba(239, 239, 239, 0.455);
+  height: 90px;
   border-radius: 15px;
   padding: 5px;
   margin-bottom: 7px;
@@ -86,7 +91,13 @@
 }
 
 .email-p {
+  font-size: 14px;
+  font-style: italic;
   color:white;
+}
+
+.text-muted {
+  font-size: 12px;
 }
 
 li {

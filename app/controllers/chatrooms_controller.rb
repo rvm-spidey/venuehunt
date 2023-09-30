@@ -2,6 +2,7 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    #@show_new_chatroom = Chatroom.find(params[:id])
   end
 
   def new
@@ -14,6 +15,9 @@ class ChatroomsController < ApplicationController
     @chatroom.save
 
     redirect_to chatroom_path(@chatroom)
+  end
+
+  def no_messages
   end
 
   private

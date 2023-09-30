@@ -19,6 +19,9 @@
     <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %>
   </p>
 
+  <h1><%= current_user.email %> <%= current_user.id  %> </h1>
+  <%= @venue.user_id %>
+
   <%= simple_form_for(@chatroom) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -121,10 +124,9 @@
   </div> <!-- grid-item closing tag -->
 
      <!-- booking -->
-  <div class="grid-item">
+  <div class="grid-item <%= @venue.user_id == current_user.id ? 'd-none' : '' %>">
     <div class="container booking-container">
       <h3>Booking</h3>
-        <div class="<%= @venue.id == current_user.id ? 'd-none' : '' %>">
           <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -190,7 +192,7 @@
               <%= f.button :submit, "Confirm booking" %>
             </div>
 
-        <% end %>
+          <% end %>
 
           <%= simple_form_for(@chatroom) do |f| %>
             <%= f.error_notification %>
@@ -210,7 +212,7 @@
           <% end %>
           </div><!-- chat btn closing tag -->
 
-        </div><!-- venue id closing tag -->
+        <%# </div><!-- venue id closing tag --> %>
     </div> <!-- booking-container closing tag -->
   </div> <!-- grid item closing tag -->
 

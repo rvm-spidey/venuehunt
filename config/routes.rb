@@ -41,6 +41,8 @@ Rails.application.routes.draw do
 
   resources :messages
 
+  get 'chatrooms/no_messages', to: 'chatrooms#no_messages'
+
   resources :bookings
 
 

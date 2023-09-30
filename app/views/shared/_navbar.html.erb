@@ -42,7 +42,13 @@
         </li>
 
         <li id="notif" class="nav-item">
-          <%= link_to "Messages", messages_path , class: "nav-link" %>
+          <% last_message_sent = Message.where(user_id: current_user.id).order(created_at: :desc).first %>
+          <% if last_message_sent.present? %>
+            <% chatroom = Chatroom.find(last_message_sent.chatroom_id) %>
+            <%= link_to "Messages", chatroom_path(chatroom.id) , class: "nav-link" %>
+          <% else %>
+            <%= link_to "Messages", chatrooms_no_messages_path , class: "nav-link" %>
+          <% end %>
         </li>
 
       </div> <!-- navlink container closing tag -->
