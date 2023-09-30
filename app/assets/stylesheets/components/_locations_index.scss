@@ -1,6 +1,7 @@
 .locations-index-banner {
 
   height: 270px;
+  margin-top:85px;
   background-position: 40% 50%;
   display: flex;
   background-repeat: no-repeat;
@@ -10,8 +11,9 @@
     text-align: center;
     margin: auto;
     font-family: Helvetica, sans-serif;
-    text-decoration: underline;
-    text-decoration-thickness: 11px;
+    font-weight: 780;
+    // text-decoration: underline;
+    // text-decoration-thickness: 11px;
   }
 }
 
@@ -53,6 +55,7 @@
   // background-color: aqua;
   background-color: $white;
   padding-top: 20px;
+
 }
 
 .locations-filter-child-container {
@@ -64,18 +67,34 @@
 
   .header-locations-filter {
     font-family: Helvetica, sans-serif;
-    color: $dark-blue;
+    color: $blue-moonstone;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 380px;
     background-color: $white;
-    border-style: solid;
-    border-width: 6px;
-    border-color: $dark-blue;
-    font-size: 35px;
-    border-radius: 8px;
+    font-size: 40px;
+    position: relative;
+
   }
 }
+  .header-locations-filter:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color:$blue-moonstone;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.header-locations-filter:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 
 .specific-location-parent-container {
   margin-bottom: 0px;
@@ -83,7 +102,7 @@
 
 .specific-location-child-container {
   text-align: center;
-  padding-top: 60px;
+  padding-top: 30px;
   padding-bottom: 20px;
 
   h1, h4 {
@@ -105,6 +124,6 @@
 }
 
 .map-headers-locations {
-  font-size: 20px;
-  color: red;
+  font-size: 15px;
+  color: $blue-moonstone;
 }

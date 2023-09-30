@@ -21,7 +21,6 @@
       <!--<a href="#section-2">--><h1 class="header-locations-filter"><strong><%= location.name %></strong></h1><!--</a>-->
     <% end %>
   </div>
-
   <div class="specific-location-parent-container">
     <div class="specific-location-child-container">
       <% @locations.each do |location| %>
@@ -33,17 +32,17 @@
         </div>
         <%if location.photos.attached? %>
           <% location.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 1200, crop: :fill %>
+            <%= cl_image_tag photo.key, height: 300, width: 1200, crop: :fill, radius: 5 %>
           <% end %>
         <% end %>
       <div class="specific-location-venue-child-container">
-        <strong><h3 style="padding-bottom: 5px;padding-top: 10px; color: $dark-blue; font-family: Helvetica, sans-serif;">Venues in <%= location.name %> :</strong></h3>
+        <strong><h3 style="padding-bottom: 5px;padding-top: 10px; color: #13293D; font-family: Helvetica, sans-serif;">Venues in <%= location.name %> :</strong></h3>
         <!--v<% @venues = Venue.where(location_id: location) %>
         <% @venues.each do |venue| %>
           <%= venue.name %>
           <%= venue.address %>
         <% end %>v-->
-        <div class="container">
+        <div class="container" style="margin-bottom:40px;">
           <div class="row gy-5 d-flex">
             <% @venues.each do |venue| %>
             <div class="col-12 col-md-6 col-lg-4">

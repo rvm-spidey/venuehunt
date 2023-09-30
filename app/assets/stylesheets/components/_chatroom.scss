@@ -11,10 +11,11 @@
   margin-bottom: 30px;
 
   h1 {
-    // border-bottom: 1px solid $gray-200;
-    // box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.1);
+    border-bottom: 0.5px solid white;
+    // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
     margin-bottom: 0;
     padding: 1rem;
+    color:white;
   }
 
   input {
@@ -61,20 +62,31 @@
 }
 
 .chat-messages-container {
-  background-color:#eee;
+  // background-color:#eee;
   border-radius: 15px;
   margin-top:60px;
   margin-bottom:20px;
+  height: 100vh;
+  width:100vw;
 
 }
 // rgba(149, 151, 153, 0.233)
 
+.chat-messages-container h2 {
+  color:white;
+  font-weight:500;
+}
+
 .msg-notif-bubble {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(239, 239, 239, 0.455);
   border-radius: 15px;
   padding: 5px;
   margin-bottom: 7px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.email-p {
+  color:white;
 }
 
 li {
@@ -84,4 +96,13 @@ li {
 .msg-title {
   padding-left: 20px;
   font-weight: 500;
+}
+
+.messages-container {
+  margin-top:50px;
+}
+
+.chatroom-name {
+  text-decoration:none;
+  color: $dark-blue;
 }

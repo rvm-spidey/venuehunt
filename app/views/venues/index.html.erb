@@ -1,97 +1,97 @@
 <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/1827-1.jpg);">
   <h1 class="header-banner">Venues</h1>
 </div>
+<div class="background-venues-index">
+  <div class="row filter-container-venues justify-content-center">
+    <div class="filter-child-container">
+      <div class="">
+        <%= form_with model: @venue, url: venues_path, method: :get, html: { class: "" } do |f| %>
 
-<div class="row filter-container-venues justify-content-center">
-  <div class="filter-child-container">
-    <div class="">
-      <%= form_with model: @venue, url: venues_path, method: :get, html: { class: "" } do |f| %>
+          <div class="form-group select-venue-types-container d-flex justify-content-between">
+            <strong><h3 class="header-search-venues"><%= f.label :venuetype_id, "Select Venue Types: " %></h3></strong>
+            <%=  f.collection_check_boxes :venuetype_id, Venuetype.all, :id, :name, { item_label_class: 'my-custom-class' } do |b|  %>
+              <%=  b.check_box checked: @venuetypes.include?(b.value.to_s), class: "checkboves-styling" %>
+              <%=  b.label %>
+            <% end %>
+          </div>
 
-        <div class="form-group select-venue-types-container d-flex justify-content-between">
-          <strong><h3 class="header-search-venues"><%= f.label :venuetype_id, "Select Venue Types: " %></h3></strong>
-          <%=  f.collection_check_boxes :venuetype_id, Venuetype.all, :id, :name, { item_label_class: 'my-custom-class' } do |b|  %>
-            <%=  b.check_box checked: @venuetypes.include?(b.value.to_s), class: "checkboves-styling" %>
-            <%=  b.label %>
-          <% end %>
-        </div>
-
-        <div class="form-group select-locations d-flex justify-content-start">
-          <strong><h3 class="header-search-venues"><%= f.label :location_id, "Select Locations: " %></h3></strong>
-          <div class="venues-locations-checkbox-container">
-            <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
-            <div class="checkboxes-only d-inline">
-              <%= b.check_box checked: @locations.include?(b.value.to_s), class: "checkboves-styling" %>
+          <div class="form-group select-locations d-flex justify-content-start">
+            <strong><h3 class="header-search-venues"><%= f.label :location_id, "Select Locations: " %></h3></strong>
+            <div class="venues-locations-checkbox-container">
+              <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
+              <div class="checkboxes-only d-inline">
+                <%= b.check_box checked: @locations.include?(b.value.to_s), class: "checkboves-styling" %>
+              </div>
+                <%= b.label %>
+                <% end %>
             </div>
-              <%= b.label %>
-              <% end %>
           </div>
-        </div>
 
-        <div class="form-group search-venues-container d-flex">
-          <div class="header-search-venues-container-only">
-            <strong><h3 class="header-search-venues"><%=f.label :search_query, "Search Venue:" %></h3></strong>
+          <div class="form-group search-venues-container d-flex">
+            <div class="header-search-venues-container-only">
+              <strong><h3 class="header-search-venues"><%=f.label :search_query, "Search Venue:" %></h3></strong>
+            </div>
+            <div class="search-bar-only">
+              <%= f.text_field :search_query,
+                        class: "form-control search-venues-bar",
+                        value: params[:search_query],
+                        placeholder: "Search by name or description...." %>
+            </div>
+            <div class="btn-filter">
+              <%= f.submit "Apply filters", name: "" , class: "button-apply-filters" %>
+            </div>
           </div>
-          <div class="search-bar-only">
-            <%= f.text_field :search_query,
-                      class: "form-control search-venues-bar",
-                      value: params[:search_query],
-                      placeholder: "Search by name or description...." %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="count-container text-center">
+    <h3>Number of Venues Listed: <%= @venues.count %></h3>
+  </div>
+
+
+  <div class="container">
+    <div class="row gy-5 d-flex">
+      <% @venues.each do |venue| %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card shadow">
+          <div class="card-img">
+
+              <%if venue.photos.attached? %>
+                <% venue.photos.each_with_index do |photo| %>
+                    <div class= "image_tag"><%= cl_image_tag photo.key, height: 270, width: 450 %></div>
+                <% end %>
+              <% end %>
+            <%# <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/> %>
           </div>
-          <div class="btn-filter">
-            <%= f.submit "Apply filters", name: "" , class: "button-apply-filters" %>
+          <div class="card-body">
+            <strong><h4 class="card-title"><strong><%= venue.name %></strong></h4></strong>
+            <div class="card-text-container">
+              <div class="card-text-container1 d-flex justify-content-md-between">
+                <p><strong><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
+                <p><strong><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
+              </div>
+              <div class="card-text-container1 d-flex justify-content-md-between">
+                <div class="price-container">
+                  <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price: Rs <%= venue.price %></strong></p>
+                </div>
+                <div class="space-container">
+                  <p><strong><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> m</strong></p>
+                </div>
+              </div>
+              <div class="card-text-container1 d-flex justify-content-md-between">
+                <p><strong><i class="fa-solid fa-map-location me-2"></i><%= venue.location.name %></strong></p>
+              </div>
+            </div>
+            <div class="card-button-venue text-center">
+              <a> <strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
+            </div>
           </div>
         </div>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
-
-
-<div class="count-container text-center">
-  <h3>Number of Venues Listed: <%= @venues.count %></h3>
-</div>
-
-
-<div class="container">
-  <div class="row gy-5 d-flex">
-    <% @venues.each do |venue| %>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card shadow">
-        <div class="card-img">
-
-            <%if venue.photos.attached? %>
-              <% venue.photos.each_with_index do |photo| %>
-                  <div class= "image_tag"><%= cl_image_tag photo.key, height: 270, width: 450 %></div>
-              <% end %>
-            <% end %>
-          <%# <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/> %>
-        </div>
-        <div class="card-body">
-          <strong><h4 class="card-title"><strong><%= venue.name %></strong></h4></strong>
-          <div class="card-text-container">
-            <div class="card-text-container1 d-flex justify-content-md-between">
-              <p><strong><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
-              <p><strong><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
-            </div>
-            <div class="card-text-container1 d-flex justify-content-md-between">
-              <div class="price-container">
-                <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price: Rs <%= venue.price %></strong></p>
-              </div>
-              <div class="space-container">
-                <p><strong><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> m</strong></p>
-              </div>
-            </div>
-            <div class="card-text-container1 d-flex justify-content-md-between">
-              <p><strong><i class="fa-solid fa-map-location me-2"></i><%= venue.location.name %></strong></p>
-            </div>
-          </div>
-          <div class="card-button-venue text-center">
-            <a> <strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
-<br>
