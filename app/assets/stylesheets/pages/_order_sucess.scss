@@ -1,129 +1,97 @@
-.background-parent-container-order {
-  background-image: url("https://www.estate-living.co.za/wp-content/uploads/2020/10/Residential-Aerial.jpg");
-  width: 100%;
-  text-align:center;
-  padding-bottom: 100px;
-  padding-top: 100px;
+.order-success-parent-container {
+  // margin-top: 50px;
+}
+
+.number-of-orders {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  padding-top: 30px;
+  width: 400px;
+
+
+  h2 {
+    font-family: Helvetica, sans-serif;
+    color: $blue-moonstone;
+    font-weight: 780;
+    text-align: center;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: $dark-blue;
+  }
+}
+
+.background-after-banner {
+  background-color: $white;
+  padding-bottom:20px;
+}
+
+#booking-title {
+
+  font-family: Helvetica, sans-serif;
+  color: $white;
+  font-weight: 780;
+  text-align: center;
+}
+
+#header-table-order {
+  font-family: Helvetica, sans-serif;
+  color: $dark-blue;
+  text-align: center;
+  background-color: $white;
+}
+
+#value-table-order {
+  font-family: Helvetica, sans-serif;
+  color: $dark-blue;
+  text-align: center;
+  background-color: $white;
+}
+
+#order-sucess-card {
+  border-radius: 3px;
+  background-color: $white;
+}
+
+#order-sucess-header-card {
+  background-color: $blue-moonstone;
+}
+
+.order-success-index-banner {
+  margin-top:85px;
+  height: 270px;
   background-repeat: no-repeat;
   background-size: cover;
-  max-height: 4000px;
+  display: flex;
+  background-position: 40% 70%;
 }
 
-.child-container-page-order-sucess {
-  margin: auto;
-  max-height: 4000px;
-  width: 600px;
-  background-color: $dark-blue;
-  padding: 40px;
-  box-shadow: 6px 6px 6px 6px rgba(70, 69, 69, 0.171);
-  border-radius: 10px;
+.order-success-parent {
+  top: -250px;
+  justify-content: center;
+  display: block;
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-.break-line {
-  color: $white;
-  line-height: 15px;
-  margin-bottom: 30px;
-}
-
-.header-order-success {
-  font-weight: 780;
-  color: $light-blue;
-  font-family: Helvetica, sans-serif;
-  // text-decoration: underline;
-  // text-decoration-thickness: 11px;
-  font-size: 38px;
-}
-
-.tick-order {
-  width: 80px;
-  height: 80px;
-  background-color: $white;
-  background-image: url("https://cdn.vectorstock.com/i/1000x1000/15/05/green-tick-checkmark-icon-vector-22691505.webp");
-  background-position: 70% 5%;
-  border-radius: 150px;
-  margin: auto;
-  background-size: cover;
-}
-
-.after-tick-order-text {
-  margin: 20px;
-
-  h2,h4 {
-    font-weight: 780;
-    color: $white;
-    font-family: Helvetica, sans-serif;
-  }
-}
-
-.break-line-booking {
-  color: $white;
-  line-height: 15px;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-}
-
-.booking-details-container {
-  h2 {
-    font-weight: 780;
-    color: rgb(3, 111, 253);
-    font-family: Helvetica, sans-serif;
-    padding-bottom: 15px;
-  }
+.order-success-header-banner {
+  text-align: center;
 
   h1 {
     font-weight: 780;
-    color: $light-blue;
-    font-family: Helvetica, sans-serif;
-  }
-
-  p {
-    font-weight: 780;
     color: $white;
     font-family: Helvetica, sans-serif;
-  }
-
-  h4 {
-    font-weight: 780;
-    color: $light-blue;
-    font-family: Helvetica, sans-serif;
-    // text-decoration: double;
-    // text-decoration-thickness: 2px;
+    animation-duration: 3s;
+    animation-name: ordersuccess;
+    animation-iteration-count: infinite;
   }
 }
 
-// .booking-card {
-//   h2, h3 {
-//     font-weight: 780;
-//     color: $light-blue;
-//     font-family: Helvetica, sans-serif;
-//   }
-
-//   p {
-//     font-weight: 780;
-//     color: $white;
-//     font-family: Helvetica, sans-serif;
-//   }
-// }
-.booking-details-header {
-  padding-top: 20px;
-  padding-bottom: -6px;
-}
-
-.view-orders-button {
-  margin: auto;
-  width: 300px;
-  padding-top:10px;
-  padding-bottom:10px;
-  margin-bottom: 5px;
-  margin-top: 25px;
-  background-color: $light-blue;
-  text-decoration: none;
-  border-radius: 8px;
-
-  a {
-    color: $dark-blue;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-  }
+@keyframes ordersuccess {
+  0%   {color: $light-blue;}
+  25%  {color: y#ffd700;}
+  50%  {color: $light-blue;}
+  100% {color: #ffd700;}
 }

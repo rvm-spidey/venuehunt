@@ -21,10 +21,9 @@
           <table>
             <tr>
               <th class="table-header-first text-center"></th>
-              <th class="text-center">Venue</th>
               <th class="text-center">Event</th>
-              <th class="text-center">Date From</th>
-              <th class="text-center">Date To</th>
+              <th class="text-center">Venue</th>
+              <th class="text-center">Booking Dates</th>
               <th class="text-center">Price</th>
               <th class="table-header-last text-center"></th>
             </tr>
@@ -41,11 +40,10 @@
                   </div>
                 </div>
               </td>
-              <td class="text-center"><strong><%= booking.event_name %></strong></td>
-              <td class="text-center"><strong><%= booking.venue.name %></strong></td>
-              <td class="text-center"><strong><%= booking.date_from %></strong></td>
-              <td class="text-center"><strong><%= booking.date_to %></strong></td>
-              <td class="text-center"><strong>Rs <%= booking.total_price %></strong></td>
+              <td class="text-center"><%= booking.event_name %></td>
+              <td class="text-center"><%= booking.venue.name %></td>
+              <td class="text-center"><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
+              <td class="text-center">Rs <%= booking.total_price %></td>
               <td class="delete-button text-center">
                 <a><strong><%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
               </td>
