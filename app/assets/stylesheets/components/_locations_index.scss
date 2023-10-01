@@ -48,7 +48,20 @@
 
 .sentence-insertlocations {
   font-family: Helvetica, sans-serif;
-  font-size: 21px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.map-location-details{
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  background: radial-gradient(circle at 10% 20%, rgb(148, 241, 246) 0%, rgb(148, 189, 246) 100.7%);
+}
+
+.map-location-marker{
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  background: radial-gradient(circle at 10% 20%, rgb(148, 241, 246) 0%, rgb(148, 189, 246) 100.7%);
 }
 
 .locations-lower-lists-container {
@@ -126,4 +139,10 @@
 .map-headers-locations {
   font-size: 15px;
   color: $blue-moonstone;
+}
+
+.map-location-name {
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: bolder;
 }
