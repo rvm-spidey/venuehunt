@@ -14,11 +14,17 @@ export default class extends Controller {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data =>  {
-        this.messagesTarget.innerHTML = `<strong> ${data.msgcontent} </strong>`
-        console.log("updatenewmsg", this.updatenewmsgValue);
-        console.log("data.sender_id ", data.sender_id, " currentUserIdValue",this.currentUserIdValue );
-        console.log("data.sender_id != this.currentUserIdValue ", data.sender_id != this.currentUserIdValue );
+        this.messagesTarget.innerHTML = `⭐️ <strong> ${data.msgcontent} </strong>`
 
+
+        if (this.updatenewmsgValue == true) {
+          if (data.sender_id == this.currentUserIdValue) {
+            this.messagesTarget.innerHTML = `<span> ${data.msgcontent} </span>`
+          }
+          else{
+            this.messagesTarget.innerHTML = `<strong> ${data.msgcontent} </strong>`
+          }
+        }
         if (data.sender_id !== this.currentUserIdValue) {
             notif.classList.add("notification");
         }

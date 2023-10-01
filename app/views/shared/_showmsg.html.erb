@@ -5,6 +5,6 @@
               data-new-msg-notif-chatroom-id-value="<%= msg.chatroom_id %>"
               data-new-msg-notif-updatenewmsg-value="<%= false %>">
           <% @chatroom = Chatroom.find(msg.chatroom_id) %>
-          <div  data-new-msg-notif-target="messages"="<%= @chatroom.id %>"></div>
+          <div class="d-none" data-new-msg-notif-target="messages"="<%= @chatroom.id %>"></div>
         </div>
     <% end %>
