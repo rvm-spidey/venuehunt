@@ -20,6 +20,8 @@ export default class extends Controller {
       scrollZoom: false
     })
 
+    this.map.addControl(new mapboxgl.NavigationControl());
+
     this.#displayMapData()
     this.#fitMapToMarkers()
   }
@@ -36,10 +38,11 @@ export default class extends Controller {
     for (const location of sorted_locations) {
       const data = `<h5 class="map-headers-locations">
                       <span class = "map-location-name"> ${location.address} </span>
-                      <img style="width:25px" src="${carImageSrc}" alt="Car Image" class="car-image" >
+                      (
                       Driving distance is
                         <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> and may take about
                         <span class = "map-location-details"> <strong>${location.duration} </strong>  mins</span>
+                      )
                     </h5>`;
       this.insertlocationsTarget.insertAdjacentHTML('beforeend', data);
     }

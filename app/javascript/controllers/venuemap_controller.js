@@ -19,10 +19,13 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: contentElement,
-      style: "mapbox://styles/mapbox/streets-v12"
+      style: "mapbox://styles/mapbox/streets-v12",
+      scrollZoom: false
       // style: "mapbox://styles/mapbox/satellite-streets-v12"
 
     })
+
+    this.map.addControl(new mapboxgl.NavigationControl());
 
     this.#showMapData()
     this.#fitMapToMarkers()
