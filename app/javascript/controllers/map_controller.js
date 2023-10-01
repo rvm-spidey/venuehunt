@@ -16,7 +16,8 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container:contentElement,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/mapbox/streets-v10",
+      scrollZoom: false
     })
 
     this.#displayMapData()
@@ -27,11 +28,19 @@ export default class extends Controller {
   async #displayMapData(){
     const results = await this.#addMarkersToMap()
 
+    const carImageSrc ='/assets/car1.png';
+
     const sorted_locations = results.sort((a, b) => {
       return a.distance - b.distance;
     });
     for (const location of sorted_locations) {
-      const data = `<h5 class="map-headers-locations"> ${location.address} || <em> ${location.distance} km ~~ ${location.duration} min approx </em> </h5>`;
+      const data = `<h5 class="map-headers-locations">
+                      <span class = "map-location-name"> ${location.address} </span>
+                      <img style="width:25px" src="${carImageSrc}" alt="Car Image" class="car-image" >
+                      Driving distance is
+                        <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> and may take about
+                        <span class = "map-location-details"> <strong>${location.duration} </strong>  mins</span>
+                    </h5>`;
       this.insertlocationsTarget.insertAdjacentHTML('beforeend', data);
     }
 
@@ -57,8 +66,7 @@ export default class extends Controller {
       const durationMin = Math.round(data.routes[0].duration / 60);
       locationDetails.push({distance:distanceKm, duration: durationMin, address: marker.add});
 
-      customMarker.innerHTML += `<p>Distance: ${distanceKm} km<p>`;
-      customMarker.innerHTML += `<p>Duration: ${durationMin} min</p>`;
+      // customMarker.innerHTML += `<p class= "map-location-details" >Distance: ${distanceKm} km Duration: ${durationMin} mins <p>`;
 
       new mapboxgl.Marker(customMarker)
         .setLngLat([ marker.lng, marker.lat ])
