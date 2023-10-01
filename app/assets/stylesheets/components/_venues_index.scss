@@ -2,7 +2,7 @@
 @import "card";
 
 .filter-header {
-  padding-top: 20px;
+  // padding-top: 20px;
   padding-bottom: 70px;
   display: flex;
   flex-direction: row;
@@ -85,7 +85,6 @@
   // background-color: rgb(168, 127, 16);
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 15px;
   border-radius: 5px;
 }
 
@@ -94,13 +93,15 @@
   color: $dark-blue;
   font-family: Helvetica, sans-serif;
   font-weight: 780;
+  font-size: 20px;
 }
 
 .search-venues-bar {
   background-color: $white;
   border-radius: 5px;
   width: 700px;
-  height: 35px;
+  height: 30px;
+  font-size: 14px;
 }
 
 .select-venue-types-container {
@@ -112,20 +113,35 @@
 
 }
 
-.btn-filter {
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .button-apply-filters {
   margin-left: 5px;
   background-color: $dark-blue;
   border-radius: 5px;
   color: $white;
   font-family: Helvetica, sans-serif;
-  font-weight: 780;
-  padding: 8px;
+  font-weight: bold;
+
+  // padding: 8px;
+
 }
+
+.button-reset-filters {
+  margin-left: 5px;
+  border:1px solid $dark-blue ;
+  color: $dark-blue;
+  border-radius: 5px;
+  background-color: $white;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.btn-filter-container {
+  margin-left: auto;
+  margin-top: 10px;
+}
+
 
 .filter-container-venues {
   // background-color: aqua;
@@ -134,7 +150,7 @@
 }
 
 .filter-child-container {
-  background-color: $light-blue;
+  background-color: $white;
   width: 95%;
   // max-height: 350px;
   border-radius: 8px;
@@ -144,20 +160,36 @@
 //
 }
 
-.venues-locations-checkbox-container {
-  // background-color: aqua;
-  width: auto;
-  color: $dark-blue;
-  font-size: 18px;
+
+
+.checkboxes-styling:checked + label {
+  color: $white;
+  transition: background-color 0.5s;
+  background-color: $blue-moonstone !important;
 }
 
-.checkboxes-only {
-  margin: 15px;
+.checkboxes-styling + label {
+  padding: 2px 15px;
+  border: 1px solid  #0F597C;
+  border-radius: 10px;
+
 }
 
-.checkboves-styling {
-  // visibility: hidden;
-  // border-radius: 150px;
-  // width:10px;
-  // height:10px;
+.checkbox-group label {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+
+.checkbox-group {
+  display: flex;
+}
+
+.checkbox-item {
+  font-size: 14px;
+}
+
+.filter-name{
+  min-width: 200px;
+
 }
