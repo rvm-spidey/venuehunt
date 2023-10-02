@@ -2,6 +2,21 @@
   <h1><strong>Payment</strong></h1>
 </div>
 
+
+
+<div id="alert-container">
+  <div class="alert-content">
+    <p class="page-header">Processing your oder</p>
+    <p class="page-subheader">Hold tight, your order is being processed, please do not navigate away from the current window or refresh the page.</p>
+  </div>
+  <div class="progress progress-striped">
+    <div class="progress-bar">
+    </div>
+  </div>
+</div>
+
+
+
 <div class="container-payment">
 
   <div class="container-payment-details">
@@ -34,7 +49,7 @@
 
   <div class="container-payment-form">
     <p class="page-header">Pay with card</h1>
-    <%= simple_form_for [@cart,@order] do |f| %>
+    <%= simple_form_for [@cart,@order], data: { controller: 'alert' } do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -69,7 +84,8 @@
       </div>
 
       <div class="form-actions">
-          <%= f.submit "Confirm payment", class: "btn btn-outline-primary" %>
+       <%= f.submit "Confirm payment", class: "btn btn-outline-primary", id: "confirm-payment-button",
+            data: { action: "click->alert#initSweetalert" } %>
       </div>
     <% end %>
   </div>
