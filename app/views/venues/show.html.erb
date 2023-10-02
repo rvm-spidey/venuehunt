@@ -30,14 +30,14 @@
 
     <% if bookings.empty? %>
       <div class="meeting">
-        <%=  image_tag("available_1.png", style: "width: 30px; height: 30px") %>
+        <%=  image_tag("available_3.png", style: "width: 40px; height: 40px") %>
         <%#= image_tag "available_1", height: 30, width: 30, alt: "Available" %>
       </div>
     <% end %>
 
       <% bookings.each do |booking| %>
         <div class="meeting">
-          <%=  image_tag("not_available.png", style: "width: 30px; height: 30px") %>
+          <%=  image_tag("reserved.png", style: "width: 40px; height: 40px") %>
           <%#= image_tag "not_available", height: 30, width: 30, alt: "Logo" %>
         </div>
       <% end %>
@@ -71,7 +71,16 @@
 
 <!--Venue description-->
   <div class="grid-item">
-    <h2><%= @venue.name %></h2>
+
+    <h2 class="venue-header">
+      <%= @venue.name %>
+
+      <span class="venue-rating" >
+        • <%= rand(80..95)/10.0 %> <i class="fa-solid fa-star" style="color: #f5d400;"></i>
+      </span>
+    </h2>
+
+
     <p><%= @venue.description %></p>
     <div class="container d-flex">
       <div class="desc-container1">
@@ -83,8 +92,8 @@
       <div class="desc-container2">
         <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= @venue.opening_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
         <p><i class="fa-regular fa-clock me-2"></i>Closing: <%= @venue.closing_time.strftime("%H:%M") unless @venue.opening_time.nil?  %></p>
-        <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <span id="food-bev-offered">  <%= @venue.food_beverages_offered %></span> </p>
-        <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <span id="services-offered"> <%= @venue.other_services_offered %> </span> </p>
+        <p><i class="fa-solid fa-utensils me-2"></i>Food and bev <span id="food-bev-offered">  <%= @venue.food_beverages_offered ? "Yes" : "No"%></span> </p>
+        <p><i class="fa-solid fa-circle-info me-2"></i>Other Services <span id="services-offered"> <%= @venue.other_services_offered ? "Yes" : "No" %> </span> </p>
       </div>
     </div> <!-- container desc-container closing tag -->
   </div> <!-- grid-item closing tag -->

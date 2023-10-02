@@ -32,12 +32,24 @@ export default class extends Controller {
     this.#addMarkersToMap()
   }
 
-  #addMarkersToMap() {
+  async #addMarkersToMap() {
     const companyLocation = this.currentlocationValue;
     const venueLocation = this.venuelocationValue;
 
     const customMarker = document.createElement("div")
     customMarker.innerHTML = venueLocation.marker_html
+
+
+    const startingPoint = [companyLocation.lng, companyLocation.lat];
+    const endingPoint = [venueLocation.lng, venueLocation.lat];
+    const url = `https://api.mapbox.com/directions/v5/mapbox/driving/${startingPoint.join(',')};${endingPoint.join(',')}?access_token=${this.apiKeyValue}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const distanceKm = Math.round(data.routes[0].distance / 1000);
+    const durationMin = Math.round(data.routes[0].duration / 60);
+
+    customMarker.innerHTML += `<p class= "map-location-venue" >${distanceKm} km - ${durationMin} mins`;
+
     new mapboxgl.Marker(customMarker)
     .setLngLat([venueLocation.lng, venueLocation.lat])
     .addTo(this.map)
@@ -141,7 +153,7 @@ export default class extends Controller {
 
     bounds.extend([companyLocation.lng, companyLocation.lat]);
     bounds.extend([venueLocation.lng, venueLocation.lat]);
-    this.map.fitBounds(bounds, { padding: 50, maxZoom: 10, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 50, maxZoom: 13, duration: 4000 })
   }
 
 }
