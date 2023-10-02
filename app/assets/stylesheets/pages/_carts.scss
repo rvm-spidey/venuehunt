@@ -126,7 +126,7 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  box-shadow: 4px 4px 10px 4px rgba(133, 132, 132, 0.315);
+  box-shadow: 4px 4px 11px 4px rgba(182, 181, 181, 0.315);
   border-radius: 8px;
   // border-color: $dark-blue;
   // border-width: 2px;
@@ -204,7 +204,7 @@
   margin-left: auto;
   margin-right: auto;
   background-color: $white;
-  box-shadow: 4px 4px 10px 4px rgba(163, 163, 163, 0.315);
+  // box-shadow: 4px 4px 10px 4px rgba(182, 181, 181, 0.315);
   border-radius: 8px;
 
 }
@@ -230,6 +230,7 @@ th {
   font-family: Helvetica, sans-serif;
   font-size: 18px;
   background-color: $blue-moonstone;
+  box-shadow: 4px 4px 11px 4px rgba(182, 181, 181, 0.315);
   // border-radius: 3px;
 }
 
@@ -248,15 +249,17 @@ td {
   font-family: Helvetica, sans-serif;
   width: 100%;
   border-collapse: collapse;
+  // box-shadow: 4px 4px 11px 4px rgba(160, 159, 159, 0.315);
 
   .even {
     background-color: $white;
-    box-shadow: 4px 4px 11px 4px rgba(102, 101, 101, 0.315);
+    box-shadow: 4px 4px 11px 4px rgba(182, 181, 181, 0.315);
 
   }
 
   .odd {
     background-color: $white;
-    box-shadow: 4px 4px 11px 4px rgba(102, 101, 101, 0.315);
+    box-shadow: 4px 4px 11px 4px rgba(182, 181, 181, 0.315);
+
   }
 }
