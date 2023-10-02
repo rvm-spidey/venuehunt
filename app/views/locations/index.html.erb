@@ -18,7 +18,7 @@
 <div class="locations-lower-lists-container">
   <div class="locations-filter-child-container">
     <% @locations.each do |location| %>
-      <%= link_to "#location-#{location.id}" do %>
+      <%= link_to "#location-#{location.id}" , class:"text-decoration-none" do %>
         <h1 class="header-locations-filter"><strong><%= location.name %></strong></h1>
       <% end %>
     <% end %>
