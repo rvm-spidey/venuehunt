@@ -40,8 +40,10 @@ export default class extends Controller {
       total = (daysDiff+1) * venuePrice;
 
       const foodOffered = document.getElementById("food-bev-offered");
-      const isFoodOffered = foodOffered.textContent.trim()  == "true";
+      console.log("foodOffered"  , foodOffered);
+      const isFoodOffered = foodOffered.textContent.trim()  == "Yes";
       console.log("isFoodOffered", isFoodOffered);
+
       if (isFoodOffered){
         if (this.beverageTarget.value != null &&   BEVERAGE_OPTIONS.hasOwnProperty(this.beverageTarget.value)) {
           total += BEVERAGE_OPTIONS[this.beverageTarget.value];
@@ -53,7 +55,7 @@ export default class extends Controller {
       }
 
       const servicesOffered = document.getElementById("services-offered");
-      const isServicesOffered = servicesOffered.textContent.trim()  == "true";
+      const isServicesOffered = servicesOffered.textContent.trim()  == "Yes";
       console.log("isServicesOffered", isServicesOffered);
       if (isServicesOffered) {
         if (this.otherservicesTarget && this.otherservicesTarget.value != null &&   BEVERAGE_OPTIONS.hasOwnProperty(this.otherservicesTarget.value)) {
