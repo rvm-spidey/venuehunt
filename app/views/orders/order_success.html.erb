@@ -1,7 +1,10 @@
 <div class="order-success-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/the-factory-1.jpg);">
   <div class="order-success-parent">
     <div class="order-success-header-banner" >
-      <h1><strong>Thank You For Booking With VenueHunt!</strong></h1>
+      <h1>
+      Thank You For Booking With VenueHunt!
+      <%=  image_tag("poppers.png", style: "width: 50px; height: 50px") %>
+      </h1>
     </div>
     <div class="number-carts-banner-count">
       <!-- <h2><strong> Number of Venues in Cart: <%= @cart.venues.count %></strong></h2> -->
@@ -11,7 +14,9 @@
 <div class="background-after-banner">
 
   <div class="number-of-orders">
-    <h2>Number of reservations made: <%= @cart_items.venues.count %></strong></h2><!-- <%= @cart.venues.count %></h2>-->
+    <h2>
+        Number of reservations made: <%= @cart_items.venues.count %></strong>
+    </h2><!-- <%= @cart.venues.count %></h2>-->
   </div>
 
   <div class="card mx-5 booking-card" id="order-sucess-card">
