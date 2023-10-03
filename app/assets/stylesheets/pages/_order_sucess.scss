@@ -84,15 +84,22 @@
     font-weight: 780;
     color: $white;
     font-family: Helvetica, sans-serif;
-    animation-duration: 3s;
+    animation-duration: 6s;
     animation-name: ordersuccess;
     animation-iteration-count: infinite;
   }
 }
 
+// @keyframes ordersuccess {
+//   0%   {color: $light-blue;}
+//   25%  {color: y#ffd700;}
+//   50%  {color: $light-blue;}
+//   100% {color: #ffd700;}
+// }
+
 @keyframes ordersuccess {
-  0%   {color: $light-blue;}
-  25%  {color: y#ffd700;}
-  50%  {color: $light-blue;}
-  100% {color: #ffd700;}
+  0%   {background: linear-gradient(to right, $light-blue, #bbfff9);}
+  25%  {background: linear-gradient(to right, #ffd700, $light-blue);}
+  50%  {background: linear-gradient(to right, $light-blue, #bbfff9);}
+  100% {background: linear-gradient(to right, #ffd700, $light-blue);}
 }
