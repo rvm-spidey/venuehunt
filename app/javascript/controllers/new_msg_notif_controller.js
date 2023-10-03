@@ -14,7 +14,7 @@ export default class extends Controller {
     this.channel = createConsumer().subscriptions.create(
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data =>  {
-        this.messagesTarget.innerHTML = `⭐️ <strong> ${data.msgcontent} </strong>`
+        this.messagesTarget.innerHTML = `<strong> ${data.msgcontent} </strong>`
 
 
         if (this.updatenewmsgValue == true) {
