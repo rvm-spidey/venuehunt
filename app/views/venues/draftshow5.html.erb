@@ -1,5 +1,37 @@
 2909
 
+  <%if @venue.photos.attached? %>
+    <% @venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <h1> <%= @venue.name %> </h1>
+    <p> <%= @venue.name %> </p>
+  <% end %>
+
+
+
+<h1>New Review</h1>
+<h1>Tell us, how was your stay ?</h1>
+
+  <%if @venue.photos.attached? %>
+    <% @venue.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    <h1> <%= @venue.name %> </h1>
+    <!-- <p> <%= @venue.name %> </p> -->
+  <% end %>
+
+  </div> <!-- grid-item closing tag -->
+
+
+
+
+
+
+
+
+
+ ----------
  <div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://crossover-av.s3.amazonaws.com/media/images/iStock_000016324843_Double_Modified_CROP.width-1920.jpg);">
   <h1 class="header-banner">Chatroom</h1>
 </div>
