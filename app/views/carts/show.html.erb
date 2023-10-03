@@ -12,30 +12,30 @@
 <!-- <h1>Cart ID --> <% @cart.id %><!-- </h1> -->
 <div class="part-after-banner">
   <div class="items-header-cart">
-    <h2><%= @cart.venues.count %> Venues in Cart <i class="fa-solid fa-cart-shopping fa-2xl(100% increase)" style="font-size: 30px; color: #13293D;"></i></strong></h2><!-- <%= @cart.venues.count %></h2>-->
+    <h3><%= @cart.venues.count %> Venues in Cart <i class="fa-solid fa-cart-shopping fa-2xl(100% increase)" style="font-size: 30px; color: #13293D; padding-left: 5px"></i></strong></h3><!-- <%= @cart.venues.count %></h2>-->
   </div>
   <div class="container">
     <div class="row d-flex cart-list-parent">
       <div class="col-12 col-md-9 cart-list-child">
         <div class="cart-container-new-version">
-          <table>
+          <table class="cart-table">
             <tr>
               <th class="table-header-first text-center"></th>
-              <th class="text-center">Event</th>
-              <th class="text-center">Venue</th>
-              <th class="text-center">Booking Dates</th>
-              <th class="text-center">Price</th>
-              <th class="table-header-last text-center"></th>
+              <th class="table-header-middle text-center">Event</th>
+              <th class="table-header-middle text-center">Venue</th>
+              <th class="table-header-middle text-center">Booking Dates</th>
+              <th class="table-header-middle text-center">Price</th>
+              <th class="table-header-middle table-header-last text-center"></th>
             </tr>
-            <% @cart.bookings.each do |booking| %>
-            <tr>
+            <% @cart.bookings.each_with_index do |booking, index| %>
+            <tr class="<%= index.even? ? "even" : "odd" %>">
               <td>
                 <div class="event-info">
                   <div class="photo-container">
                     <% venue = booking.venue %>
 
                     <%if venue.photos.attached? %>
-                       <div class= "cl_image_tag"> <%= cl_image_tag venue.photos.first.key, height: 100, width: 100 %> </div>
+                       <div class= "cl_image_tag"> <%= cl_image_tag venue.photos.first.key, height: 180, width: 180,  :radius=> 8, gravity: "auto", crop: "fill" %> </div>
                     <% end %>
                   </div>
                 </div>
@@ -45,9 +45,10 @@
               <td class="text-center"><%= booking.venue.name %></td>
               <td class="text-center"><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
               <td class="text-center">Rs <%= booking.total_price %></td>
-
               <td class="delete-button text-center">
-                <a><strong><%= link_to "Delete", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></strong>
+                <a><strong><%= link_to booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %></strong>
+                  <i class="fa-solid fa-trash-can" style="font-size: 21px; color: #229eb2; padding-left: 5px"></i>
+                <% end %>
               </td>
             </tr>
             <% end %>

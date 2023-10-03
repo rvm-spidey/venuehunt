@@ -83,6 +83,7 @@
   justify-content: center;
   display: flex;
   gap: 0px 60px;
+  text-decoration: none;
 
   .header-locations-filter {
     font-family: Helvetica, sans-serif;
@@ -93,7 +94,7 @@
     background-color: $white;
     font-size: 40px;
     position: relative;
-
+    text-decoration: none;
   }
 }
   .header-locations-filter:after {
@@ -107,11 +108,13 @@
     background-color:$blue-moonstone;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
+    text-decoration: none;
 }
 
 .header-locations-filter:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+  text-decoration: none;
 }
 
 
