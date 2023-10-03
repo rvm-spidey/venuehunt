@@ -61,6 +61,7 @@ class Booking < ApplicationRecord
   def check_bookings_dates
     existing_booking = Booking.where('(date_from <= ? AND date_to >= ?)',self.date_from, self.date_to)
                               .where.not(id: self.id)
+                              .where(venue: self.venue)
                               .count
     if existing_booking > 0
       errors.add(:date_validation, "There is already a booking")
