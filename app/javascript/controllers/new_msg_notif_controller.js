@@ -16,6 +16,7 @@ export default class extends Controller {
       { received: data =>  {
         this.messagesTarget.innerHTML = `<strong> ${data.msgcontent} </strong>`
 
+        console.log("data.sender_id", data.sender_id,  " this.currentUserIdValue", this.currentUserIdValue);
 
         if (this.updatenewmsgValue == true) {
           if (data.sender_id == this.currentUserIdValue) {
