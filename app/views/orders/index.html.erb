@@ -25,39 +25,32 @@
         </tr>
       </thead>
 
+      <tbody>
       <% @orders.each do |order| %>
 
-      <% @cart = Cart.find(order.cart_id) %>
+        <% @order_cart = Cart.find(order.cart_id) %>
+        <% @order_cart.bookings.each do |booking| %>
+          <h1 class="booked-venue-name d-none"><%= booking.venue.name %></h1>
 
-      <% @cart.bookings.each do |booking| %>
+                <tr>
+                    <td><p class="order-id"><%= order.id %></p></td>
+                    <td><p><%= booking.venue.name %></p></td>
+                    <td><p> <%= booking.event_name %></p></td>
+                    <td><p><%= booking.number_of_participants %></p></td>
+                    <td><p><%= booking.food %></p></td>
+                    <td><p><%= booking.beverage %></p></td>
+                    <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
+                    <td><p class="btn btn-primary" style="width: 140px; height: 40px;">Rs <%= booking.total %></p></td>
 
-      <% @my_booked_venues.each do |venue| %>
-      <h1 class="booked-venue-name d-none"><%= venue.name %></h1>
-          <tbody>
-            <tr >
-               <td><p class="order-id"><%= order.id %></p></td>
-              <td><p><%= booking.venue.name %></p></td>
-              <td><p> <%= booking.event_name %></p></td>
-              <td><p><%= booking.number_of_participants %></p></td>
-              <td><p><%= booking.food %></p></td>
-              <td><p><%= booking.beverage %></p></td>
-              <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
-              <!--<td scope="row"><%= booking.date_from %></p></td>
-              <td><p><%= booking.date_to %></p></td>-->
-            <!-- <td><p><%= booking.other_services_offered %></p></td>-->
-              <td><p class="btn btn-primary" style="width: 140px; height: 40px;">Rs <%= booking.total %></p></td>
-
-              <td>
-                <% if booking.date_from < Date.today %>
-                    <p class="btn btn-flat review-link"><%= link_to venue.name, new_venue_review_path(venue) %></p>
-                <% end %>
-
-              </td>
-      <% end %>
-    <% end %>
-  <% end %>
-</tr>
-</tbody>
+                    <td>
+                      <% if booking.date_from < Date.today %>
+                          <p class="btn btn-flat review-link"><%= link_to booking.venue.name, new_venue_review_path(booking.venue) %></p>
+                      <% end %>
+                    </td>
+                  </tr>
+          <% end %>
+        <% end %>
+        </tbody>
  </table>
 </div>
 </div>
