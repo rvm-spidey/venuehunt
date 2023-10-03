@@ -1,13 +1,41 @@
-<h1>New Review</h1>
-<h1>Tell us, how was your stay ?</h1>
+<div class="venues-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.traveligo.pl/repository/hotels/11669/BVPR-6489-10.jpg);">
+    <h1 class="header-banner">Reviews</h1>
+</div>
 
-  <%if @venue.photos.attached? %>
-    <% @venue.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+
+<h2 class="review-h2">Tell us, how was your stay ?</h2>
+
+<div class="grid-container">
+
+<div class="grid-item review-grid-item">
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner h-75">
+    <%if @venue.photos.attached? %>
+    <h2> <%= @venue.name %> </h2>
+       <% @venue.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+                <%= cl_image_tag photo.key, height: 400, width: 800 %>
+            </div>
+          <% end %>
+
     <% end %>
-    <h1> <%= @venue.name %> </h1>
-    <p> <%= @venue.name %> </p>
-  <% end %>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> <!-- carousel-inner h-75 closing tag -->
+    </div> <!-- carousel slide closing tag -->
+  </div> <!-- grid-item closing tag -->
+
+
+<div class="grid-item review-grid-item">
 
 <div>
 
@@ -24,10 +52,12 @@
     <%= f.input :booking_purpose, label: "What was the purpose for the booking"  , collection: Booking::PURPOSES %>
 
     <%= f.input :venue_id, as: :hidden, input_html: { value: @venue.id } %>
+    <div class="review-btn btn btn-flat">
     <%= f.button :submit %>
+    </div>
   <% end %>
 
-  <div>
+  <!-- <div>
     <% if @venue.reviews.blank? %>
       Be the first to leave a review for <%= @venue.name %>
     <% else %>
@@ -42,6 +72,10 @@
         <hr>
       <% end %>
     <% end %>
-  </div>
+  </div> -->
 
 </div>
+
+</div> <!-- grid-item closing tag -->
+
+</div> <!-- grid-container closing tag -->

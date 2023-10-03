@@ -72,13 +72,21 @@
 <!--Venue description-->
   <div class="grid-item">
 
+  <div class="venue-name-review-container d-flex justify-content-between">
+
+<div class="venue-name">
     <h2 class="venue-header">
       <%= @venue.name %>
+      </h2>
+</div>
 
+<div class="venue-review">
       <span class="venue-rating" >
-        • <%= rand(80..95)/10.0 %> <i class="fa-solid fa-star" style="color: #f5d400;"></i>
+       <i class="fa-solid fa-pen"></i> Rating <%= rand(80..95)/10.0 %> <i class="fa-solid fa-star" style="color: #f5d400;"></i>
       </span>
-    </h2>
+      </div>
+
+    </div>
 
 
     <p><%= @venue.description %></p>
@@ -184,11 +192,14 @@
               <%= f.button :submit, "Confirm booking" %>
             </div>
 
+
           <% end %>
+
 
           <%= simple_form_for(@chatroom) do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
 
             <div class="form-inputs">
               <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
