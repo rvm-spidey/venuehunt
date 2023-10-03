@@ -3,7 +3,7 @@
 </div>
 <div class="background-venues-index">
   <div class="row filter-container-venues justify-content-center">
-    <div class="filter-child-container">
+    <div class="filter-child-container justify-content-center">
       <div class="">
         <%= form_with model: @venue, url: venues_path, method: :get, html: { class: "" } do |f| %>
 
@@ -19,7 +19,7 @@
             </div>
 
             <div class="checkbox-group">
-              <p class="card-info-title filter-name"><%= f.label :location_id, "Select Locations: " %></h3></p>
+              <p class="card-info-title filter-name"><%= f.label :location_id, "Select Locations: " %></p>
               <%= f.collection_check_boxes :location_id, Location.all, :id, :name, { item_label_class: 'my-custom-class' } do |b| %>
                 <div class="checkbox-item">
                   <%= b.check_box checked: @locations.include?(b.value.to_s), class: "checkboxes-styling d-none" %>
@@ -77,23 +77,24 @@
             <strong><h4 class="card-title"><strong><%= venue.name %></strong></h4></strong>
             <div class="card-text-container">
               <div class="card-text-container1 d-flex justify-content-md-between">
-                <p><strong><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
-                <p><strong><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
+                <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+                <p><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
               </div>
               <div class="card-text-container1 d-flex justify-content-md-between">
                 <div class="price-container">
-                  <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price: Rs <%= venue.price %></strong></p>
+                  <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price: Rs <%= venue.price %></p>
                 </div>
                 <div class="space-container">
-                  <p><strong><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> m</strong></p>
+                  <p><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> m</p>
                 </div>
               </div>
               <div class="card-text-container1 d-flex justify-content-md-between">
-                <p><strong><i class="fa-solid fa-map-location me-2"></i><%= venue.location.address %></strong></p>
+                <p><i class="fa-solid fa-map-location me-2"></i><%= venue.address %></p>
               </div>
             </div>
             <div class="card-button-venue text-center">
-              <a> <strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
+              <a><strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
+              <i class="fa-solid fa-arrow-right-long" style="color: #229eb2; font-size:18px; font-weight:bold; padding-left:10px;"></i>
             </div>
           </div>
         </div>
