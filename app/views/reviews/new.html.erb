@@ -2,21 +2,25 @@
     <h1 class="header-banner">Reviews</h1>
 </div>
 
+
+<h2 class="review-h2">Tell us, how was your stay ?</h2>
+
 <div class="grid-container">
 
 <div class="grid-item review-grid-item">
 
-<h2>Tell us, how was your stay ?</h2>
+
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner h-75">
     <%if @venue.photos.attached? %>
+    <h2> <%= @venue.name %> </h2>
        <% @venue.photos.each_with_index do |photo, index| %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
                 <%= cl_image_tag photo.key, height: 400, width: 800 %>
             </div>
           <% end %>
-      <h1> <%= @venue.name %> </h1>
+
     <% end %>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

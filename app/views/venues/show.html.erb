@@ -192,11 +192,14 @@
               <%= f.button :submit, "Confirm booking" %>
             </div>
 
+
           <% end %>
+
 
           <%= simple_form_for(@chatroom) do |f| %>
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
 
             <div class="form-inputs">
               <%= f.input :name, as: :hidden, input_html: { value: "Chatroom #{@venue.name}" } %>
