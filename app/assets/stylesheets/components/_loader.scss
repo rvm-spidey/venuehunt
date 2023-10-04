@@ -35,6 +35,14 @@
   animation: rotation 1.5s linear infinite;
 }
 
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10px;
+}
+
+
 @keyframes rotation {
   0% {
     transform: rotate(0deg);
