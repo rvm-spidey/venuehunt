@@ -1,6 +1,9 @@
 .booking-card {
   margin-top:15px;
   margin-bottom: 10px;
+  min-height: 45vh;
+  border-radius: 8px;
+  background-color: $white;
 }
 
 #booking-title {
