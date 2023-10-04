@@ -43,12 +43,13 @@
   width: 40%;
   padding: 15px;
   box-shadow: 0px 2px 5px 5px rgba(121, 120, 120, 0.308);
+  text-align: center;
   // font-size: 2px;
 }
 
 .sentence-insertlocations {
   font-family: Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -79,7 +80,9 @@
 
 .locations-filter-child-container {
   text-align: center;
-  margin: auto 0;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   justify-content: center;
   display: flex;
   gap: 0px 60px;
@@ -92,7 +95,7 @@
     padding-bottom: 10px;
     width: 380px;
     background-color: $white;
-    font-size: 35px;
+    font-size: 30px;
     position: relative;
     text-decoration: none;
   }
@@ -131,6 +134,7 @@
     font-family: Helvetica, sans-serif;
     color: $dark-blue;
     font-size: 30px;
+    padding-bottom: 10px;
   }
 
   h4 {
@@ -144,17 +148,24 @@
   width: 1000px;
   margin: auto;
   color: $dark-blue;
+
+  p {
+    font-family: Helvetica, sans-serif;
+    color: $dark-blue;
+    margin-bottom: 20px;
+  }
 }
 
 .specific-location-venue-child-container {
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .map-headers-locations {
-  font-size: 15px;
+  font-size: 20px;
   color: $blue-moonstone;
+  font-family: Helvetica, sans-serif;
 }
 
 .map-location-name {
