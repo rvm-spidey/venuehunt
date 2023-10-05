@@ -2,6 +2,7 @@
   <div class="title-slogan-container">
   <h1>VenueHunt</h1>
   <h2>Finding the perfect venue in a snap!</h2>
+  <h3 class="btn btn-banner align-content-center justify-content-center"><%= link_to "Discover more venues", venues_path, style: "text-decoration: none;", class: "discover-venue-link" %></h3>
 </div>
 </div>
 
@@ -67,22 +68,21 @@
 
  <div class="explore-container d-flex justify-content-between mb-2 mt-5">
     <h2>More to explore</h2>
-    <a class="btn btn-flat align-content-center justify-content-center" href="#">Discover more venues</a>
   </div>
 
 
   <div class="row gy-5 d-flex">
     <% @venues.each do |venue|%>
       <div class="col col-12 col-md-6 col-lg-4">
-          <div class="card shadow">
-            <div class="card-img">
+          <div class="card shadow venue-card">
+            <div class="card-img venue-card-img">
               <%if venue.photos.attached? %>
                 <div class= "image_tag"><%= cl_image_tag venue.photos.first.key, height: 270, width: 450 %></div>
               <% end %>
               <%# <img class="image_tag" src="https://mauritiusattractions.com/slir/w640-c2x1/content/images/gallery/321/eureka-house-mauritius-maison-eureka-maurice%20(1).jpg" width="414px" alt="Venue Img" class="card-top-img"/> %>
             </div>
             <div class="card-body">
-              <h4 class="card-title"><strong> <%= venue.name %> </strong></h4>
+              <h4 class="card-title venue-card-title"><strong> <%= venue.name %> </strong></h4>
               <h5> <%= venue.description %> </h5>
               <h5> Rs: <%= venue.price %> per day </h5>
               <div class="card-button-venue text-center venue-text-clr">
