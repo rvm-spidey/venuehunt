@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 90vh;
   margin: 0;
   gap: 20px;
 }
@@ -14,7 +14,7 @@
   // top: 0px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
-  min-height: 70vh;
+  min-height: 75vh;
 }
 
 .container-payment-details h1,
@@ -171,4 +171,35 @@
 
 #order_card_type_paypal:checked + label {
   opacity: 1;
+}
+
+.btn-payment {
+  padding-left: 51px;
+  padding-right: 51px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $dark-blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  color: $white;
+  font-family: Helvetica, sans-serif;
+
+  a {
+    color: $white;
+  }
+}
+
+.btn-payment:hover {
+    color:$dark-blue;
+    background-color: $white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: $dark-blue;
+
+    a {
+      color: $dark-blue;
+  }
 }
