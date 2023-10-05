@@ -19,32 +19,31 @@
   <div class="locations-filter-child-container">
     <% @locations.each do |location| %>
       <%= link_to "#location-#{location.id}" , class:"text-decoration-none" do %>
-        <h1 class="header-locations-filter"><strong><%= location.name %></strong></h1>
+        <h2 class="header-locations-filter"><strong><%= location.name.upcase %></strong></h2>
       <% end %>
     <% end %>
   </div>
   <div class="specific-location-parent-container">
     <div class="specific-location-child-container">
       <% @locations.each do |location| %>
-        <%# <li><%= link_to location.name, edit_location_path(location)</li> %>
-          <!-- <section id="section-2"> --><h1 id="location-<%= location.id %>"><strong><%= location.name %></strong></h1><!--</section>-->
+        <h3 id="location-<%= location.id %>"><strong><%= location.name %></strong></h3>
         <h4><strong><%= location.outline %></strong></h4>
         <div class="child-locations-paragraph">
           <p><%= location.description %></p>
         </div>
         <%if location.photos.attached? %>
           <% location.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 300, width: 1200, crop: :fill, radius: 5 %>
+            <%= cl_image_tag photo.key, height: 300, width: 1300, :radius=> 9, crop: "fill" %>
           <% end %>
         <% end %>
       <div class="specific-location-venue-child-container">
-        <strong><h3 style="padding-bottom: 5px;padding-top: 10px; color: #13293D; font-family: Helvetica, sans-serif;">Venues in <%= location.name %> :</strong></h3>
+        <strong><h3 style="padding-bottom: 20px;padding-top: 0px; color: #13293D; font-family: Helvetica, sans-serif;">The Top 3 Venues located in <%= location.name %> :</strong></h3>
         <!--v<% @venues = Venue.where(location_id: location) %>
         <% @venues.each do |venue| %>
           <%= venue.name %>
           <%= venue.address %>
         <% end %>v-->
-        <div class="container" style="margin-bottom:40px;">
+        <div class="container" style="margin-bottom:60px;">
           <div class="row gy-5 d-flex">
             <% @venues.each do |venue| %>
             <div class="col-12 col-md-6 col-lg-4">
@@ -61,23 +60,24 @@
                   <strong><h4 class="card-title text-start"><strong><%= venue.name %></strong></h4></strong>
                   <div class="card-text-container">
                     <div class="card-text-container1 d-flex justify-content-md-between">
-                      <p><strong><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
-                      <p><strong><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></strong></p>
+                      <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
+                      <p><i class="fa-solid fa-clock me-2"></i>Closing: <%= venue.closing_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
                     </div>
                     <div class="card-text-container1 d-flex justify-content-md-between">
                       <div class="price-container text-start">
-                        <p><strong><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price: Rs <%= venue.price %></strong></p>
+                        <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Price: Rs <%= venue.price %></p>
                       </div>
                       <div class="space-container text-start">
-                        <p><strong><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> m</strong></p>
+                        <p><i class="fa-solid fa-layer-group me-2"></i><%= venue.space_size  %> m</p>
                       </div>
                     </div>
                     <div class="card-text-container1 d-flex justify-content-md-between">
-                      <p><strong><i class="fa-solid fa-map-location me-2"></i><%= venue.address %></strong></p>
+                      <p><i class="fa-solid fa-map-location me-2"></i><%= venue.address %></p>
                     </div>
-                  </div>
-                  <div class="card-button-venue text-center">
-                    <a> <strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
+                    <div class="card-button-venue text-center">
+                      <a><strong><%= link_to "View More Detail", venue_path(venue), class:"text-decoration-none" %></strong>
+                      <i class="fa-solid fa-arrow-right-long" style="color: #229eb2; font-size:18px; font-weight:bold; padding-left:10px;"></i>
+                    </div>
                   </div>
                 </div>
               </div>
