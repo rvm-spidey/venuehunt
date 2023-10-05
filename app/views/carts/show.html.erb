@@ -31,10 +31,10 @@
               </div>
               <div class="cart-text-infos">
                 <h4><i class="fa-solid fa-person me-2" style="font-size: 20px;"></i>Number of Participants: <%= booking.number_of_participants %></h4>
-                <h4><i class="fa-solid fa-clock me-2" style="font-size: 16px;"></i>Booking Start Date: <%= "#{booking.date_from.strftime("%d %b %Y")}"%></h4>
-                <h4><i class="fa-solid fa-clock me-2" style="font-size: 16px;"></i>Booking End Date: <%= "#{booking.date_to.strftime("%d %b %Y")}"%></h4>
-                <h4><i class="fa-solid fa-circle-info me-2" style="font-size: 16px;"></i>Other Services: <span id="services-offered"><%= booking.other_services_offered ? "Yes" : "No" %> </span></h4>
-                <h4><i class="fa-solid fa-utensils me-2" style="font-size: 16px;"></i>Food and Beverages Booked: <span id="food-bev-offered"><%= booking.food ? "Yes" : "No" %></span></h4>
+                <h4><i class="fa-solid fa-clock me-2" style="font-size: 16px;"></i>Booking Period: <%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></h4>
+
+                <h4><i class="fa-solid fa-circle-info me-2" style="font-size: 16px;"></i>Other Services included : <span id="services-offered"><%= booking.other_services_offered ? "Yes" : "No" %> </span></h4>
+                <h4><i class="fa-solid fa-utensils me-2" style="font-size: 16px;"></i>Food and Beverages included : <span id="food-bev-offered"><%= booking.food ? "Yes" : "No" %></span></h4>
                 <h4><i class="fa-solid fa-money-bill-1-wave me-2" style="font-size: 16px;"></i>Rs <span id="venue-price"><%= booking.total_price %></h4>
               </div>
             </div>

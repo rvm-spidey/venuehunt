@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
         booking.status = "completed"
         booking.save
       end
-      flash[:notice] = "This article was saved successfully"
+      # flash[:notice] = "This article was saved successfully"
       redirect_to order_success_order_path(@order)
     else
       render :new, status: :unprocessable_entity
