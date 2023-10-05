@@ -85,21 +85,32 @@
     color: $white;
     font-family: Helvetica, sans-serif;
     animation-duration: 6s;
-    animation-name: ordersuccess;
+    // animation-name: ordersuccess;
     animation-iteration-count: infinite;
   }
 }
 
+@keyframes ordersuccess {
+  0%   {color: $light-blue;}
+  25%  {color: y#f8f8f8;}
+  50%  {color: $light-blue;}
+  100% {color: y#f8f8f8;}
+}
+
 // @keyframes ordersuccess {
-//   0%   {color: $light-blue;}
-//   25%  {color: y#ffd700;}
-//   50%  {color: $light-blue;}
-//   100% {color: #ffd700;}
+//   0%   {background: linear-gradient(to right, $light-blue, #bbfff9);}
+//   25%  {background: linear-gradient(to right, #ffd700, $light-blue);}
+//   50%  {background: linear-gradient(to right, $light-blue, #bbfff9);}
+//   100% {background: linear-gradient(to right, #ffd700, $light-blue);}
 // }
 
-@keyframes ordersuccess {
-  0%   {background: linear-gradient(to right, $light-blue, #bbfff9);}
-  25%  {background: linear-gradient(to right, #ffd700, $light-blue);}
-  50%  {background: linear-gradient(to right, $light-blue, #bbfff9);}
-  100% {background: linear-gradient(to right, #ffd700, $light-blue);}
+.container-order-sucessful-text{
+  display: flex;
+  justify-content: center;
+  background-color: aqua;
+  margin: 20px;
+}
+
+.container-1{
+  background-color: white !important;
 }

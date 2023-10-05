@@ -1,9 +1,10 @@
-<div class="order-success-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://www.oficea.com/wp-content/uploads/2023/01/the-factory-1.jpg);">
+<div class="order-success-index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),
+url(https://images.unsplash.com/photo-1516321165247-4aa89a48be28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3021&q=80);">
   <div class="order-success-parent">
     <div class="order-success-header-banner" >
       <h1>
       Thank You For Booking With VenueHunt!
-      <%=  image_tag("poppers.png", style: "width: 50px; height: 50px") %>
+      <%#=  image_tag("poppers.png", style: "width: 50px; height: 50px") %>
       </h1>
     </div>
     <div class="number-carts-banner-count">
@@ -11,15 +12,28 @@
     </div>
   </div>
 </div>
-<div class="background-after-banner">
 
-  <div class="number-of-orders">
-    <h2>
-        Number of reservations made: <%= @cart_items.venues.count %></strong>
-    </h2><!-- <%= @cart.venues.count %></h2>-->
+  <div class="part-after-banner">
+    <div class="container">
+      <div class="explore-container d-flex justify-content-center mb-2 mt-5 floating-logo-container">
+        <%#=  image_tag("artificial-intelligence.png", class: "floating-img" ) %>
+        <div class="ai-text">
+          <h1>We extend our heartfelt thanks for choosing us! </h1>
+          <h3>Your support means a lot, and we're thrilled to have your booking for <strong>  <%= @cart_items.venues.count %> </strong> venues </h3>
+          <h5>Your order reference is: <strong>  <%= @cart_items.id %> </strong> </h5>
+          <%= link_to "My bookings", orders_path , class: "btn btn-flat-suggestions" %>
+        </div>
+        <div class="floating-img">
+          <%=  image_tag("poppers.png", class: "floating-img" ) %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="card mx-5 booking-card" id="order-sucess-card">
+
+  <!--
+  <div class="mx-5 booking-card" id="order-sucess-card">
     <div class="card-header booking-header" id="order-sucess-header-card">
       <h1 id="booking-title-order-success">Booking Details</h1>
     </div>
@@ -32,8 +46,6 @@
             <th scope="col text-center" id="header-table-order">Venue</th>
             <th scope="col text-center" id="header-table-order">Event</th>
             <th scope="col text-center" id="header-table-order">Date</th>
-            <%# <th scope="col">Date to</th> %>
-            <%# <th scope="col">Other services</th> %>
             <th scope="col text-center" id="header-table-order">Total Price</th>
           </tr>
         </thead>
@@ -48,9 +60,6 @@
             <td id="value-table-order"><p><%= booking.venue.name %></p></td>
             <td id="value-table-order"><p> <%= booking.event_name %></p></td>
             <td id="value-table-order"><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
-            <!--<td scope="row"><%= booking.date_from %></p></td>
-            <td><p><%= booking.date_to %></p></td>-->
-            <!-- <td><p><%= booking.other_services_offered %></p></td>-->
             <td id="value-table-order"><p>Rs <%= booking.total %></p></td>
           <% end %>
           </tr>
@@ -58,4 +67,4 @@
       </table>
     </div>
   </div>
-</div>
+  -->
