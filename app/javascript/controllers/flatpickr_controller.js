@@ -56,9 +56,9 @@ export default class extends Controller {
 
       const servicesOffered = document.getElementById("services-offered");
       const isServicesOffered = servicesOffered.textContent.trim()  == "Yes";
-      console.log("isServicesOffered", isServicesOffered);
+      console.log("isServicesOffered 1", isServicesOffered);
       if (isServicesOffered) {
-        if (this.otherservicesTarget && this.otherservicesTarget.value != null &&   BEVERAGE_OPTIONS.hasOwnProperty(this.otherservicesTarget.value)) {
+        if (this.otherservicesTarget && this.otherservicesTarget.value != null &&   OTHER_SERVICES_OPTIONS.hasOwnProperty(this.otherservicesTarget.value)) {
           total += OTHER_SERVICES_OPTIONS[this.otherservicesTarget.value];
         }
 

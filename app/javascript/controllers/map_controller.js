@@ -35,15 +35,25 @@ export default class extends Controller {
     const sorted_locations = results.sort((a, b) => {
       return a.distance - b.distance;
     });
+    var index = 0;
     for (const location of sorted_locations) {
+      // const data = `<h5 class="map-headers-locations">
+      //                 <span class = "map-location-name"> ${location.address} </span>
+      //                 (
+      //                 Driving distance is
+      //                   <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> and may take about
+      //                   <span class = "map-location-details"> <strong>${location.duration} </strong>  mins</span>
+      //                 )
+      //               </h5>`;
+      index = index + 1;
       const data = `<h5 class="map-headers-locations">
-                      <span class = "map-location-name"> ${location.address} </span>
-                      (
-                      Driving distance is
-                        <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> and may take about
-                        <span class = "map-location-details"> <strong>${location.duration} </strong>  mins</span>
-                      )
-                    </h5>`;
+          ${index}.
+          <span class = "map-location-name"> ${location.address} </span>
+          <div class = "map-location-instructions">
+            <p> ·  Driving distance: <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> <p>
+            <p> · Estimated time: <span class = "map-location-details"> <strong> ${location.duration} </strong>  mins</span> <p>
+          </div>
+        </h5>`;
       this.insertlocationsTarget.insertAdjacentHTML('beforeend', data);
     }
 
