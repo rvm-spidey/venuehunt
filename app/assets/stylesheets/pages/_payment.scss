@@ -2,9 +2,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   margin: 0;
   gap: 20px;
+
 }
 
 .container-payment-details,
@@ -14,7 +15,10 @@
   // top: 0px;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
-  min-height: 70vh;
+  min-height: 80vh;
+  border-radius: 8px;
+  overflow: auto;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 }
 
 .container-payment-details h1,
@@ -24,7 +28,7 @@
 
 .card-trip {
   width: 100%;
-  height: 75px;
+  height: 150px;
   margin: 10px auto;
   // border: 1px solid white;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -52,10 +56,15 @@
 }
 
 .trip-price{
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
   display: flex;
   padding-top: 5px;
-  align-items: flex-start;
-  font-size: 14px;
+  align-self: flex-start;
+  background: radial-gradient(circle at 10% 20%, rgb(148, 241, 246) 0%, rgb(148, 189, 246) 100.7%);
+  // background: rgb(247,247,247);
+  // background: linear-gradient(127deg, rgba(247,247,247,1) 0%, rgba(179,179,185,1) 0%, rgba(251,251,251,1) 100%);
 }
 
 
@@ -171,4 +180,60 @@
 
 #order_card_type_paypal:checked + label {
   opacity: 1;
+}
+
+.btn-payment {
+  padding-left: 51px;
+  padding-right: 51px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $dark-blue;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  color: $white;
+  font-family: Helvetica, sans-serif;
+
+  a {
+    color: $white;
+  }
+}
+
+.btn-payment:hover {
+    color:$dark-blue;
+    background-color: $white;
+    border-style: solid;
+    border-width: 3px;
+    border-color: $dark-blue;
+
+    a {
+      color: $dark-blue;
+  }
+}
+
+
+.cart-product-container-payment {
+  overflow: hidden;
+  height: 140px;
+  border-radius: 8px;
+  // background: aqua;
+  box-shadow: 4px 4px 11px 4px rgba(182, 181, 181, 0.315);
+  display: flex;
+  align-items: center;
+  margin-bottom: 13px;
+  padding: 20px;
+}
+
+.cart-product-infos-payment {
+  // background-color: aqua;
+  height: 100px;
+  // display: relative;
+  width: 200px;
+}
+
+.card-payment-price{
+  font-weight: lighter;
+  font-style: italic;
 }

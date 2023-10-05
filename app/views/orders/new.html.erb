@@ -27,6 +27,25 @@
     <hr>
 
      <p class="page-header" style="margin-top:40px">Booking details</h1>
+        <div class="cart-container-new-version">
+        <% @cart.bookings.each_with_index do |booking, index| %>
+          <div class="cart-product-container-payment">
+            <% venue = booking.venue %>
+            <% if venue.photos.attached? %>
+              <div class= "cl_image_tag"><%= cl_image_tag venue.photos.first.key, height: 100, width: 150,  :radius=> 10, gravity: "auto", crop: "fill" %> </div>
+            <% end %>
+            <div class="trip-desc">
+              <div>
+                <p class= "card-info-title"><%= venue.name %></h2>
+                <p class= ".card-info-paragraph"><%= venue.description %></p>
+              </div>
+              <p class= ".card-info-paragraph payment-price" > Rs <span class="trip-price"> <%= booking.total %> <span>  </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+     <!--
       <% @cart.bookings.each do |booking| %>
         <% venue = booking.venue %>
         <div class="card-trip">
@@ -44,6 +63,7 @@
           </div>
         </div>
       <% end %>
+      -->
   </div>
 
 
@@ -83,10 +103,14 @@
         </div>
       </div>
 
-      <div class="form-actions">
-       <%= f.submit "Confirm payment", class: "btn btn-outline-primary", id: "confirm-payment-button",
-            data: { action: "click->alert#initSweetalert" } %>
-      </div>
-    <% end %>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="form-actions">
+            <%= f.submit "Confirm payment", class: "btn-payment", id: "confirm-payment-button",
+              data: { action: "click->alert#initSweetalert" } %>
+          </div>
+        </div>
+    </div>
+  <% end %>
   </div>
 </div>
