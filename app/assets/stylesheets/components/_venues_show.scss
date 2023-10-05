@@ -16,7 +16,7 @@
   grid-template-columns: 1fr 1fr;
   // background-color: #2196F3;
   // padding: 10px;
-  column-gap:20px;
+  column-gap:5px;
   row-gap:30px;
   margin-left: 100px;
   margin-right: 100px;
@@ -51,8 +51,13 @@
   border-radius: 2px;
   background: $dark-blue;
   transition: none;
-  margin-bottom: 15px;
+  margin-left:10px;
 }
+
+.confirm-btn {
+  margin-top: 15px;
+}
+
 
 // .chat-btn:hover {
 //   background: $dark-blue-lazuli;
@@ -63,9 +68,6 @@
   font-size: 18px;
 }
 
-.chat-btn {
-  margin-left:10px;
-}
 
 #subtotal h5 {
   font-weight: 600;
@@ -73,7 +75,7 @@
 }
 
 .desc-container2 {
-  margin-left:70px;
+  margin-left:50px;
 }
 
 .booking-container {
@@ -84,7 +86,7 @@
   margin-bottom: 10px;
   min-height: 675px;
   background: rgb(247,247,247);
-background: linear-gradient(127deg, rgba(247,247,247,1) 0%, rgba(179,179,185,1) 0%, rgba(251,251,251,1) 100%);
+  background: linear-gradient(127deg, rgba(247,247,247,1) 0%, rgba(179,179,185,1) 0%, rgba(251,251,251,1) 100%);
 }
 
 .booking-container h2 {

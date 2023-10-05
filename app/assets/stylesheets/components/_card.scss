@@ -1,16 +1,16 @@
-.card-title {
+.venue-card-title {
   font-family: Helvetica, sans-serif;
   color:$dark-blue;
   padding-bottom: 10px;
 }
 
-.card {
+.venue-card {
   border-radius: 8px;
   background-color: $white;
   max-width: 450px;
 }
 
-.card-body {
+.venue-card-body {
   padding: 25px;
   height: 250px;
 }
@@ -46,7 +46,7 @@
   }
 }
 
-.card-img {
+.venue-card-img {
   overflow: hidden;
   height: 230px;
   border-top-left-radius: 8px;

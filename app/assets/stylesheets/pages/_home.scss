@@ -23,18 +23,46 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.btn-banner {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 2px;
+  background: $blue-moonstone;
+  margin-top: 15px;
+
+  // transition: none;
+  // margin-bottom: 15px;
+}
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
   border-radius: 2px;
   background: $blue-moonstone;
-  transition: none;
-  margin-bottom: 15px;
 }
 
 .btn-flat:hover {
-  background: $dark-blue-lazuli;
+  //   background: $dark-blue-lazuli;
+  //   color: white;
+  background: $blue-moonstone;
   color: white;
+  }
+
+
+.btn-banner:hover {
+//   background: $dark-blue-lazuli;
+//   color: white;
+background: $blue-moonstone;
+color: white;
+}
+
+.btn-booking-form {
+  color: white;
+  border: none;
+}
+
+.discover-venue-link {
+  color:white;
 }
 
 label {

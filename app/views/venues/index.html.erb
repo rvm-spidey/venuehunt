@@ -64,8 +64,8 @@
     <div class="row gy-5 d-flex">
       <% @venues.each do |venue| %>
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow">
-          <div class="card-img">
+        <div class="card shadow venue-card">
+          <div class="card-img venue-card-img">
 
               <%if venue.photos.attached? %>
                 <% venue.photos.each_with_index do |photo| %>
@@ -74,8 +74,8 @@
               <% end %>
             <%# <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/> %>
           </div>
-          <div class="card-body">
-            <strong><h4 class="card-title"><strong><%= venue.name %></strong></h4></strong>
+          <div class="card-body venue-card-body">
+            <strong><h4 class="card-title venue-card-title"><strong><%= venue.name %></strong></h4></strong>
             <div class="card-text-container">
               <div class="card-text-container1 d-flex justify-content-md-between">
                 <p><i class="fa-solid fa-clock me-2"></i>Opening: <%= venue.opening_time.strftime("%H:%M") unless venue.opening_time.nil?  %></p>
