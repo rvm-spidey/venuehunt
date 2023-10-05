@@ -3,14 +3,16 @@
    </div> %>
 <%# <section style="background-color: #eee;">
    <div class="container py-5"> %>
-<div
-   class="bg-image"
+<div class="msg-container-gradient"
+
+   <%# class="bg-image"
+
    style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://wallpaperaccess.com/full/3637345.jpg);
    height: 100vh;
    width: 100vw;
-   "
+   " %>
    >
-   <div class="container chat-messages-container">
+   <div class="container chat-messages-container ">
       <div class="row gy-5 d-flex">
          <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
@@ -27,7 +29,9 @@
 
                           <% @chatroom_new = Chatroom.find(msg.chatroom_id) %>
                           <p class="fw-bold mb-0"><%= link_to @chatroom_new.name, chatroom_path(msg.chatroom_id), class: "chatroom-name";  %></p>
-                          <p class="email-p"><%= User.find(@chatroom_new.admin_id).email %></p>
+                          <% user_msg = User.find(@chatroom_new.admin_id) %>
+                          <p class="email-p"><%= "#{user_msg.first_name} #{user_msg.last_name}" %></p>
+                          <!-- <p class="email-p"><%= User.find(@chatroom_new.admin_id).email %></p> -->
                           <div  data-new-msg-notif-target="messages"="<%= @chatroom_new.id %>">
                             <p class="text-muted"><%= Message.where(chatroom_id: @chatroom_new.id).last.content %></p>
                           </div>
@@ -59,7 +63,10 @@
                data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
                data-chatroom-subscription-current-user-id-value="<%= current_user.id %>"
                >
-               <h1>#<%= @chatroom.name %></h1>
+              <div class="chatroom-title">
+                <h1>@<%= @chatroom.name %></h1>
+                <%=  image_tag("chatroom_user.png", class: "floating-img-chatroom" ) %>
+              </div>
                <div class="messages" data-chatroom-subscription-target="messages">
                   <% @chatroom.messages.each do |message| %>
                   <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
@@ -75,7 +82,7 @@
                <%= f.input :content,
                   class: "chatroom-field",
                   label: false,
-                  placeholder: "Message ##{@chatroom.name}",
+                  placeholder: "Message @#{@chatroom.name}",
                   wrapper_html: {class: "flex-grow-1"}
                   %>
                <%= f.submit "Send", class: "btn btn-primary btn-cht mb-3 ms-2" %>

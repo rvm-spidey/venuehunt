@@ -10,13 +10,13 @@
   border-radius: 15px;
   margin-bottom: 30px;
 
-  h1 {
-    border-bottom: 0.5px solid white;
-    // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
-    margin-bottom: 0;
-    padding: 1rem;
-    color:white;
-  }
+  // h1 {
+  //   border-bottom: 0.5px solid white;
+  //   // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+  //   margin-bottom: 0;
+  //   padding: 1rem;
+  //   color:white;
+  // }
 
   input {
     border-radius:2px;
@@ -67,7 +67,8 @@
   margin-top:60px;
   margin-bottom:20px;
   height: 100vh;
-  width:100vw;
+  width:90vw;
+
 }
 
 .messages-list {
@@ -87,7 +88,7 @@
   border-radius: 15px;
   padding: 5px;
   margin-bottom: 7px;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  // box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .email-p {
@@ -114,6 +115,32 @@ li {
 }
 
 .chatroom-name {
-  text-decoration:none;
+  text-decoration:underline;
   color: $dark-blue;
+}
+
+.msg-container-gradient ,
+.msg-container-gradient .container{
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  background: linear-gradient(-45deg,#82f2fd,#fd8fc1,#0f597c,#47e8f6);
+  background-size: 240% 240%;
+  animation: gradient-animation 28s ease infinite;
+  opacity: 0.8;
+}
+.chatroom-title{
+  display: flex;
+  align-items: center;
+      border-bottom: 0.5px solid white;
+    // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0;
+    padding: 1rem;
+    color:white;
+}
+
+.floating-img-chatroom {
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  animation: float 2.5s infinite;
+  transition: ease 2.5s;
 }
