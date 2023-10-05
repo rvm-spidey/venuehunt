@@ -16,18 +16,22 @@
   grid-template-columns: 1fr 1fr;
   // background-color: #2196F3;
   // padding: 10px;
-  column-gap:15px;
-  row-gap:15px;
+  column-gap:20px;
+  row-gap:30px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 40px;
 }
-.grid-item {
-  // background-color: rgba(255, 255, 255, 0.8);
-  // border: 1px solid rgba(0, 0, 0, 0.8);
-  // padding: 20px;
-  // font-size: 30px;
-  // text-align: center;
-  // border: 1px solid rgba(0, 0, 0, 0.8);
-  margin:0 20px 0 20px;
-}
+
+// .grid-item {
+//   // background-color: rgba(255, 255, 255, 0.8);
+//   // border: 1px solid rgba(0, 0, 0, 0.8);
+//   // padding: 20px;
+//   // font-size: 30px;
+//   // text-align: center;
+//   // border: 1px solid rgba(0, 0, 0, 0.8);
+//   // margin:0 20pxpxpx 0 20px;
+// }
 
 .item-1 {
   grid-column: 1 / span 2;
@@ -45,15 +49,15 @@
   color: white;
   padding: 8px 24px;
   border-radius: 2px;
-  background: $blue-moonstone;
-  transition: background 0.3s ease;
+  background: $dark-blue;
+  transition: none;
   margin-bottom: 15px;
 }
 
-.chat-btn:hover {
-  background: $dark-blue-lazuli;
-  color: white;
-}
+// .chat-btn:hover {
+//   background: $dark-blue-lazuli;
+//   color: white;
+// }
 .fa-solid {
   color: $dark-blue-lazuli;
   font-size: 18px;
@@ -75,24 +79,28 @@
 .booking-container {
   // border:1px solid #eee;
   border-radius:15px;
-  background-color:rgba(0, 0, 0, 0.08);
+  // background-color:rgba(0, 0, 0, 0.08);
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   min-height: 675px;
+  background: rgb(247,247,247);
+background: linear-gradient(127deg, rgba(247,247,247,1) 0%, rgba(179,179,185,1) 0%, rgba(251,251,251,1) 100%);
 }
 
-.booking-container h3 {
-  padding-bottom: 10px;
-  /* border: 1px solid red; */
-  background-color: #229EB2;
-  width: 104%;
+.booking-container h2 {
   padding-top: 10px;
-  margin-left: -11px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  /* border: 1px solid red; */
+  // background-color: #229EB2;
+  // width: 104%;
+  // padding-top: 10px;
+  // margin-left: -11px;
+  // border-top-left-radius: 15px;
+  // border-top-right-radius: 15px;
   padding-left: 6px;
-  color:white;
-  box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.1);
+  color:$dark-blue;
+  font-weight: 600;
+  // box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.1);
+
 }
 
 .venue-header{
@@ -107,4 +115,24 @@
   background: radial-gradient(circle at 10% 20%, rgb(148, 241, 246) 0%, rgb(148, 189, 246) 100.7%);
   padding: 4px;
   border-radius: 2px;
+}
+
+.cl_image {
+  border-radius:8px;
+}
+
+.carousel-inner {
+  border-radius: 8px;
+}
+
+.map-radius {
+  border-radius: 8px;
+}
+
+.back-to-venue {
+  margin-bottom: 30px;
+}
+
+.venues-index-banner {
+  margin-bottom: 40px;
 }

@@ -3,7 +3,9 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  height:600px;
+  margin-top: 30px;
+  height:620px;
+  margin-bottom: 40px;
 }
 
 // .banner h1 {
@@ -26,7 +28,7 @@
   padding: 8px 24px;
   border-radius: 2px;
   background: $blue-moonstone;
-  transition: background 0.3s ease;
+  transition: none;
   margin-bottom: 15px;
 }
 
@@ -90,6 +92,12 @@ h2 {
   color:white;
   font-weight: 500;
 }
+
+.title-slogan-container {
+  margin-top: 70px;
+  margin-left: 60px;
+}
+
 
 
 @keyframes float {

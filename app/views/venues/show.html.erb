@@ -14,14 +14,15 @@
 <!-- back arrow -->
 
 
- <p>
+<div class="grid-container">
+
+  <div class="grid-item item-1">
+
+   <p class="back-to-venue">
     <i class="fa-solid fa-arrow-left mt-3"></i>
     <%= link_to "Back to venues", venues_path,  class:"text-decoration-none back-arrow" %>
   </p>
 
-
-<div class="grid-container">
-  <div class="grid-item item-1">
     <%=week_calendar(events: @all_bookings, attribute: :date_from, end_attribute: :date_to) do |date, bookings| %>
     <%= date.strftime('%d-%b') %>
 
@@ -52,7 +53,7 @@
         <%if @venue.photos.attached? %>
           <% @venue.photos.each_with_index do |photo, index| %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
-                <%= cl_image_tag photo.key, height: 400, width: 800 %>
+                <%= cl_image_tag photo.key, height: 400, width: 700, class: "cl_image" %>
             </div>
           <% end %>
         <% end %>
@@ -110,14 +111,14 @@
   <!-- map -->
   <div class="grid-item">
     <div class="direction">
-      Proposed Direction
-      <div  style="width: 100%; height: 80vh;"
+
+      <div style="width: 100%; height: 90vh;"
         data-controller="venuemap"
         data-venuemap-venuelocation-value="<%= @venue_address.to_json %>"
         data-venuemap-currentlocation-value="<%= @company_address.to_json %>"
         data-venuemap-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
         <div
-          data-venuemap-target="content" style="width: 100%; height: 80vh;">
+          data-venuemap-target="content" style="width: 700px; height: 93vh;">
         </div>
       </div> <!-- style closing tag -->
     </div> <!-- direction closing tag -->
@@ -126,7 +127,7 @@
      <!-- booking -->
   <div class="grid-item <%= @venue.user_id == current_user.id ? 'd-none' : '' %>">
     <div class="container booking-container">
-      <h3>Booking</h3>
+      <h2>Booking</h2>
           <%= simple_form_for [@venue, @booking], data: { controller: 'flatpickr' } do |f| %>
           <%= f.error_notification %>
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -188,7 +189,7 @@
 
 
           <div class="d-flex flex-row">
-            <div class="form-actions btn btn-flat">
+            <div class="form-actions btn btn-primary">
               <%= f.button :submit, "Confirm booking" %>
             </div>
 
