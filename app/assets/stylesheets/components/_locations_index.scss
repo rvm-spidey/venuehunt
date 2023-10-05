@@ -27,7 +27,7 @@
 
 .only-map-container {
   margin: auto;
-  // border-radius: 5px;
+  border-radius: 8px;
   // box-shadow: 5px 5px 5px 5px rgba(145, 144, 144, 0.582);
 
 }
@@ -38,17 +38,18 @@
   max-height: 400px;
   position:absolute;
   top: 20px;
-  border-radius: 5px;
+  border-radius: 8px;
   color: $dark-blue;
   width: 40%;
-  padding-left: 5px;
+  padding: 15px;
   box-shadow: 0px 2px 5px 5px rgba(121, 120, 120, 0.308);
+  text-align: center;
   // font-size: 2px;
 }
 
 .sentence-insertlocations {
   font-family: Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
 }
 
@@ -79,7 +80,9 @@
 
 .locations-filter-child-container {
   text-align: center;
-  margin: auto 0;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
   justify-content: center;
   display: flex;
   gap: 0px 60px;
@@ -87,12 +90,12 @@
 
   .header-locations-filter {
     font-family: Helvetica, sans-serif;
-    color: $blue-moonstone;
+    color: $dark-blue;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 380px;
     background-color: $white;
-    font-size: 40px;
+    font-size: 30px;
     position: relative;
     text-decoration: none;
   }
@@ -105,7 +108,7 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color:$blue-moonstone;
+    background-color:$dark-blue;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
     text-decoration: none;
@@ -124,12 +127,20 @@
 
 .specific-location-child-container {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 20px;
   padding-bottom: 20px;
 
-  h1, h4 {
+  h3 {
     font-family: Helvetica, sans-serif;
     color: $dark-blue;
+    font-size: 30px;
+    padding-bottom: 10px;
+  }
+
+  h4 {
+    font-family: Helvetica, sans-serif;
+    color: $dark-blue;
+    font-size: 20px;
   }
 }
 
@@ -137,17 +148,24 @@
   width: 1000px;
   margin: auto;
   color: $dark-blue;
+
+  p {
+    font-family: Helvetica, sans-serif;
+    color: $dark-blue;
+    margin-bottom: 20px;
+  }
 }
 
 .specific-location-venue-child-container {
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 
 .map-headers-locations {
-  font-size: 15px;
+  font-size: 20px;
   color: $blue-moonstone;
+  font-family: Helvetica, sans-serif;
 }
 
 .map-location-name {
