@@ -1,9 +1,9 @@
 class Booking < ApplicationRecord
 
   PARTICIPANTS = {"0-10"=>10, "11-25"=>25, "26-50"=>50}
-  FOOD_OPTIONS = {"Salads" => 100, "Pasta" => 200, "Mini croques" => 50, "Fruits" => 200}
-  BEVERAGE_OPTIONS = {"Smoothies and soft drinks" => 100, "Alcoholic" => 300, "Non-alcoholic beverages" => 500}
-  OTHER_SERVICES_OPTIONS = {"Room with private view" => 100, "Guided tours" => 200, "Bottle of champagne" => 300}
+  FOOD_OPTIONS = {"Local Cuisine Experience" => 1000, "Dinner Only" => 2000, "All inclusive" => 4000, "Continental Breakfast" => 1500}
+  BEVERAGE_OPTIONS = {"Alcoholic" => 2000, "Non-alcoholic" => 4000, "Alcoholic and Non-alcoholic" => 7000 }
+  OTHER_SERVICES_OPTIONS = {"Changing room with lockers" => 2000, "Guided tours" => 3000, "Land and water activities" => 4000 }
 
   PURPOSES = ["Team building", "Promotion", "Conference", "Workshop", "Presentation", "Other"]
 
