@@ -19,7 +19,7 @@ class Booking < ApplicationRecord
     total = 0
     if self.event_name.present? && self.number_of_participants.present? && self.date_from.present? && self.date_to.present?
       date_booked = (self.date_to - self.date_from).to_i
-      venue_price = self.venue.price * date_booked
+      venue_price = self.venue.price * (date_booked+1)
       total += venue_price
 
       if self.food.present? && FOOD_OPTIONS.key?(self.food)
