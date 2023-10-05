@@ -40,7 +40,7 @@
                 <td><p><%= booking.food %></p></td>
                 <td><p><%= booking.beverage %></p></td>
                 <td><%= "#{booking.date_from.strftime("%d %b")} - #{booking.date_to.strftime("%d %b %Y")}"%></td>
-                <td><p class="booking-total">Rs <%= booking.total %></p></td>
+                <td><p class="booking-total">Rs <%= order.total %></p></td>
                 <td>
                   <% if booking.date_from < Date.today %>
                     <p class="btn btn-flat review-link"><%= link_to booking.venue.name, new_venue_review_path(booking.venue) %></p>

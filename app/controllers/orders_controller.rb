@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.cart_id = @cart.id
     @order.user_id = @current_user.id
+    @order.total = @cart.total
     @order.save
 
     if @order.save

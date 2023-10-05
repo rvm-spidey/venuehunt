@@ -32,9 +32,13 @@
           <p><%= location.description %></p>
         </div>
         <%if location.photos.attached? %>
+          <div><%= cl_image_tag location.photos.first.key, height: 300, width: 1300,  :radius=> 9, crop: "fill" %> </div>
+
+          <!--
           <% location.photos.each do |photo| %>
             <%= cl_image_tag photo.key, height: 300, width: 1300, :radius=> 9, crop: "fill" %>
           <% end %>
+          -->
         <% end %>
       <div class="specific-location-venue-child-container">
         <strong><h3 style="padding-bottom: 20px;padding-top: 0px; color: #13293D; font-family: Helvetica, sans-serif;">The Top 3 Venues located in <%= location.name %> :</strong></h3>
@@ -50,9 +54,11 @@
               <div class="card shadow venue-card">
                 <div class="card-img venue-card-img">
                     <%if venue.photos.attached? %>
-                      <% venue.photos.each_with_index do |photo| %>
+                     <div class= "image_tag"><%= cl_image_tag venue.photos.first.key, height: 270, width: 450,  :radius=> 10, gravity: "auto", crop: "fill" %> </div>
+                       <!-- <% venue.photos.each_with_index do |photo| %>
                           <div class= "image_tag"><%= cl_image_tag photo.key, height: 270, width: 450 %></div>
-                      <% end %>
+                        <% end %>
+                        -->
                     <% end %>
                   <%# <img class="image_tag" src="https://images.squarespace-cdn.com/content/v1/5861eb4729687f7c77275f67/1636778308534-WXETM2COOEMMMU6H7KVT/SurrinaPlemons_Wheatley_HiRes-52.jpg?format=500w" alt="Venue Img" class="card-top-img"/> %>
                 </div>

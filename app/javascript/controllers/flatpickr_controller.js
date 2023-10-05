@@ -16,9 +16,14 @@ export default class extends Controller {
   }
 
   calculateTotalPrice(){
-    const FOOD_OPTIONS = {"Salads":100, "Pasta" : 200, "Mini croques" : 50, "Fruits" : 200};
-    const BEVERAGE_OPTIONS = {"Smoothies and soft drinks" : 100, "Alcoholic" : 300, "Non-alcoholic beverages" : 500};
-    const OTHER_SERVICES_OPTIONS = {"Room with private view" : 100, "Guided tours" : 200, "Bottle of champagne" : 300};
+
+    const FOOD_OPTIONS = {"Local Cuisine Experience": 1000, "Dinner Only" :2000, "All inclusive" : 4000, "Continental Breakfast" : 1500}
+    const BEVERAGE_OPTIONS = {"Alcoholic":2000, "Non-alcoholic" :  4000, "Alcoholic and Non-alcoholic": 7000 }
+    const OTHER_SERVICES_OPTIONS = {"Changing room with lockers" :  2000, "Guided tours" :  3000, "Land and water activities" :  4000 }
+
+    // const FOOD_OPTIONS = {"Salads":100, "Pasta" : 200, "Mini croques" : 50, "Fruits" : 200};
+    // const BEVERAGE_OPTIONS = {"Smoothies and soft drinks" : 100, "Alcoholic" : 300, "Non-alcoholic beverages" : 500};
+    // const OTHER_SERVICES_OPTIONS = {"Room with private view" : 100, "Guided tours" : 200, "Bottle of champagne" : 300};
 
     const subTotalElement = document.getElementById("subtotal-value");
     const venuePrice = parseInt(document.getElementById("venue-price").textContent,10)
