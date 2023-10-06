@@ -93,7 +93,9 @@
     <p><%= @venue.description %></p>
     <div class="container d-flex">
       <div class="desc-container1">
-        <p><i class="fa-solid fa-map-location me-2"></i><%= @venue.address  %></p>
+        <% address_first_part = @venue.address.index(',') %>
+        <% address = @venue.address.slice(0,address_first_part) %>
+        <p><i class="fa-solid fa-map-location me-2"></i><%= address %></p>
         <p><i class="fa-solid fa-layer-group me-2"></i><%= @venue.space_size  %> sqm</p>
         <p><i class="fa-solid fa-money-bill-1-wave me-2"></i>Rs    <span id="venue-price"><%= @venue.price %></span></p>
         <p><i class="fa-solid fa-envelope me-2"></i><%= User.find(@venue.user_id).email  %></p>

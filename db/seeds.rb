@@ -9,10 +9,15 @@
 # require 'faker'
 
 
-# Location.delete_all
-# Venue.delete_all
+Order.delete_all
+Booking.delete_all
+Cart.delete_all
+Venue.delete_all
+Location.delete_all
 
-# User.delete_all
+Message.delete_all
+Chatroom.delete_all
+User.delete_all
 
 # Venuetype.delete_all
 # types = ["Convention centers", "Conference centers", "Hotels", "Resorts", "Restaurants", "Lounges", "Community centers"]

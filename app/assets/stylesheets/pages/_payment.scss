@@ -213,6 +213,40 @@
   }
 }
 
+.btn-payment-cancel {
+  text-decoration: none;
+  padding-left: 51px;
+  padding-right: 51px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: $dark-blue;
+  background-color: $white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  color: $dark-blue;
+  font-family: Helvetica, sans-serif;
+
+  a {
+    color: $white;
+  }
+}
+
+.btn-payment-cancel:hover {
+    color:$white;
+    background-color: $dark-blue;
+    border-style: solid;
+    border-width: 3px;
+    border-color: $dark-blue;
+
+    a {
+      color: $dark-blue;
+  }
+}
 
 .cart-product-container-payment {
   overflow: hidden;
