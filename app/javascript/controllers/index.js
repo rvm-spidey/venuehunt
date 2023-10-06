@@ -40,5 +40,8 @@ application.register("payment", PaymentController)
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
 
+import TsparticlesController from "./tsparticles_controller"
+application.register("tsparticles", TsparticlesController)
+
 import VenuemapController from "./venuemap_controller"
 application.register("venuemap", VenuemapController)
