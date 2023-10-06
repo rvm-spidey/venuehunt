@@ -10,8 +10,8 @@
 
 
 Order.delete_all
-Cart.delete_all
 Booking.delete_all
+Cart.delete_all
 Venue.delete_all
 Location.delete_all
 

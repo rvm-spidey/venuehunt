@@ -105,9 +105,10 @@
 
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <div class="form-actions">
+          <div class="form-actions d-flex justify-content-center align-items-center">
             <%= f.submit "Confirm payment", class: "btn-payment", id: "confirm-payment-button",
               data: { action: "click->alert#initSweetalert" } %>
+             <%=  link_to 'Back',cart_path(@cart), class: 'btn-payment-cancel ms-3' %>
           </div>
         </div>
     </div>
