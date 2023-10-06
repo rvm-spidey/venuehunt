@@ -51,11 +51,11 @@ export default class extends Controller {
 
       if (isFoodOffered){
         if (this.beverageTarget.value != null &&   BEVERAGE_OPTIONS.hasOwnProperty(this.beverageTarget.value)) {
-          total += BEVERAGE_OPTIONS[this.beverageTarget.value];
+          total += ( BEVERAGE_OPTIONS[this.beverageTarget.value] * (daysDiff+1) );
         }
 
         if (this.foodTarget.value != null &&   FOOD_OPTIONS.hasOwnProperty(this.foodTarget.value)) {
-          total += FOOD_OPTIONS[this.foodTarget.value];
+          total += ( FOOD_OPTIONS[this.foodTarget.value] * (daysDiff+1) );
         }
       }
 
@@ -64,7 +64,7 @@ export default class extends Controller {
       console.log("isServicesOffered 1", isServicesOffered);
       if (isServicesOffered) {
         if (this.otherservicesTarget && this.otherservicesTarget.value != null &&   OTHER_SERVICES_OPTIONS.hasOwnProperty(this.otherservicesTarget.value)) {
-          total += OTHER_SERVICES_OPTIONS[this.otherservicesTarget.value];
+          total += ( OTHER_SERVICES_OPTIONS[this.otherservicesTarget.value] * (daysDiff+1) );
         }
 
       }
