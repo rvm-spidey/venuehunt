@@ -23,15 +23,15 @@ class Booking < ApplicationRecord
       total += venue_price
 
       if self.food.present? && FOOD_OPTIONS.key?(self.food)
-        total += FOOD_OPTIONS[self.food]
+        total += (FOOD_OPTIONS[self.food] * (date_booked+1) )
       end
 
       if self.beverage.present? && BEVERAGE_OPTIONS.key?(self.beverage)
-        total += BEVERAGE_OPTIONS[self.beverage]
+        total += (BEVERAGE_OPTIONS[self.beverage] * (date_booked+1) )
       end
 
       if self.other_services_offered.present? && OTHER_SERVICES_OPTIONS.key?(self.other_services_offered)
-        total += OTHER_SERVICES_OPTIONS[self.other_services_offered]
+        total += (OTHER_SERVICES_OPTIONS[self.other_services_offered] * (date_booked+1) )
       end
     end
     return total
