@@ -34,7 +34,7 @@
             <!-- <p class="booked-venue-name d-none"><%= booking.venue.name %></p> -->
               <tr>
                 <td><p class="order-id"><%= order.id %></p></td>
-                <td><p><%= booking.venue.name %></p></td>
+                <td><p><%= link_to booking.venue.name, venue_path(booking.venue) %></p></td>
                 <td><p> <%= booking.event_name %></p></td>
                 <td><p><%= booking.number_of_participants %></p></td>
                 <td><p><%= booking.food %></p></td>
