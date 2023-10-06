@@ -42,7 +42,7 @@
 }
 
 .part-after-banner {
-  background-color: rgb(250, 248, 248);
+  background-color: white;
   padding-top: 40px;
   padding-bottom: 130px;
 }
@@ -62,12 +62,14 @@
   animation-name: itemsheadercart;
   animation-duration: 18s;
   animation-iteration-count: infinite;
+  background-color: white;
 
 
   h3 {
     font-weight: 780;
     color: $dark-blue;
     font-family: Helvetica, sans-serif;
+    background: white;
   }
 }
 
@@ -190,11 +192,13 @@
 }
 
 .container {
-  background-color: rgb(250, 248, 248);
+  // background-color: rgb(250, 248, 248);
+  background-color: white;
 }
 
 .cart-list-child {
-  background-color: rgb(250, 248, 248);
+  // background-color: rgb(250, 248, 248);
+  background-color: white;
 }
 
 .cart-product-container {

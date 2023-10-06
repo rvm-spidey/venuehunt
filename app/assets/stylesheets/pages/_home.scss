@@ -25,8 +25,8 @@
 
 .btn-banner {
   color: white;
-  padding: 8px 24px;
-  border-radius: 2px;
+  padding: 12px 26px;
+  border-radius: 8px;
   background: $blue-moonstone;
   margin-top: 15px;
 
@@ -37,7 +37,7 @@
 .btn-flat {
   color: white;
   padding: 8px 24px;
-  border-radius: 2px;
+  border-radius: 8px;
   background: $blue-moonstone;
 }
 
@@ -99,6 +99,9 @@ label {
 
 .explore-container {
   margin-bottom: 50px;
+}
+.explore-row {
+  margin-bottom: 40px;
 }
 
 .venue-text-clr {

@@ -1,6 +1,5 @@
 .chatroom {
-  // background: gray;
-  // opacity:0.3;
+  background: white;
   margin-top: 30px;
   height: calc(100vh - 75px);
   display: flex;
@@ -9,7 +8,7 @@
   flex-grow: 1;
   border-radius: 15px;
   margin-bottom: 30px;
-
+  color:$dark-blue;
   // h1 {
   //   border-bottom: 0.5px solid white;
   //   // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -37,6 +36,10 @@
     .form-group {
       margin-bottom: 0;
     }
+  }
+
+  h1 {
+    color:$dark-blue;
   }
 
 
@@ -119,18 +122,18 @@ li {
   color: $dark-blue;
 }
 
-.msg-container-gradient ,
-.msg-container-gradient .container{
+.msg-container-gradient {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   background: linear-gradient(-45deg,#82f2fd,#fd8fc1,#0f597c,#47e8f6);
   background-size: 240% 240%;
   animation: gradient-animation 28s ease infinite;
   opacity: 0.8;
+  margin-bottom:40px;
 }
 .chatroom-title{
   display: flex;
   align-items: center;
-      border-bottom: 0.5px solid white;
+      border-bottom: 0.5px solid $dark-blue;
     // box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
     margin-bottom: 0;
     padding: 1rem;
@@ -143,4 +146,12 @@ li {
   width: 40px;
   animation: float 2.5s infinite;
   transition: ease 2.5s;
+}
+
+.msg-row {
+  margin:50px;
+}
+
+.admin-chatroom {
+  margin-top:30px;
 }

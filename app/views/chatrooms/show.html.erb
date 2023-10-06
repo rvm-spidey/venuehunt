@@ -12,8 +12,8 @@
    width: 100vw;
    " %>
    >
-   <div class="container chat-messages-container ">
-      <div class="row gy-5 d-flex">
+   <%# <div class="container chat-messages-container "> %>
+      <div class="row msg-row gy-5 d-flex">
          <div class="col-md-6 col-lg-5 col-xl-4 mb-4 mb-md-0">
 
               <div class="messages-container">
@@ -40,7 +40,7 @@
                     <% end %>
                   </ul>
                 </div>
-              <div >
+              <div class="admin-chatroom">
                <% if current_user.admin? %>
                <h2>My chatroom as admin</h2>
                <% if @chatrooms.any? %>
@@ -91,6 +91,6 @@
          </div>
       </div>
       <%# </div> %>
-   </div>
+   <%# </div> %>
 </div>
 <%# </section> %>

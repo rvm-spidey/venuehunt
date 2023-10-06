@@ -19,12 +19,25 @@ Message.delete_all
 Chatroom.delete_all
 User.delete_all
 
+# Venuetype.delete_all
+# types = ["Convention centers", "Conference centers", "Hotels", "Resorts", "Restaurants", "Lounges", "Community centers"]
+# types.each do |type|
+#   Venuetype.create(name: type)
+# end
+
+Order.delete_all
+Cart.delete_all
+Booking.delete_all
+Venue.delete_all
+Location.delete_all
+Message.delete_all
+Chatroom.delete_all
+User.delete_all
 Venuetype.delete_all
 types = ["Convention centers", "Conference centers", "Hotels", "Resorts", "Restaurants", "Lounges", "Community centers"]
 types.each do |type|
   Venuetype.create(name: type)
 end
-
 
 # 3.times do
 #   User.create(
