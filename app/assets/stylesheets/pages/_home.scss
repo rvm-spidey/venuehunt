@@ -148,7 +148,9 @@ h2 {
 
 .floating-logo-container {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-  background: linear-gradient(-45deg,#82f2fd,#fd8fc1,#0f597c,#f962a6);
+  // background: linear-gradient(45deg, #13293D, #0F597C, #229EB2, #7EE5F7);
+  background: linear-gradient(45deg,#13293D,#0F597C,#229EB2,#7EE5F7);
+  // background: linear-gradient(-45deg,#82f2fd,#fd8fc1,#0f597c,#f962a6);
   background-size: 240% 240%;
   animation: gradient-animation 28s ease infinite;
   opacity: 0.8;
