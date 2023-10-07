@@ -50,8 +50,8 @@ export default class extends Controller {
           ${index}.
           <span class = "map-location-name"> ${location.address} </span>
           <div class = "map-location-instructions">
-            <p> ·  Driving distance: <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> <p>
-            <p> · Estimated time: <span class = "map-location-details"> <strong> ${location.duration} </strong>  mins</span> <p>
+            <p> Driving distance: <span class = "map-location-details"> <strong> ${location.distance} </strong>  km</span> <p>
+            <p> Estimated time: <span class = "map-location-details"> <strong> ${location.duration} </strong>  mins</span> <p>
           </div>
         </h5>`;
       this.insertlocationsTarget.insertAdjacentHTML('beforeend', data);
