@@ -8,6 +8,14 @@
 
   <% if !@content.empty? %>
     <h3>Tags</h3>
+    <div class="tag-ai-suggestions">
+      <% @tags.each do |tag| %>
+        <p>
+          <%= link_to "#{tag}", venues_path(venuetype_id: [Venuetype.find_by(name: tag).id]), class: "tag-api" %>
+        </p>
+      <% end %>
+    </div>
+    <!--
     <ul>
       <% @tags.each do |tag| %>
         <li>
@@ -15,5 +23,6 @@
         </li>
       <% end %>
     </ul>
+    -->
   <% end %>
 </div>
