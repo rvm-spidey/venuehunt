@@ -1,6 +1,7 @@
 .sugg-content-container {
   // border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 
@@ -14,7 +15,7 @@
 
 .content-overlay {
   color: black;
-  background-color: rgba(0,0,0,0.2);
+  // background-color: rgba(0,0,0,0.2);
   border-radius: 2px;
 }
 
@@ -30,4 +31,10 @@ li {
   color:white;
   border-radius:2px;
   margin-bottom:30px;
+}
+
+.tag-ai-suggestions{
+  display: flex;
+  gap: 10px;
+  padding-left: 20px;
 }
