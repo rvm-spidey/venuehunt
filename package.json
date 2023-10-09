@@ -11,6 +11,7 @@
     "flatpickr": "^4.6.13",
     "star-rating.js": "^4.3.0",
     "stimulus-carousel": "^5.0.1",
+    "typed.js": "^2.0.16",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },

@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import Typed from 'typed.js';
 
 // Connects to data-controller="display-suggestions"
 export default class extends Controller {
@@ -24,7 +25,16 @@ export default class extends Controller {
     .then(response => response.text())
     .then((data) => {
       loader.style.display = 'none';
-      this.listTarget.outerHTML = data
+      // this.listTarget.outerHTML = data
+
+
+      var typed = new Typed(this.listTarget, {
+        strings: [data],
+        typeSpeed: 5,
+        // smartBackspace: true,
+        onComplete: function(self) { self.cursor.remove() }
+      });
+
     })
     .catch((error) => {
       loader.style.display = 'none';
